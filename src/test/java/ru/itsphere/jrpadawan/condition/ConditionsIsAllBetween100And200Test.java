@@ -1,4 +1,4 @@
-package ru.itsphere.jrpadawan.conditions;
+package ru.itsphere.jrpadawan.condition;
 
 import org.junit.Assert;
 import org.junit.Test;

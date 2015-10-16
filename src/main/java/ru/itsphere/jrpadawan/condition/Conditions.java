@@ -1,4 +1,4 @@
-package ru.itsphere.jrpadawan.conditions;
+package ru.itsphere.jrpadawan.condition;
 
 /**
  * Герберт Шилдт - Руководство для начинающих (5-е издание)

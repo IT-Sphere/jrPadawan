@@ -1,29 +1,29 @@
-package ru.itsphere.jrpadawan.mathematics;
+package ru.itsphere.jrpadawan.mathematic;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MathematicsFormula5Test {
+public class MathematicsFormula1Test {
     @Test
     public void test1() {
-        double expectedResult = 0.2;
-        double actualResult = Mathematics.formula5(5, 3);
+        int expectedResult = 8;
+        int actualResult = Mathematics.formula1(5);
         double delta = 0;
         Assert.assertEquals(expectedResult, actualResult, delta);
     }
 
     @Test
     public void test2() {
-        double expectedResult = 1;
-        double actualResult = Mathematics.formula5(1, 7);
+        int expectedResult = -2;
+        int actualResult = Mathematics.formula1(0);
         double delta = 0;
         Assert.assertEquals(expectedResult, actualResult, delta);
     }
 
     @Test
     public void test3() {
-        double expectedResult = -0.2;
-        double actualResult = Mathematics.formula5(-5, 2);
+        int expectedResult = -12;
+        int actualResult = Mathematics.formula1(-5);
         double delta = 0;
         Assert.assertEquals(expectedResult, actualResult, delta);
     }

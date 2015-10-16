@@ -1,4 +1,4 @@
-package ru.itsphere.jrpadawan.mathematics;
+package ru.itsphere.jrpadawan.mathematic;
 
 import org.junit.Assert;
 import org.junit.Test;
