@@ -1,5 +1,5 @@
 /**
- * Скрипт сборки проекта
+ * РЎРєСЂРёРїС‚ СЃР±РѕСЂРєРё РїСЂРѕРµРєС‚Р°
  *
  * http://it-channel.ru/
  *
@@ -17,14 +17,10 @@ buildscript {
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
-// В этой части мы указываем в каком репозитории искать зависимости
 repositories {
-    // По умолчанию используем jcenter репозиторий
     jcenter()
 }
 
-// В этой части мы указываем какие зависимости необходимы нашему проекту
 dependencies {
-    // Подключили junit framework
     testCompile 'junit:junit:4.12'
 }
