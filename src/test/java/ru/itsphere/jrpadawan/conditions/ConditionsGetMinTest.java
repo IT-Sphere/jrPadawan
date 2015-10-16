@@ -2,7 +2,7 @@ package ru.itsphere.jrpadawan.conditions;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.itsphere.jrpadawan.Conditions.Conditions;
+import ru.itsphere.jrpadawan.ñonditions.Conditions;
 
 public class ConditionsGetMinTest {
     @Test
