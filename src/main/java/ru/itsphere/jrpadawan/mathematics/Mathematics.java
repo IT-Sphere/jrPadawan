@@ -3,7 +3,7 @@ package ru.itsphere.jrpadawan.mathematics;
 /**
  * Герберт Шилдт - Руководство для начинающих (5-е издание)
  *
- * с. 34 - с. 44
+ * с. 54 - с. 84
  */
 public class Mathematics {
 

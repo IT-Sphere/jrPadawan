@@ -1,9 +1,9 @@
-package ru.itsphere.jrpadawan.сonditions;
+package ru.itsphere.jrpadawan.conditions;
 
 /**
  * Герберт Шилдт - Руководство для начинающих (5-е издание)
  *
- * с. 44 - с. 46
+ * с. 85 - с. 97
  */
 public class Conditions {
 

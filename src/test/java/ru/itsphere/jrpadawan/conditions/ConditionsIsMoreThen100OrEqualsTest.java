@@ -2,7 +2,6 @@ package ru.itsphere.jrpadawan.conditions;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.itsphere.jrpadawan.ñonditions.Conditions;
 
 public class ConditionsIsMoreThen100OrEqualsTest {
     @Test
