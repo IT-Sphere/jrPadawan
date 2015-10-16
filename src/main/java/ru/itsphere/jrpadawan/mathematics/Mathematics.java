@@ -1,5 +1,10 @@
-package ru.itsphere.jrpadawan;
+package ru.itsphere.jrpadawan.mathematics;
 
+/**
+ * Герберт Шилдт - Руководство для начинающих (5-е издание)
+ *
+ * с. 34 - с. 44
+ */
 public class Mathematics {
 
     /**
