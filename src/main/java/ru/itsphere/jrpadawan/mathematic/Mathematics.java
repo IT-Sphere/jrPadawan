@@ -42,8 +42,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula4(int a, int b) {
-        double aa = (a * a);
-        return aa / (b * a);
+        return ((double) a * a) / (b * a);
     }
 
     /**
