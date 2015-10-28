@@ -18,11 +18,9 @@ public class Loops {
         for (int i = 5; i > 0; i--) {
             a *= 5;
         }
-
         for (int i = 10; i > 0; i--) {
             b *= 2;
         }
-
         return a + b;
     }
 
@@ -83,6 +81,22 @@ public class Loops {
             first = second;
             second = result;
             result = first + second;
+        }
+        return result;
+    }
+
+    /**
+     * Посчитать факториал числа a.
+     * Если а = 3, то результат будет 6 (1 * 2 * 3).
+     * Если а = 4, то результат будет 24 (1 * 2 * 3 * 4).
+     *
+     * @param a - любое число
+     * @return результат
+     */
+    public static long task5(int a) {
+        long result = 1;
+        for (int i = a; i > 1; i--) {
+            result *= i;
         }
         return result;
     }
