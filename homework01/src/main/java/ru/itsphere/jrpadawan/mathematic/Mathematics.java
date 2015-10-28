@@ -13,7 +13,7 @@ public class Mathematics {
      * @return результат
      */
     public static int formula1(int a) {
-        return a + a - 1;
+        return a + a - 2;
     }
 
     /**

@@ -5,10 +5,12 @@
  *
  * @author Budnikov Aleksandr
  */
-subprojects {
+allprojects {
     apply plugin: 'idea'
     apply plugin: 'java'
+}
 
+subprojects {
     buildscript {
         repositories {
             jcenter()
