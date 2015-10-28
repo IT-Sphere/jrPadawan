@@ -13,7 +13,7 @@ public class Mathematics {
      * @return результат
      */
     public static int formula1(int a) {
-        return a + a - 2;
+        return a + a - 1;
     }
 
     /**
@@ -37,8 +37,8 @@ public class Mathematics {
 
     /**
      * Формула (a * a) / (b * a)
-     * @param a - любое целое число
-     * @param b - любое целое число
+     * @param a - любое целое число (больше 0)
+     * @param b - любое целое число (больше 0)
      * @return результат
      */
     public static double formula4(int a, int b) {
@@ -47,8 +47,8 @@ public class Mathematics {
 
     /**
      * Формула b / (b * a)
-     * @param a - любое целое число
-     * @param b - любое целое число
+     * @param a - любое целое число (больше 0)
+     * @param b - любое целое число (больше 0)
      * @return результат
      */
     public static double formula5(int a, int b) {
@@ -58,8 +58,8 @@ public class Mathematics {
 
     /**
      * Формула ((квадратный корень из (a * b)) / 5)
-     * @param a - любое целое число
-     * @param b - любое целое число
+     * @param a - любое целое число (больше или равно 0)
+     * @param b - любое целое число (больше или равно 0)
      * @return результат
      */
     public static double formula6(int a, int b) {
@@ -68,8 +68,8 @@ public class Mathematics {
 
     /**
      * Формула (квадратный корень из (a * a + b * b))
-     * @param a - любое целое число
-     * @param b - любое целое число
+     * @param a - любое целое число (больше или равно 0)
+     * @param b - любое целое число (больше или равно 0)
      * @return результат
      */
     public static double formula7(int a, int b) {
@@ -88,7 +88,7 @@ public class Mathematics {
 
     /**
      * Формула (a в 10-й степени / Остаток от деления на 10 числа a)
-     * @param a - любое целое число
+     * @param a - любое целое число (больше 0)
      * @return результат
      */
     public static double formula9(int a) {
