@@ -36,3 +36,19 @@ subprojects {
     }
     test.doLast {delete 'build'}
 }
+
+task test01 {
+    dependsOn(":homework01:test")
+}
+
+task test02 {
+    dependsOn(":homework02:test")
+}
+
+task test03 {
+    dependsOn(":homework03:test")
+}
+
+task test04 {
+    dependsOn(":homework04:test")
+}
