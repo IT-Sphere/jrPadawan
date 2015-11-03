@@ -8,15 +8,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class ClassTest {
+public class UserTest {
 
     public static final boolean INITIALIZE = false;
-    public static final String USER_CLASS = "ru.itsphere.jrpadawan.clazz.User";
-    public static final String FIELD_HEIGHT = "height";
-    public static final String FIELD_AGE = "age";
-    public static final String METHOD_IS_KID = "isKid";
-    public static final String METHOD_IS_OLDER = "isOlder";
-    public static final String METHOD_IS_HIGHER = "isHigher";
     public static final int OLDER_THEN_IT = 50;
     public static final int HIGHER_THEN_IT = 200;
     public static final int TEST_USER_HEIGHT = 178;
@@ -27,8 +21,8 @@ public class ClassTest {
         Class<?> userClass = checkClassExistence();
 
         Object newInstance = checkInstanceCreationWithDefaultConstructor(userClass);
-        Field heightField = checkFieldExistance(userClass, FIELD_HEIGHT);
-        Field ageField = checkFieldExistance(userClass, FIELD_AGE);
+        Field heightField = checkFieldExistance(userClass, TestConstants.FIELD_HEIGHT);
+        Field ageField = checkFieldExistance(userClass, TestConstants.FIELD_AGE);
 
         checkValueField(userClass, newInstance, heightField, 0);
         checkValueField(userClass, newInstance, ageField, 0);
@@ -39,35 +33,39 @@ public class ClassTest {
         checkValueField(userClass, notDefaultInstance, heightField, TEST_USER_HEIGHT);
         checkValueField(userClass, notDefaultInstance, ageField, TEST_USER_AGE);
 
-        Method isKidMethod = checkMethodExistence(userClass, METHOD_IS_KID);
+        Method isKidMethod = checkMethodExistence(userClass, TestConstants.METHOD_IS_KID);
         checkIsKidMethod(userClass, notDefaultInstance, isKidMethod);
 
-        Method isOlderMethod = checkMethodExistence(userClass, METHOD_IS_OLDER);
+        Method isOlderMethod = checkMethodExistence(userClass, TestConstants.METHOD_IS_OLDER);
         checkIsOlderMethod(userClass, notDefaultInstance, isOlderMethod);
 
-        Method isHigherMethod = checkMethodExistence(userClass, METHOD_IS_HIGHER);
+        Method isHigherMethod = checkMethodExistence(userClass, TestConstants.METHOD_IS_HIGHER);
         checkIsHigherMethod(userClass, notDefaultInstance, isHigherMethod);
     }
 
     private void checkIsOlderMethod(Class<?> userClass, Object instance, Method method) {
-        method.setAccessible(true);
         try {
+            method.setAccessible(true);
             if ((Boolean) method.invoke(instance, OLDER_THEN_IT)) {
                 Assert.fail(getMethodLogicIsIncorrectMessage(method));
             }
         } catch (Exception e) {
             Assert.fail(getMethodAccessErrorMessage(method));
+        } finally {
+            method.setAccessible(false);
         }
     }
 
     private void checkIsHigherMethod(Class<?> userClass, Object instance, Method method) {
-        method.setAccessible(true);
         try {
+            method.setAccessible(true);
             if ((Boolean) method.invoke(instance, HIGHER_THEN_IT)) {
                 Assert.fail(getMethodLogicIsIncorrectMessage(method));
             }
         } catch (Exception e) {
             Assert.fail(getMethodAccessErrorMessage(method));
+        } finally {
+            method.setAccessible(false);
         }
     }
 
@@ -76,13 +74,15 @@ public class ClassTest {
     }
 
     private void checkIsKidMethod(Class<?> userClass, Object instance, Method method) {
-        method.setAccessible(true);
         try {
+            method.setAccessible(true);
             if ((Boolean) method.invoke(instance)) {
                 Assert.fail(getMethodLogicIsIncorrectMessage(method));
             }
         } catch (Exception e) {
             Assert.fail(getMethodAccessErrorMessage(method));
+        } finally {
+            method.setAccessible(false);
         }
     }
 
@@ -100,8 +100,8 @@ public class ClassTest {
         return null;
     }
 
-    private Constructor<?> checkTwoArgumentConstructor(Class<?> clazz) {
-        for (Constructor constructor : clazz.getDeclaredConstructors()) {
+    private Constructor<?> checkTwoArgumentConstructor(Class<?> userClass) {
+        for (Constructor constructor : userClass.getDeclaredConstructors()) {
             if (constructor.getParameterCount() == 2) {
                 for (Class paramClass : constructor.getParameterTypes()) {
                     if (!paramClass.equals(int.class)) {
@@ -115,18 +115,20 @@ public class ClassTest {
         return null;
     }
 
-    private Object checkInstanceCreationWithDefaultConstructor(Class<?> clazz) {
-        for (Constructor constructor : clazz.getDeclaredConstructors()) {
+    private Object checkInstanceCreationWithDefaultConstructor(Class<?> userClass) {
+        for (Constructor constructor : userClass.getDeclaredConstructors()) {
             if (constructor.getParameterCount() == 0) {
-                constructor.setAccessible(true);
                 try {
+                    constructor.setAccessible(true);
                     return constructor.newInstance();
                 } catch (InstantiationException e) {
-                    Assert.fail("Object of class " + USER_CLASS + " was not created");
+                    Assert.fail("Object of class " + TestConstants.USER_CLASS + " was not created");
                 } catch (IllegalAccessException e) {
-                    Assert.fail("Object of class " + USER_CLASS + ". Default constructor access error.");
+                    Assert.fail("Object of class " + TestConstants.USER_CLASS + ". Default constructor access error.");
                 } catch (InvocationTargetException e) {
-                    Assert.fail("Object of class " + USER_CLASS + ". Default constructor is incorrect.");
+                    Assert.fail("Object of class " + TestConstants.USER_CLASS + ". Default constructor is incorrect.");
+                } finally {
+                    constructor.setAccessible(false);
                 }
             }
         }
@@ -136,11 +138,11 @@ public class ClassTest {
 
     private Class<?> checkClassExistence() {
         try {
-            Class<?> userClass = Class.forName(USER_CLASS, INITIALIZE, ClassLoader.getSystemClassLoader());
+            Class<?> userClass = Class.forName(TestConstants.USER_CLASS, INITIALIZE, ClassLoader.getSystemClassLoader());
             Assert.assertNotNull(userClass);
             return userClass;
         } catch (ClassNotFoundException e) {
-            Assert.fail("Class " + USER_CLASS + " was not created");
+            Assert.fail("Class " + TestConstants.USER_CLASS + " was not created");
         }
         return null;
     }
@@ -152,6 +154,8 @@ public class ClassTest {
             instance = constructor.newInstance(TEST_USER_HEIGHT, TEST_USER_AGE);
         } catch (Exception e) {
             Assert.fail("Constructor with two parameters is incorrect");
+        } finally {
+            constructor.setAccessible(false);
         }
         return instance;
     }
@@ -165,6 +169,8 @@ public class ClassTest {
             }
         } catch (IllegalAccessException e) {
             Assert.fail("Field " + field.getName() + " can't be accessed");
+        } finally {
+            field.setAccessible(false);
         }
     }
 
