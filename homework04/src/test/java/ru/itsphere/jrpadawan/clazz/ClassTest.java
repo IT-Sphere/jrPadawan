@@ -34,7 +34,7 @@ public class ClassTest {
 
     private Constructor<?> checkTwoArgumentConstructor(Class<?> clazz) {
         try {
-            return clazz.getConstructor(Integer.class, Integer.class);
+            return clazz.getConstructor(int.class, int.class);
         } catch (NoSuchMethodException e) {
             Assert.fail("Object of class " + USER_CLASS + ". Two Argument constructor access error.");
         }
