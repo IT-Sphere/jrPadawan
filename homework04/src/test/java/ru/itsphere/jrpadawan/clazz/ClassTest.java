@@ -12,12 +12,14 @@ public class ClassTest {
 
     public static final boolean INITIALIZE = false;
     public static final String USER_CLASS = "ru.itsphere.jrpadawan.clazz.User";
-    public static final String FIELD_ID = "id";
+    public static final String FIELD_HEIGHT = "height";
     public static final String FIELD_AGE = "age";
     public static final String METHOD_IS_KID = "isKid";
     public static final String METHOD_IS_OLDER = "isOlder";
+    public static final String METHOD_IS_HIGHER = "isHigher";
     public static final int OLDER_THEN_IT = 50;
-    public static final int TEST_USER_ID = 1000;
+    public static final int HIGHER_THEN_IT = 200;
+    public static final int TEST_USER_HEIGHT = 178;
     public static final int TEST_USER_AGE = 25;
 
     @Test
@@ -25,16 +27,16 @@ public class ClassTest {
         Class<?> userClass = checkClassExistence();
 
         Object newInstance = checkInstanceCreationWithDefaultConstructor(userClass);
-        Field idField = checkFieldExistance(userClass, FIELD_ID);
+        Field heightField = checkFieldExistance(userClass, FIELD_HEIGHT);
         Field ageField = checkFieldExistance(userClass, FIELD_AGE);
 
-        checkValueField(userClass, newInstance, idField, 0);
+        checkValueField(userClass, newInstance, heightField, 0);
         checkValueField(userClass, newInstance, ageField, 0);
 
         Constructor<?> twoArgumentConstructor = checkTwoArgumentConstructor(userClass);
         Object notDefaultInstance = checkCreationInstanceWithTwoTestParams(userClass, twoArgumentConstructor);
 
-        checkValueField(userClass, notDefaultInstance, idField, TEST_USER_ID);
+        checkValueField(userClass, notDefaultInstance, heightField, TEST_USER_HEIGHT);
         checkValueField(userClass, notDefaultInstance, ageField, TEST_USER_AGE);
 
         Method isKidMethod = checkMethodExistence(userClass, METHOD_IS_KID);
@@ -42,12 +44,26 @@ public class ClassTest {
 
         Method isOlderMethod = checkMethodExistence(userClass, METHOD_IS_OLDER);
         checkIsOlderMethod(userClass, notDefaultInstance, isOlderMethod);
+
+        Method isHigherMethod = checkMethodExistence(userClass, METHOD_IS_HIGHER);
+        checkIsHigherMethod(userClass, notDefaultInstance, isHigherMethod);
     }
 
     private void checkIsOlderMethod(Class<?> userClass, Object instance, Method method) {
         method.setAccessible(true);
         try {
             if ((Boolean) method.invoke(instance, OLDER_THEN_IT)) {
+                Assert.fail(getMethodLogicIsIncorrectMessage(method));
+            }
+        } catch (Exception e) {
+            Assert.fail(getMethodAccessErrorMessage(method));
+        }
+    }
+
+    private void checkIsHigherMethod(Class<?> userClass, Object instance, Method method) {
+        method.setAccessible(true);
+        try {
+            if ((Boolean) method.invoke(instance, HIGHER_THEN_IT)) {
                 Assert.fail(getMethodLogicIsIncorrectMessage(method));
             }
         } catch (Exception e) {
@@ -133,7 +149,7 @@ public class ClassTest {
         Object instance = null;
         try {
             constructor.setAccessible(true);
-            instance = constructor.newInstance(TEST_USER_ID, TEST_USER_AGE);
+            instance = constructor.newInstance(TEST_USER_HEIGHT, TEST_USER_AGE);
         } catch (Exception e) {
             Assert.fail("Constructor with two parameters is incorrect");
         }

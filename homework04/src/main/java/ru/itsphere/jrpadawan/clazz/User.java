@@ -6,14 +6,14 @@ package ru.itsphere.jrpadawan.clazz;
  * c. 123 - с. 153
  */
 class User {
-    int id;
+    int height;
     int age;
 
     User() {
     }
 
-    User(int id, int age) {
-        this.id = id;
+    User(int height, int age) {
+        this.height = height;
         this.age = age;
     }
 
@@ -23,5 +23,9 @@ class User {
 
     boolean isOlder(int age) {
         return this.age > age;
+    }
+
+    boolean isHigher(int height) {
+        return this.height > height;
     }
 }
