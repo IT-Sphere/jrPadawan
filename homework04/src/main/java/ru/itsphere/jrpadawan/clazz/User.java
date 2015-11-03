@@ -21,7 +21,7 @@ class User {
         return age < 18;
     }
 
-    public boolean isOlder(int age) {
+    boolean isOlder(int age) {
         return this.age > age;
     }
 }
