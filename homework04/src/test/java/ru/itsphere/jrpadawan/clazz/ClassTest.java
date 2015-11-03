@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ClassTest {
 
@@ -13,6 +14,9 @@ public class ClassTest {
     public static final String USER_CLASS = "ru.itsphere.jrpadawan.clazz.User";
     public static final String FIELD_ID = "id";
     public static final String FIELD_AGE = "age";
+    public static final String METHOD_IS_KID = "isKid";
+    public static final String METHOD_IS_OLDER = "isOlder";
+    public static final int OLDER_THEN_IT = 50;
     public static final int TEST_USER_ID = 1000;
     public static final int TEST_USER_AGE = 25;
 
@@ -28,16 +32,62 @@ public class ClassTest {
         checkValueField(userClass, newInstance, ageField, 0);
 
         Constructor<?> twoArgumentConstructor = checkTwoArgumentConstructor(userClass);
-        Object initializedInstance = checkCreationInstanceWithTwoTestParams(userClass, twoArgumentConstructor);
+        Object notDefaultInstance = checkCreationInstanceWithTwoTestParams(userClass, twoArgumentConstructor);
 
-        checkValueField(userClass, initializedInstance, idField, TEST_USER_ID);
-        checkValueField(userClass, initializedInstance, ageField, TEST_USER_AGE);
+        checkValueField(userClass, notDefaultInstance, idField, TEST_USER_ID);
+        checkValueField(userClass, notDefaultInstance, ageField, TEST_USER_AGE);
+
+        Method isKidMethod = checkMethodExistence(userClass, METHOD_IS_KID);
+        checkIsKidMethod(userClass, notDefaultInstance, isKidMethod);
+
+        Method isOlderMethod = checkMethodExistence(userClass, METHOD_IS_OLDER);
+        checkIsOlderMethod(userClass, notDefaultInstance, isOlderMethod);
+    }
+
+    private void checkIsOlderMethod(Class<?> userClass, Object instance, Method method) {
+        method.setAccessible(true);
+        try {
+            if ((Boolean) method.invoke(instance, OLDER_THEN_IT)) {
+                Assert.fail(getMethodLogicIsIncorrectMessage(method));
+            }
+        } catch (Exception e) {
+            Assert.fail(getMethodAccessErrorMessage(method));
+        }
+    }
+
+    private String getMethodAccessErrorMessage(Method method) {
+        return "Method " + method.getName() + " access error.";
+    }
+
+    private void checkIsKidMethod(Class<?> userClass, Object instance, Method method) {
+        method.setAccessible(true);
+        try {
+            if ((Boolean) method.invoke(instance)) {
+                Assert.fail(getMethodLogicIsIncorrectMessage(method));
+            }
+        } catch (Exception e) {
+            Assert.fail(getMethodAccessErrorMessage(method));
+        }
+    }
+
+    private String getMethodLogicIsIncorrectMessage(Method method) {
+        return "Logic of method " + method.getName() + " is incorrect.";
+    }
+
+    private Method checkMethodExistence(Class<?> clazz, String methodName) {
+        for (Method method : clazz.getDeclaredMethods()) {
+            if (method.getName().equals(methodName)) {
+                return method;
+            }
+        }
+        Assert.fail("Method " + methodName + " was not found");
+        return null;
     }
 
     private Constructor<?> checkTwoArgumentConstructor(Class<?> clazz) {
-        for (Constructor constructor: clazz.getDeclaredConstructors()) {
+        for (Constructor constructor : clazz.getDeclaredConstructors()) {
             if (constructor.getParameterCount() == 2) {
-                for (Class paramClass: constructor.getParameterTypes())  {
+                for (Class paramClass : constructor.getParameterTypes()) {
                     if (!paramClass.equals(int.class)) {
                         Assert.fail("Two parameters constructor has incorrect parameters types.");
                     }
