@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class ClassTest {
 
@@ -28,27 +29,42 @@ public class ClassTest {
 
         Constructor<?> twoArgumentConstructor = checkTwoArgumentConstructor(userClass);
         Object initializedInstance = checkCreationInstanceWithTwoTestParams(userClass, twoArgumentConstructor);
+
         checkValueField(userClass, initializedInstance, idField, TEST_USER_ID);
         checkValueField(userClass, initializedInstance, ageField, TEST_USER_AGE);
     }
 
     private Constructor<?> checkTwoArgumentConstructor(Class<?> clazz) {
-        try {
-            return clazz.getConstructor(int.class, int.class);
-        } catch (NoSuchMethodException e) {
-            Assert.fail("Object of class " + USER_CLASS + ". Two Argument constructor access error.");
+        for (Constructor constructor: clazz.getDeclaredConstructors()) {
+            if (constructor.getParameterCount() == 2) {
+                for (Class paramClass: constructor.getParameterTypes())  {
+                    if (!paramClass.equals(int.class)) {
+                        Assert.fail("Two parameters constructor has incorrect parameters types.");
+                    }
+                }
+                return constructor;
+            }
         }
+        Assert.fail("Two parameters constructor was not found.");
         return null;
     }
 
     private Object checkInstanceCreationWithDefaultConstructor(Class<?> clazz) {
-        try {
-            return clazz.newInstance();
-        } catch (InstantiationException e) {
-            Assert.fail("Object of class " + USER_CLASS + " was not created");
-        } catch (IllegalAccessException e) {
-            Assert.fail("Object of class " + USER_CLASS + ". Default constructor access error.");
+        for (Constructor constructor : clazz.getDeclaredConstructors()) {
+            if (constructor.getParameterCount() == 0) {
+                constructor.setAccessible(true);
+                try {
+                    return constructor.newInstance();
+                } catch (InstantiationException e) {
+                    Assert.fail("Object of class " + USER_CLASS + " was not created");
+                } catch (IllegalAccessException e) {
+                    Assert.fail("Object of class " + USER_CLASS + ". Default constructor access error.");
+                } catch (InvocationTargetException e) {
+                    Assert.fail("Object of class " + USER_CLASS + ". Default constructor is incorrect.");
+                }
+            }
         }
+        Assert.fail("Default constructor was not found.");
         return null;
     }
 
@@ -66,6 +82,7 @@ public class ClassTest {
     private Object checkCreationInstanceWithTwoTestParams(Class<?> clazz, Constructor<?> constructor) {
         Object instance = null;
         try {
+            constructor.setAccessible(true);
             instance = constructor.newInstance(TEST_USER_ID, TEST_USER_AGE);
         } catch (Exception e) {
             Assert.fail("Constructor with two parameters is incorrect");
@@ -75,6 +92,7 @@ public class ClassTest {
 
     private void checkValueField(Class<?> clazz, Object newInstance, Field field, Object value) {
         try {
+            field.setAccessible(true);
             Object valueActual = field.get(newInstance);
             if (!value.equals(valueActual)) {
                 Assert.fail("Field " + field.getName() + " has incorrect value");

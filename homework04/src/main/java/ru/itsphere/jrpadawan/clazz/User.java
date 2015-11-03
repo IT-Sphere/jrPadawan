@@ -1,18 +1,18 @@
 package ru.itsphere.jrpadawan.clazz;
 
 /**
- * Герберт Шилдт - Руководство для начинающих (5-е издание)
+ * Р“РµСЂР±РµСЂС‚ РЁРёР»РґС‚-Р СѓРєРѕРІРѕРґСЃС‚РІРѕ РґР»СЏ РЅР°С‡РёРЅР°СЋС‰РёС…(5-Рµ РёР·РґР°РЅРёРµ)
  * <p>
- * с. 97 - с. 122
+ * РЎ. 97-СЃ. 122
  */
-public class User {
+class User {
     int id;
     int age;
 
-    public User() {
+    User() {
     }
 
-    public User(int id, int age) {
+    User(int id, int age) {
         this.id = id;
         this.age = age;
     }
