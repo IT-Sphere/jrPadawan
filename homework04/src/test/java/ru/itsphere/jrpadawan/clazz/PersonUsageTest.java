@@ -48,4 +48,30 @@ public class PersonUsageTest {
             Assert.fail();
         }
     }
+
+    @Test
+    public void changeSuitablePersonTest() throws Exception {
+        Class<?> personClass = TestUtils.getPersonClass();
+        Object instance = personClass.newInstance();
+        Field heightField = personClass.getDeclaredField(TestConstants.FIELD_HEIGHT);
+        personClass.getDeclaredField(TestConstants.FIELD_AGE);
+
+        PersonUsage personUsage = new PersonUsage();
+
+
+
+        Object person = personUsage.createUnsuitablePerson();
+        Assert.assertNotNull(person);
+        Assert.assertEquals(TestConstants.PERSON_CLASS, person.getClass().getName());
+
+        Field fieldAge = person.getClass().getDeclaredField(TestConstants.FIELD_AGE);
+        int age = (Integer) fieldAge.get(person);
+
+        Field fieldHeight = person.getClass().getDeclaredField(TestConstants.FIELD_HEIGHT);
+        int height = (Integer) fieldHeight.get(person);
+
+        if (age <= PersonUsage.MAX_AGE && height >= PersonUsage.MIN_HEIGHT) {
+            Assert.fail();
+        }
+    }
 }

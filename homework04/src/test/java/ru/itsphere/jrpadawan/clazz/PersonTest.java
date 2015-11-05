@@ -9,8 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class PersonTest {
-
-    public static final boolean INITIALIZE = false;
     public static final int OLDER_THEN_IT = 50;
     public static final int HIGHER_THEN_IT = 200;
     public static final int TEST_PERSON_HEIGHT = 178;
@@ -138,7 +136,7 @@ public class PersonTest {
 
     private Class<?> checkClassExistence() {
         try {
-            Class<?> personClass = Class.forName(TestConstants.PERSON_CLASS, INITIALIZE, ClassLoader.getSystemClassLoader());
+            Class<?> personClass = TestUtils.getPersonClass();
             Assert.assertNotNull(personClass);
             return personClass;
         } catch (ClassNotFoundException e) {
