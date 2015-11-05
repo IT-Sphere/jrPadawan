@@ -8,42 +8,42 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class UserTest {
+public class PersonTest {
 
     public static final boolean INITIALIZE = false;
     public static final int OLDER_THEN_IT = 50;
     public static final int HIGHER_THEN_IT = 200;
-    public static final int TEST_USER_HEIGHT = 178;
-    public static final int TEST_USER_AGE = 25;
+    public static final int TEST_PERSON_HEIGHT = 178;
+    public static final int TEST_PERSON_AGE = 25;
 
     @Test
     public void test1() {
-        Class<?> userClass = checkClassExistence();
+        Class<?> personClass = checkClassExistence();
 
-        Object newInstance = checkInstanceCreationWithDefaultConstructor(userClass);
-        Field heightField = checkFieldExistance(userClass, TestConstants.FIELD_HEIGHT);
-        Field ageField = checkFieldExistance(userClass, TestConstants.FIELD_AGE);
+        Object newInstance = checkInstanceCreationWithDefaultConstructor(personClass);
+        Field heightField = checkFieldExistance(personClass, TestConstants.FIELD_HEIGHT);
+        Field ageField = checkFieldExistance(personClass, TestConstants.FIELD_AGE);
 
-        checkValueField(userClass, newInstance, heightField, 0);
-        checkValueField(userClass, newInstance, ageField, 0);
+        checkValueField(personClass, newInstance, heightField, 0);
+        checkValueField(personClass, newInstance, ageField, 0);
 
-        Constructor<?> twoArgumentConstructor = checkTwoArgumentConstructor(userClass);
-        Object notDefaultInstance = checkCreationInstanceWithTwoTestParams(userClass, twoArgumentConstructor);
+        Constructor<?> twoArgumentConstructor = checkTwoArgumentConstructor(personClass);
+        Object notDefaultInstance = checkCreationInstanceWithTwoTestParams(personClass, twoArgumentConstructor);
 
-        checkValueField(userClass, notDefaultInstance, heightField, TEST_USER_HEIGHT);
-        checkValueField(userClass, notDefaultInstance, ageField, TEST_USER_AGE);
+        checkValueField(personClass, notDefaultInstance, heightField, TEST_PERSON_HEIGHT);
+        checkValueField(personClass, notDefaultInstance, ageField, TEST_PERSON_AGE);
 
-        Method isKidMethod = checkMethodExistence(userClass, TestConstants.METHOD_IS_KID);
-        checkIsKidMethod(userClass, notDefaultInstance, isKidMethod);
+        Method isKidMethod = checkMethodExistence(personClass, TestConstants.METHOD_IS_KID);
+        checkIsKidMethod(personClass, notDefaultInstance, isKidMethod);
 
-        Method isOlderMethod = checkMethodExistence(userClass, TestConstants.METHOD_IS_OLDER);
-        checkIsOlderMethod(userClass, notDefaultInstance, isOlderMethod);
+        Method isOlderMethod = checkMethodExistence(personClass, TestConstants.METHOD_IS_OLDER);
+        checkIsOlderMethod(personClass, notDefaultInstance, isOlderMethod);
 
-        Method isHigherMethod = checkMethodExistence(userClass, TestConstants.METHOD_IS_HIGHER);
-        checkIsHigherMethod(userClass, notDefaultInstance, isHigherMethod);
+        Method isHigherMethod = checkMethodExistence(personClass, TestConstants.METHOD_IS_HIGHER);
+        checkIsHigherMethod(personClass, notDefaultInstance, isHigherMethod);
     }
 
-    private void checkIsOlderMethod(Class<?> userClass, Object instance, Method method) {
+    private void checkIsOlderMethod(Class<?> personClass, Object instance, Method method) {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance, OLDER_THEN_IT)) {
@@ -56,7 +56,7 @@ public class UserTest {
         }
     }
 
-    private void checkIsHigherMethod(Class<?> userClass, Object instance, Method method) {
+    private void checkIsHigherMethod(Class<?> personClass, Object instance, Method method) {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance, HIGHER_THEN_IT)) {
@@ -73,7 +73,7 @@ public class UserTest {
         return "Method " + method.getName() + " access error.";
     }
 
-    private void checkIsKidMethod(Class<?> userClass, Object instance, Method method) {
+    private void checkIsKidMethod(Class<?> personClass, Object instance, Method method) {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance)) {
@@ -100,8 +100,8 @@ public class UserTest {
         return null;
     }
 
-    private Constructor<?> checkTwoArgumentConstructor(Class<?> userClass) {
-        for (Constructor constructor : userClass.getDeclaredConstructors()) {
+    private Constructor<?> checkTwoArgumentConstructor(Class<?> personClass) {
+        for (Constructor constructor : personClass.getDeclaredConstructors()) {
             if (constructor.getParameterCount() == 2) {
                 for (Class paramClass : constructor.getParameterTypes()) {
                     if (!paramClass.equals(int.class)) {
@@ -115,18 +115,18 @@ public class UserTest {
         return null;
     }
 
-    private Object checkInstanceCreationWithDefaultConstructor(Class<?> userClass) {
-        for (Constructor constructor : userClass.getDeclaredConstructors()) {
+    private Object checkInstanceCreationWithDefaultConstructor(Class<?> personClass) {
+        for (Constructor constructor : personClass.getDeclaredConstructors()) {
             if (constructor.getParameterCount() == 0) {
                 try {
                     constructor.setAccessible(true);
                     return constructor.newInstance();
                 } catch (InstantiationException e) {
-                    Assert.fail("Object of class " + TestConstants.USER_CLASS + " was not created");
+                    Assert.fail("Object of class " + TestConstants.PERSON_CLASS + " was not created");
                 } catch (IllegalAccessException e) {
-                    Assert.fail("Object of class " + TestConstants.USER_CLASS + ". Default constructor access error.");
+                    Assert.fail("Object of class " + TestConstants.PERSON_CLASS + ". Default constructor access error.");
                 } catch (InvocationTargetException e) {
-                    Assert.fail("Object of class " + TestConstants.USER_CLASS + ". Default constructor is incorrect.");
+                    Assert.fail("Object of class " + TestConstants.PERSON_CLASS + ". Default constructor is incorrect.");
                 } finally {
                     constructor.setAccessible(false);
                 }
@@ -138,11 +138,11 @@ public class UserTest {
 
     private Class<?> checkClassExistence() {
         try {
-            Class<?> userClass = Class.forName(TestConstants.USER_CLASS, INITIALIZE, ClassLoader.getSystemClassLoader());
-            Assert.assertNotNull(userClass);
-            return userClass;
+            Class<?> personClass = Class.forName(TestConstants.PERSON_CLASS, INITIALIZE, ClassLoader.getSystemClassLoader());
+            Assert.assertNotNull(personClass);
+            return personClass;
         } catch (ClassNotFoundException e) {
-            Assert.fail("Class " + TestConstants.USER_CLASS + " was not created");
+            Assert.fail("Class " + TestConstants.PERSON_CLASS + " was not created");
         }
         return null;
     }
@@ -151,7 +151,7 @@ public class UserTest {
         Object instance = null;
         try {
             constructor.setAccessible(true);
-            instance = constructor.newInstance(TEST_USER_HEIGHT, TEST_USER_AGE);
+            instance = constructor.newInstance(TEST_PERSON_HEIGHT, TEST_PERSON_AGE);
         } catch (Exception e) {
             Assert.fail("Constructor with two parameters is incorrect");
         } finally {
