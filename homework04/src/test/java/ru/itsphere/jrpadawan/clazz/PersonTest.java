@@ -22,26 +22,26 @@ public class PersonTest {
         Field heightField = checkFieldExistance(personClass, TestConstants.FIELD_HEIGHT);
         Field ageField = checkFieldExistance(personClass, TestConstants.FIELD_AGE);
 
-        checkValueField(personClass, newInstance, heightField, 0);
-        checkValueField(personClass, newInstance, ageField, 0);
+        checkValueField(newInstance, heightField, 0);
+        checkValueField(newInstance, ageField, 0);
 
         Constructor<?> twoArgumentConstructor = checkTwoArgumentConstructor(personClass);
-        Object notDefaultInstance = checkCreationInstanceWithTwoTestParams(personClass, twoArgumentConstructor);
+        Object notDefaultInstance = checkCreationInstanceWithTwoTestParams(twoArgumentConstructor);
 
-        checkValueField(personClass, notDefaultInstance, heightField, TEST_PERSON_HEIGHT);
-        checkValueField(personClass, notDefaultInstance, ageField, TEST_PERSON_AGE);
+        checkValueField(notDefaultInstance, heightField, TEST_PERSON_HEIGHT);
+        checkValueField(notDefaultInstance, ageField, TEST_PERSON_AGE);
 
         Method isKidMethod = checkMethodExistence(personClass, TestConstants.METHOD_IS_KID);
-        checkIsKidMethod(personClass, notDefaultInstance, isKidMethod);
+        checkIsKidMethod(notDefaultInstance, isKidMethod);
 
         Method isOlderMethod = checkMethodExistence(personClass, TestConstants.METHOD_IS_OLDER);
-        checkIsOlderMethod(personClass, notDefaultInstance, isOlderMethod);
+        checkIsOlderMethod(notDefaultInstance, isOlderMethod);
 
         Method isHigherMethod = checkMethodExistence(personClass, TestConstants.METHOD_IS_HIGHER);
-        checkIsHigherMethod(personClass, notDefaultInstance, isHigherMethod);
+        checkIsHigherMethod(notDefaultInstance, isHigherMethod);
     }
 
-    private void checkIsOlderMethod(Class<?> personClass, Object instance, Method method) {
+    private void checkIsOlderMethod(Object instance, Method method) {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance, OLDER_THEN_IT)) {
@@ -54,7 +54,7 @@ public class PersonTest {
         }
     }
 
-    private void checkIsHigherMethod(Class<?> personClass, Object instance, Method method) {
+    private void checkIsHigherMethod(Object instance, Method method) {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance, HIGHER_THEN_IT)) {
@@ -71,7 +71,7 @@ public class PersonTest {
         return "Method " + method.getName() + " access error.";
     }
 
-    private void checkIsKidMethod(Class<?> personClass, Object instance, Method method) {
+    private void checkIsKidMethod(Object instance, Method method) {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance)) {
@@ -136,7 +136,7 @@ public class PersonTest {
 
     private Class<?> checkClassExistence() {
         try {
-            Class<?> personClass = TestUtils.getPersonClass();
+            Class<?> personClass = Class.forName(TestConstants.PERSON_CLASS, TestConstants.INITIALIZE, ClassLoader.getSystemClassLoader());
             Assert.assertNotNull(personClass);
             return personClass;
         } catch (ClassNotFoundException e) {
@@ -145,7 +145,7 @@ public class PersonTest {
         return null;
     }
 
-    private Object checkCreationInstanceWithTwoTestParams(Class<?> clazz, Constructor<?> constructor) {
+    private Object checkCreationInstanceWithTwoTestParams(Constructor<?> constructor) {
         Object instance = null;
         try {
             constructor.setAccessible(true);
@@ -158,7 +158,7 @@ public class PersonTest {
         return instance;
     }
 
-    private void checkValueField(Class<?> clazz, Object newInstance, Field field, Object value) {
+    private void checkValueField(Object newInstance, Field field, Object value) {
         try {
             field.setAccessible(true);
             Object valueActual = field.get(newInstance);

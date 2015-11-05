@@ -1,6 +1,7 @@
 package ru.itsphere.jrpadawan.clazz;
 
 public class TestConstants {
+    public static final boolean INITIALIZE = false;
     public static final String PERSON_CLASS = "ru.itsphere.jrpadawan.clazz.Person";
     public static final String FIELD_HEIGHT = "height";
     public static final String FIELD_AGE = "age";
