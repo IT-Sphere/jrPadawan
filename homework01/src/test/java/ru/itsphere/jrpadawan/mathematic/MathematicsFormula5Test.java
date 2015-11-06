@@ -3,6 +3,11 @@ package ru.itsphere.jrpadawan.mathematic;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class MathematicsFormula5Test {
     @Test
     public void test1() {

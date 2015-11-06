@@ -1,6 +1,8 @@
 package ru.itsphere.jrpadawan.clazz;
 
 /**
+ * http://it-channel.ru/
+ * <p>
  * Герберт Шилдт-Руководство для начинающих(5-е издание)
  * <p>
  * c. 123 - с. 153
@@ -13,6 +15,7 @@ class PersonUsage {
 
     /**
      * Дописать метод, который создает объект класса Person (с любыми параметрами).
+     *
      * @return объект класса Person
      */
     Object createPerson() {
@@ -22,6 +25,7 @@ class PersonUsage {
     /**
      * Дописать метод, который создает объект класса Person.
      * Его рост и возраст должны соответствовать MIN_HEIGHT и MAX_AGE.
+     *
      * @return объект класса Person
      */
     Object createSuitablePerson() {
@@ -31,6 +35,7 @@ class PersonUsage {
     /**
      * Дописать метод, который создает объект класса Person.
      * Его рост и возраст НЕ должны соответствовать MIN_HEIGHT и MAX_AGE.
+     *
      * @return объект класса Person
      */
     Object createUnsuitablePerson() {

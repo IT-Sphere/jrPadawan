@@ -1,6 +1,8 @@
 package ru.itsphere.jrpadawan.loop;
 
 /**
+ * http://it-channel.ru/
+ * <p>
  * Герберт Шилдт - Руководство для начинающих (5-е издание)
  * <p>
  * с. 97 - с. 122

@@ -3,6 +3,11 @@ package ru.itsphere.jrpadawan.array;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class ArrayTasksTest {
 
     @Test

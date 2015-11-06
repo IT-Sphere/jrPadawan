@@ -1,14 +1,17 @@
 package ru.itsphere.jrpadawan.condition;
 
 /**
+ * http://it-channel.ru/
+ * <p>
  * Герберт Шилдт - Руководство для начинающих (5-е издание)
- *
+ * <p>
  * с. 85 - с. 97
  */
 public class Conditions {
 
     /**
      * Минимальное число из 3-х
+     *
      * @param a - любое целое число
      * @param b - любое целое число
      * @param c - любое целое число
@@ -32,6 +35,7 @@ public class Conditions {
 
     /**
      * Наибольшее число из 3-х
+     *
      * @param a - любое целое число
      * @param b - любое целое число
      * @param c - любое целое число
@@ -55,6 +59,7 @@ public class Conditions {
 
     /**
      * Все равны
+     *
      * @param a - любое целое число
      * @param b - любое целое число
      * @param c - любое целое число
@@ -70,6 +75,7 @@ public class Conditions {
 
     /**
      * Все больше или равны 100
+     *
      * @param a - любое целое число
      * @param b - любое целое число
      * @param c - любое целое число
@@ -84,6 +90,7 @@ public class Conditions {
 
     /**
      * Все между 100 и 200 (включительно)
+     *
      * @param a - любое целое число
      * @param b - любое целое число
      * @param c - любое целое число
@@ -102,6 +109,7 @@ public class Conditions {
 
     /**
      * Все не равны 100
+     *
      * @param a - любое целое число
      * @param b - любое целое число
      * @param c - любое целое число
@@ -116,6 +124,7 @@ public class Conditions {
 
     /**
      * Хотябы одна сотня есть
+     *
      * @param a - любое целое число
      * @param b - любое целое число
      * @param c - любое целое число

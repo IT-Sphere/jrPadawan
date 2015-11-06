@@ -3,6 +3,11 @@ package ru.itsphere.jrpadawan.array;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class ArrayTask5Test {
 
     @Test
@@ -12,6 +17,7 @@ public class ArrayTask5Test {
         int[] actualArray = Array.task5(incomingArray);
         Assert.assertArrayEquals(expectedArray, actualArray);
     }
+
     @Test
     public void task5Test2() {
         int[] expectedArray = {};
@@ -19,6 +25,7 @@ public class ArrayTask5Test {
         int[] actualArray = Array.task5(incomingArray);
         Assert.assertArrayEquals(expectedArray, actualArray);
     }
+
     @Test
     public void task5Test3() {
         int[] expectedArray = {20};

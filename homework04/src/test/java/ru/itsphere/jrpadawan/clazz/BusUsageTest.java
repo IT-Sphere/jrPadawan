@@ -3,6 +3,11 @@ package ru.itsphere.jrpadawan.clazz;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class BusUsageTest {
 
     @Test

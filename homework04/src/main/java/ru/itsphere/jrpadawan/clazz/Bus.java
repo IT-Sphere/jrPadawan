@@ -2,10 +2,14 @@ package ru.itsphere.jrpadawan.clazz;
 
 /**
  * Не менять этот класс!
+ * <p>
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
  */
 public class Bus {
-    private int speed;
     int passengers;
+    private int speed;
 
     public int getSpeed() {
         return speed;

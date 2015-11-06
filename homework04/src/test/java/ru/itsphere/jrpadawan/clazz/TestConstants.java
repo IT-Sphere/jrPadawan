@@ -1,5 +1,10 @@
 package ru.itsphere.jrpadawan.clazz;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class TestConstants {
     public static final boolean INITIALIZE = false;
     public static final String PERSON_CLASS = "ru.itsphere.jrpadawan.clazz.Person";

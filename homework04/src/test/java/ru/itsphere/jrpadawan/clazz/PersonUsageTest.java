@@ -5,6 +5,11 @@ import org.junit.Test;
 
 import java.lang.reflect.Field;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class PersonUsageTest {
 
     @Test

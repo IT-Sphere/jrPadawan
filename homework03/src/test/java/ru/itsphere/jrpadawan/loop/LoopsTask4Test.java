@@ -3,6 +3,11 @@ package ru.itsphere.jrpadawan.loop;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class LoopsTask4Test {
     @Test
     public void test1() {

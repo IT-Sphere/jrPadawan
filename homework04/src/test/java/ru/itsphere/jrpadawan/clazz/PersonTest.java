@@ -8,6 +8,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class PersonTest {
     public static final int OLDER_THEN_IT = 50;
     public static final int HIGHER_THEN_IT = 200;

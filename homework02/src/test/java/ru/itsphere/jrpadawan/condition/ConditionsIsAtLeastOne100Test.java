@@ -3,6 +3,11 @@ package ru.itsphere.jrpadawan.condition;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class ConditionsIsAtLeastOne100Test {
     @Test
     public void testFalse1() {
