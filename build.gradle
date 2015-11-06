@@ -52,3 +52,7 @@ task test03 {
 task test04 {
     dependsOn(":homework04:test")
 }
+
+task test05 {
+    dependsOn(":homework05:test")
+}
