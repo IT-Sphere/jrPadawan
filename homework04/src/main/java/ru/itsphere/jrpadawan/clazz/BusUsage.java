@@ -18,8 +18,6 @@ public class BusUsage {
      * @return объект класса Person
      */
     Bus changeBusSpeedAndPassengers(Bus bus) {
-        bus.passengers = 25;
-        bus.setSpeed(220);
-        return bus;
+        return null;
     }
 }
