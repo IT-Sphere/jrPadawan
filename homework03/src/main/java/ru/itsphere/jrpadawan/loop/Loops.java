@@ -32,7 +32,10 @@ public class Loops {
      * @return результат
      */
     public static long task2(long a, long b) {
-        return 0;
+        for (int i = 0; i < 12; a += b) {
+            i++;
+        }
+        return a;
     }
 
     /**
@@ -45,7 +48,31 @@ public class Loops {
      * @return результат
      */
     public static long task3(long a, long b) {
-        return 0;
+        if (b > 100) {
+            int i;
+            i = 5;
+            while (i > 0) {
+                a += b;
+                i--;
+            }
+        } else {
+            if (b < 100) {
+                int i;
+                i = 10;
+                while (i > 0) {
+                    a -= b;
+                    i--;
+                }
+            } else {
+                int i;
+                i = 10;
+                while (i > 0) {
+                    a *= 2;
+                    i--;
+                }
+            }
+        }
+        return a;
     }
 
     /**
@@ -58,7 +85,22 @@ public class Loops {
      * @return результат
      */
     public static long task4(long a) {
-        return 0;
+        if (a < 4) {
+            if (a < 2) {
+                return 0;
+            } else {
+                return 1;
+            }
+        } else {
+            int b = 0, c = 1, fib = 0;
+            while (a > 2) {
+                fib = b + c;
+                b = c;
+                c = fib;
+                a--;
+            }
+            return fib;
+        }
     }
 
     /**
@@ -70,6 +112,12 @@ public class Loops {
      * @return результат
      */
     public static long task5(int a) {
-        return 0;
+        int fack = 1;
+        while (a > 0) {
+            fack *= a;
+            a--;
+        }
+        a = fack;
+        return a;
     }
 }
