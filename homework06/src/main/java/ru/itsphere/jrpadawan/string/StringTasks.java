@@ -106,4 +106,18 @@ public class StringTasks {
     public static String task10(String text) {
         return text.substring(3, 9);
     }
+
+    /**
+     * Понять, что входящая строка палиндром. Например "adada", "rrr" и "e343e" - палиндромы,
+     * а "adadad", "rrra" и "e34e3e" - нет.
+     *
+     * @return boolean
+     */
+    public static boolean task11(String original) {
+        String reverse = "";
+        for ( int i = original.length() - 1; i >= 0; i-- ) {
+            reverse = reverse + original.charAt(i);
+        }
+        return reverse.equals(original);
+    }
 }
