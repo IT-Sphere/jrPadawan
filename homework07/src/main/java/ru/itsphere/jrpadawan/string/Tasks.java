@@ -9,14 +9,26 @@ package ru.itsphere.jrpadawan.string;
  */
 public class Tasks {
     /**
-     * Создать и вернуть строку (String). Со значением "Hello world".
+     * Создать и вернуть объект класса Application с именем "Photoshop".
      *
-     * @return строка
+     * @return Application
      */
-    public static String task1() {
-        return "Hello world";
+    public static Application task1() {
+        return new Application("Photoshop");
     }
 
+    /**
+     * Создать и вернуть объект класса Application с именем "Sony Vegas".
+     * Установите ему значение версии "2.0.12".
+     * Допишите публичный метод setVersion в класс Application.
+     *
+     * @return Application
+     */
+    public static Application task2() {
+        Application application = new Application("Sony Vegas");
+        application.setVersion("2.0.12");
+        return application;
+    }
 }
 
 /*

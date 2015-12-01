@@ -15,11 +15,13 @@ public class BusUsage {
      * Метод должен установить в объект bus скорость 220 и количество пасажиров 25.
      *
      * @param bus - автобус для изменения
-     * @return объект класса Person
+     * @return объект класса Bus
      */
     Bus changeBusSpeedAndPassengers(Bus bus) {
         bus.passengers = 25;
         bus.setSpeed(220);
         return bus;
     }
+
+    // TODO add additional methods!!
 }
