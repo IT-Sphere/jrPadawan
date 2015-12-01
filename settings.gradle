@@ -6,4 +6,6 @@
  * @author Budnikov Aleksandr
  */
 rootProject.name = 'jrPadawan'
-include 'homework01', 'homework02', 'homework03', 'homework04', 'homework05', 'homework06'
+include 'homework01', 'homework02', 'homework03',
+        'homework04', 'homework05', 'homework06',
+        'homework07'
