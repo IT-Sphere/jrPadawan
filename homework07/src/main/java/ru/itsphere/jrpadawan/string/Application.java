@@ -39,4 +39,7 @@ public class Application {
         this.version = version;
     }
 
+    public void setVersion(int version) {
+        this.version = String.valueOf(version);
+    }
 }

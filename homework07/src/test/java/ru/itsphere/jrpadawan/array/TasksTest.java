@@ -32,20 +32,34 @@ public class TasksTest {
     public void task2Test() throws Exception {
         Application application = Tasks.task2();
         checkNameField("Sony Vegas", application);
+        checkFieldValue("version", "2", application);
+        checkMethod("setVersion", String.class);
+    }
 
-        Field version = Application.class.getDeclaredField("version");
-        Assert.assertNotNull(version);
+    @Test
+    public void task3Test() throws Exception {
+        Application application = Tasks.task3();
+        checkNameField("Sony Vegas", application);
+        checkFieldValue("version", "3", application);
+        checkMethod("setVersion", int.class);
+    }
 
-        if (!Modifier.isPrivate(version.getModifiers())) {
-            Assert.fail("Field version is not private!");
-        }
-        version.setAccessible(true);
-        Assert.assertEquals("2.0.12", version.get(application));
-
-        Method setVersion = Application.class.getMethod("setVersion", String.class);
+    private void checkMethod(String name, Class<? extends Object> aClass) throws NoSuchMethodException {
+        Method setVersion = Application.class.getMethod(name, aClass);
         Assert.assertNotNull(setVersion);
         if (!Modifier.isPublic(setVersion.getModifiers())) {
-            Assert.fail("Method setVersion is not public!");
+            Assert.fail("Method " + name + " is not public!");
         }
+    }
+
+    private void checkFieldValue(String fieldName, String value, Application application) throws Exception {
+        Field field = Application.class.getDeclaredField(fieldName);
+        Assert.assertNotNull(field);
+
+        if (!Modifier.isPrivate(field.getModifiers())) {
+            Assert.fail("Field " + fieldName + " is not private!");
+        }
+        field.setAccessible(true);
+        Assert.assertEquals(value, field.get(application));
     }
 }
