@@ -13,12 +13,13 @@ import java.util.List;
  */
 public class Application {
     private final String NAME;
-    private static int installedCopiesCount = 0;
+    private static int createdApplicationCount = 0;
     private String version = "";
     private List<String> authors = new ArrayList<>();
 
     public Application(String name) {
         NAME = name;
+        createdApplicationCount++;
     }
 
     public List<String> getAuthors() {
@@ -41,5 +42,18 @@ public class Application {
 
     public void setVersion(int version) {
         this.version = String.valueOf(version);
+    }
+
+    public Application(String name, String version) {
+        NAME = name;
+        this.version = version;
+    }
+
+    public static int getCreatedApplicationCount() {
+        return createdApplicationCount;
+    }
+
+    public static void resetCreatedApplicationCount() {
+        createdApplicationCount = 0;
     }
 }
