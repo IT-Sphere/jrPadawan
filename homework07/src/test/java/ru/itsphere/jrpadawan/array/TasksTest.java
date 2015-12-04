@@ -5,12 +5,10 @@ import org.junit.Assert;
 import ru.itsphere.jrpadawan.string.Application;
 import ru.itsphere.jrpadawan.string.Tasks;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TasksTest {
@@ -43,6 +41,14 @@ public class TasksTest {
         checkFieldValue("NAME", "Gradle", application);
         checkFieldValue("version", "4", application);
         checkConstructor(String.class, String.class);
+    }
+
+    @Test
+    public void task5Test() {
+        int delta = 0;
+        int expectedCount = 3;
+        int actualCount = Tasks.task5();
+        Assert.assertEquals(expectedCount, actualCount, delta);
     }
 
     private void checkMethod(String name, Class<? extends Object> aClass) throws NoSuchMethodException {

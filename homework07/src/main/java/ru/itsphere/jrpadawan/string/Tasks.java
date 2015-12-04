@@ -66,17 +66,20 @@ public class Tasks {
     public static int task5() {
         Application.resetCreatedApplicationCount();
         // код выше не трогать!
+        new Application("App 1");
+        new Application("App 2");
+        new Application("App 3");
         return Application.getCreatedApplicationCount();
     }
+
+    /**
+     * Этот метод не меняйте. Допишите метод calculate класса FactorialUtils.
+     * Метод calculate должен вычислять факториал рекурсивным методом.
+     * Циклы использовать нельзя!
+     *
+     * @return факториал числа number
+     */
+    public static int task6(int number) {
+        return FactorialUtils.calculate(number);
+    }
 }
-
-/*
-   1) Спецификторы доступа
-   2) Перегрузка методов/конструктора
-   3) РЕкурсия
-   4) static
-   5) Вложения и внутреньие классы
-   6) Аргументы переменной длинны
-
-
- */
