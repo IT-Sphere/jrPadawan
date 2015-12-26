@@ -8,8 +8,11 @@ package ru.itsphere.jrpadawan.access;
  * @author Budnikov Aleksandr
  */
 public class StringLinkedList {
+    // Ссылка на первый элемент списка.
     private Entry first;
+    // Ссылка на последний элемент списка.
     private Entry last;
+    // Количество элементов списка.
     private int size;
 
     /**
@@ -211,29 +214,49 @@ public class StringLinkedList {
      * Находим элемент списка по индекусу.
      */
     private Entry getEntry(int index) {
+        // Проверяем, что индекс не вышел за рамки списка.
         checkIndex(index);
+        // Берем первый элемент списка.
         Entry entry = first;
+        // Последовательно переходим по списку пока не дойдем до элемента с необходимым индексом.
         for (int counter = 0; counter < index; counter++) {
             entry = entry.getNext();
         }
+        // Возвращаем элемент списка, на котором остановились в цикле.
         return entry;
     }
 
+    /**
+     * Проверяем, что индекс не вышел за рамки списка.
+     */
     private void checkIndex(int index) {
         if (index < 0 || index > size - 1) {
+            // Если index меньше нуля или больше чем size - 1.
             throw new IndexOutOfBoundsException(String.format("Element with number %s doesn't exist", index));
         }
     }
 
+    /**
+     * Очистить список.
+     */
     public void clear() {
+        // Нужно аннулировать все поля класса.
+        // Сами объекты, хранящие значение, можно не удалять. Потому, что они будут удалены сборщиком мусора,
+        // когда будут утрачены все ссылки.
         first = null;
         last = null;
         size = 0;
     }
 
+    /**
+     * Класс для хранения строкового значения в списке.
+     */
     private class Entry {
+        // Ссылка на следующий элемент списка.
         private Entry next;
+        // Ссылка на предыдущий элемент списка.
         private Entry previous;
+        // Поле для хранения значения.
         private String value;
 
         public Entry(Entry previous, String value, Entry next) {
