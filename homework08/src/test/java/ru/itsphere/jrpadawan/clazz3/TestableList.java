@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class TestableList implements List<String> {
     private StringLinkedList list = new StringLinkedList();
 

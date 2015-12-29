@@ -7,6 +7,11 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
 public class TestableListTest {
 
     private List<String> myList;

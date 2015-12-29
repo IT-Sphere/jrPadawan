@@ -292,15 +292,20 @@ public class StringLinkedList {
      * Задача 4.
      * Возвращает подсписок (Новый! Исходный остается без изменений) с элементами исходного начиная с индекса from по index to (включительно).
      * Если индекс выходит за пределы размера списка то должно вываливаться исключение IndexOutOfBoundsException
-     * (можно использовать этот checkIndex метод).
+     * (можно использовать этот checkIndex метод). Если from > to, то должно происходить исключение IllegalArgumentException.
      * Например, если список у нас такой "sasha pasha vadim masha", то вызов метода со значением 1 и 2
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
+        if (from > to) {
+            throw new IllegalArgumentException("from > to");
+        }
+        checkIndex(from);
+        checkIndex(to);
         StringLinkedList subList = new StringLinkedList();
         int index = 0;
         for (Entry entry = first; entry != null; entry = entry.getNext(), index++) {
-            if (from <= index && index < +to) {
+            if (from <= index && index <= to) {
                 subList.add(entry.getValue());
             }
         }
@@ -334,9 +339,13 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        Entry newFirst = new Entry(null, value, first);
-        first.setPrevious(newFirst);
-        first = newFirst;
+        if (isEmpty()) {
+            last = first = new Entry(null, value, null);
+        } else {
+            Entry newFirst = new Entry(null, value, first);
+            first.setPrevious(newFirst);
+            first = newFirst;
+        }
         size++;
     }
 
@@ -353,6 +362,19 @@ public class StringLinkedList {
             }
         }
         return distinct;
+    }
+
+    /**
+     * Задача 8.
+     * Возвращает новый (исходный остается без изменений) список объектов порядок которых обратный. Например если было так
+     * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
+     */
+    public StringLinkedList reverse() {
+        StringLinkedList reverse = new StringLinkedList();
+        for (Entry entry = last; entry != null; entry = entry.getPrevious()) {
+            reverse.add(entry.getValue());
+        }
+        return reverse;
     }
 
     /**
