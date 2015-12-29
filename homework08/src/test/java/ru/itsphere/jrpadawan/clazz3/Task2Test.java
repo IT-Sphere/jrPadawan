@@ -24,7 +24,7 @@ public class Task2Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(0, array);
+        list.add(0, array);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class Task2Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(0, array);
+        list.add(0, array);
         Assert.assertEquals("0", list.get(0));
         Assert.assertEquals("1", list.get(1));
         Assert.assertEquals("2", list.get(2));
@@ -57,7 +57,7 @@ public class Task2Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(3, array);
+        list.add(3, array);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -69,7 +69,7 @@ public class Task2Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(-1, array);
+        list.add(-1, array);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class Task2Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(2, array);
+        list.add(2, array);
         Assert.assertEquals("", list.get(0));
         Assert.assertEquals("", list.get(1));
         Assert.assertEquals("0", list.get(2));
@@ -102,7 +102,7 @@ public class Task2Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(1, array);
+        list.add(1, array);
         Assert.assertEquals("", list.get(0));
         Assert.assertEquals("0", list.get(1));
         Assert.assertEquals("1", list.get(2));

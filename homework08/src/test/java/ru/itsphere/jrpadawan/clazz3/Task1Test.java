@@ -24,7 +24,7 @@ public class Task1Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(array);
+        list.add(array);
         Assert.assertEquals("0", list.get(0));
         Assert.assertEquals("1", list.get(1));
         Assert.assertEquals("2", list.get(2));
@@ -42,7 +42,7 @@ public class Task1Test {
         array[0] = "0";
         array[1] = "1";
         array[2] = "2";
-        list.addAll(array);
+        list.add(array);
         Assert.assertEquals("", list.get(0));
         Assert.assertEquals("", list.get(1));
         Assert.assertEquals("", list.get(2));

@@ -1,11 +1,13 @@
 package ru.itsphere.jrpadawan.clazz3;
 
 /**
+ * http://it-channel.ru/
+ * <p>
  * Класс представляет собой собственную реализацию двусвязного списка.
  * <p>
- * http://it-channel.ru/
- *
- * @author Budnikov Aleksandr
+ * Герберт Шилдт - Руководство для начинающих (5-е издание)
+ * <p>
+ * с. 200 - с. 221
  */
 public class StringLinkedList {
     // Ссылка на первый элемент списка.
@@ -14,6 +16,44 @@ public class StringLinkedList {
     private Entry last;
     // Количество элементов списка.
     private int size;
+
+    /**
+     * Конструктор по умолчанию.
+     */
+    public StringLinkedList() {
+        // do nothing!
+    }
+
+    /**
+     * Конструктор принимающий массив.
+     */
+    public StringLinkedList(String[] values) {
+        this.add(values);
+    }
+
+
+
+    /**
+     * Задача 9. (Первые задачи внизу этого файла)
+     * Написать конструктор копирования. Этот конструктор принимает на вход объект класса StringLinkedList.
+     * Затем он делает из объекта, в котором выполняется этот конструктор точную копию пришедшего объект класса StringLinkedList.
+     * Например:
+     * StringLinkedList firstList = new StringLinkedList();
+     * firstList.add("0");
+     * firstList.add("1");
+     * ...
+     * firstList.add("n");
+     *
+     * StringLinkedList copyOfFirstList = new StringLinkedList(firstList);
+     *
+     * copyOfFirstList - полная копия firstList.
+     * firstList - исходный список без изменений.
+     */
+    public StringLinkedList(StringLinkedList list) {
+        for (int i = 0; i < list.getSize(); i++) {
+            this.add(list.get(i));
+        }
+    }
 
     /**
      * Возвращает размер списка.
@@ -251,7 +291,7 @@ public class StringLinkedList {
      * Если в списке было "sasha masha", а добавляем [pasha][vadim],
      * то должно получиться "sasha masha pasha vadim".
      */
-    public void addAll(String[] values) {
+    public void add(String[] values) {
         for (String value : values) {
             add(value);
         }
@@ -265,7 +305,7 @@ public class StringLinkedList {
      * Если индекс выходит за пределы размера списка то должно вываливаться исключение IndexOutOfBoundsException
      * (можно использовать этот checkIndex метод).
      */
-    public void addAll(int index, String[] values) {
+    public void add(int index, String[] values) {
         for (String value : values) {
             add(index++, value);
         }
