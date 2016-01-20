@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Inheritance {
 
-    private static int ONE_HUNDRED_METERS = 100;
+    public static int ONE_HUNDRED_METERS = 100;
 
     public static void main(String[] args) {
         // LinkedList - это стандартный, класс входящий во встроенный фреймворк Java Collections.

@@ -6,7 +6,7 @@ package ru.itsphere.jrpadawan.inheritance;
 /**
  * Абстрактный класс. Морское животное.
  */
-public abstract class MarineAnimals extends Animal {
+public abstract class MarineAnimal extends Animal {
     /**
      * Скорость в воде.
      */
