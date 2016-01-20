@@ -1,24 +1,29 @@
 package ru.itsphere.jrpadawan.inheritance;
 
 /**
+ * TODO удалить
+ */
+/**
  * Абстрактный класс. Морское животное.
  */
-public abstract class MarineAnimals extends Animal{
-
-    private double maxDepth;
+public abstract class MarineAnimals extends Animal {
+    /**
+     * Скорость в воде.
+     */
+    private double swimSpeed;
 
     /**
-     * Погрузиться на глубину.
+     * Движение в воде
      */
-    public void dive() {
-        System.out.println("Dived to " + maxDepth + "ms.");
+    public double move(double distance) {
+        return distance / swimSpeed;
     }
 
-    public double getMaxDepth() {
-        return maxDepth;
+    public double getSwimSpeed() {
+        return swimSpeed;
     }
 
-    public void setMaxDepth(double maxDepth) {
-        this.maxDepth = maxDepth;
+    public void setSwimSpeed(double swimSpeed) {
+        this.swimSpeed = swimSpeed;
     }
 }

@@ -6,7 +6,7 @@ package ru.itsphere.jrpadawan.inheritance;
 public class Snake extends Creeper {
     public Snake(String name) {
         setName(name);
-        setSpeed(12.5);
-        setSound("myau");
+        setSpeed(3.1);
+        setSound("sh");
     }
 }
