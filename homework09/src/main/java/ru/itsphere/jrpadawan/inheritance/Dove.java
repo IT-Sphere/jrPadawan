@@ -18,7 +18,7 @@ public class Dove extends Bird {
         setSpeed(0.5);
         // Вызываем унаследованный метод setFlightSpeed из класса Bird.
         setFlightSpeed(27.7);
-        // Вызываем унаследованный метод setSound из класса LandAnimals.
+        // Вызываем унаследованный метод setSound из класса LandAnimal.
         setSound("kurli");
     }
 }

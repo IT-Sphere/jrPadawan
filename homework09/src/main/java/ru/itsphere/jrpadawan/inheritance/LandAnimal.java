@@ -3,7 +3,7 @@ package ru.itsphere.jrpadawan.inheritance;
 /**
  * Абстрактный класс. Сухопутное животное.
  */
-public abstract class LandAnimals extends Animal {
+public abstract class LandAnimal extends Animal {
 
     /**
      * Некий звук, который может издавать животное.

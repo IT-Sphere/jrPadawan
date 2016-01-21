@@ -3,7 +3,7 @@ package ru.itsphere.jrpadawan.inheritance;
 /**
  * Абстрактный класс. Любая птица (только летающая).
  */
-public abstract class Bird extends LandAnimals {
+public abstract class Bird extends LandAnimal {
 
     /**
      * Скорость в полете.

@@ -3,7 +3,7 @@ package ru.itsphere.jrpadawan.inheritance;
 /**
  * Конкретный класс "кот".
  */
-public class Cat extends LandAnimals {
+public class Cat extends LandAnimal {
     /**
      * Создаем экземпляр этого класса и задаем имя.
      *
@@ -16,7 +16,7 @@ public class Cat extends LandAnimals {
         // Вызываем унаследованный метод setSpeed из класса Animal.
         // И указываем скорость.
         setSpeed(12.5);
-        // Вызываем унаследованный метод setSound из класса LandAnimals.
+        // Вызываем унаследованный метод setSound из класса LandAnimal.
         setSound("myau");
     }
 }

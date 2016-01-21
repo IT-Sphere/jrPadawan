@@ -64,17 +64,17 @@ public class Inheritance {
     /**
      * Метод, который имитирует соревнования по пению.
      * Обратите внимание на, то что в методе нигде не фигурирует название конкретных классов.
-     * Это пример полиморфизма. JVM сама определяет, какой класс скрывается за LandAnimals и она же вызывает
+     * Это пример полиморфизма. JVM сама определяет, какой класс скрывается за LandAnimal и она же вызывает
      * переопределенный метод vocalize соответствующей конкретному животному.
      *
      * @param animals - список животных
      */
     private static void doSingingCompetition(List<Animal> animals) {
         for (Animal animal : animals) {
-            if (animal instanceof LandAnimals) {
-                LandAnimals landAnimals = (LandAnimals) animal;
+            if (animal instanceof LandAnimal) {
+                LandAnimal landAnimal = (LandAnimal) animal;
                 System.out.println(animal + ": ");
-                landAnimals.vocalize();
+                landAnimal.vocalize();
                 System.out.println();
             }
         }

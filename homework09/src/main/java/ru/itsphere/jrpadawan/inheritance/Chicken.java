@@ -18,7 +18,7 @@ public class Chicken extends Bird {
         setSpeed(1);
         // Вызываем унаследованный метод setFlightSpeed из класса Bird.
         setFlightSpeed(0);
-        // Вызываем унаследованный метод setSound из класса LandAnimals.
+        // Вызываем унаследованный метод setSound из класса LandAnimal.
         setSound("kukareku");
     }
 
