@@ -41,13 +41,7 @@ public class Array {
      * @return максимальный элемент
      */
     public static int task3(int[] array) {
-        int max = 0;
-        for (int number : array) {
-            if (max < number) {
-                max = number;
-            }
-        }
-        return max;
+        return 0; // Дописать код сюда
     }
 
     /**
@@ -56,7 +50,7 @@ public class Array {
      * @return число (длинна)
      */
     public static long task4(int[] array) {
-        return array.length;
+        return 0; // Дописать код сюда
     }
 
     /**
@@ -79,15 +73,7 @@ public class Array {
      * @return массив
      */
     public static int[] task6(int[] array1, int[] array2) {
-        int length = array1.length + array2.length;
-        int[] result = new int[length];
-        for (int i = 0; i < array1.length; i++) {
-            result[i] = array1[i];
-        }
-        for (int i = array1.length, c = 0; c < array2.length; i++, c++) {
-            result[i] = array2[c];
-        }
-        return result;
+        return null; // Дописать код сюда
     }
 
     /**
@@ -108,19 +94,7 @@ public class Array {
      * @return массив
      */
     public static int[][] task8() {
-        int sizeA = 3;
-        int sizeB = 4;
-        int[][] array = new int[sizeA][sizeB];
-        for (int a = 0; a < sizeA; a++) {
-            for (int b = 0; b < sizeB; b++) {
-                if (b % 2 == 0) {
-                    array[a][b] = 1;
-                } else {
-                    array[a][b] = 2;
-                }
-            }
-        }
-        return array;
+        return null; // Дописать код сюда
     }
 
     /**
@@ -130,11 +104,7 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
-        long[] result = new long[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[result.length - i - 1] = array[i];
-        }
-        return result;
+        return null; // Дописать код сюда
     }
 
     /**
@@ -144,7 +114,6 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
-        Arrays.sort(array);
-        return array;
+        return null; // Дописать код сюда
     }
 }

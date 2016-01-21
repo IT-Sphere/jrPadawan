@@ -6,6 +6,7 @@ package ru.itsphere.jrpadawan.clazz3;
  * Класс представляет собой собственную реализацию двусвязного списка.
  * <p>
  * Герберт Шилдт - Руководство для начинающих (5-е издание)
+ * Дополнительное описание можно найти на форуме http://forum.it-channel.ru/viewtopic.php?f=18&t=1010
  * <p>
  * с. 200 - с. 221
  */
@@ -50,9 +51,7 @@ public class StringLinkedList {
      * firstList - исходный список без изменений.
      */
     public StringLinkedList(StringLinkedList list) {
-        for (int i = 0; i < list.getSize(); i++) {
-            this.add(list.get(i));
-        }
+        //дописать код сюда.
     }
 
     /**
@@ -292,9 +291,7 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        for (String value : values) {
-            add(value);
-        }
+        //дописать код сюда.
     }
 
     /**
@@ -306,9 +303,7 @@ public class StringLinkedList {
      * (можно использовать этот checkIndex метод).
      */
     public void add(int index, String[] values) {
-        for (String value : values) {
-            add(index++, value);
-        }
+        //дописать код сюда.
     }
 
     /**
@@ -319,13 +314,7 @@ public class StringLinkedList {
      * должен вернуть 1. Если значение не найдено, то возвращать -1.
      */
     public int indexOf(String value) {
-        int index = 0;
-        for (Entry entry = first; entry != null; entry = entry.getNext(), index++) {
-            if (entry.getValue().equals(value)) {
-                return index;
-            }
-        }
-        return -1;
+        return 0; //дописать код сюда.
     }
 
     /**
@@ -337,19 +326,7 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
-        if (from > to) {
-            throw new IllegalArgumentException("from > to");
-        }
-        checkIndex(from);
-        checkIndex(to);
-        StringLinkedList subList = new StringLinkedList();
-        int index = 0;
-        for (Entry entry = first; entry != null; entry = entry.getNext(), index++) {
-            if (from <= index && index <= to) {
-                subList.add(entry.getValue());
-            }
-        }
-        return subList;
+        return null; //дописать код сюда.
     }
 
     /**
@@ -357,19 +334,7 @@ public class StringLinkedList {
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
-        // Сначала создаем массив.
-        String[] array = new String[size];
-        // Создаем счетчик.
-        int counter = 0;
-        // Создаем цикл для последовательного перебора строк в списке.
-        for (Entry entry = first; entry != null; entry = entry.getNext()) {
-            // Заносим каждую строку в массив на свое место.
-            array[counter] = entry.getValue();
-            // Увеличим счетчик.
-            counter++;
-        }
-        // Возвращаем массив.
-        return array;
+        return null; //дописать код сюда.
     }
 
     /**
@@ -379,14 +344,7 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        if (isEmpty()) {
-            last = first = new Entry(null, value, null);
-        } else {
-            Entry newFirst = new Entry(null, value, first);
-            first.setPrevious(newFirst);
-            first = newFirst;
-        }
-        size++;
+        //дописать код сюда.
     }
 
     /**
@@ -395,13 +353,7 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "pasha masha vadim".
      */
     public StringLinkedList distinct() {
-        StringLinkedList distinct = new StringLinkedList();
-        for (Entry entry = first; entry != null; entry = entry.getNext()) {
-            if (!distinct.contains(entry.getValue())) {
-                distinct.add(entry.getValue());
-            }
-        }
-        return distinct;
+        return null; //дописать код сюда.
     }
 
     /**
@@ -410,11 +362,7 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
      */
     public StringLinkedList reverse() {
-        StringLinkedList reverse = new StringLinkedList();
-        for (Entry entry = last; entry != null; entry = entry.getPrevious()) {
-            reverse.add(entry.getValue());
-        }
-        return reverse;
+        return null; //дописать код сюда.
     }
 
     /**
