@@ -83,7 +83,7 @@ public class Mathematics {
     public static double formula7(int a, int b) {
         return 0; // Дописать формулу сюда
     }
-
+//5150
     /**
      * Формула ((Остаток от деления на 5 числа a) * (b в кубе))
      *
