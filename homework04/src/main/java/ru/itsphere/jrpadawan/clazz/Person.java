@@ -25,3 +25,30 @@ package ru.itsphere.jrpadawan.clazz;
  * Он должен возвращать значение типа boolean.
  */
 // Дописать код сюда
+
+public clacc Person{
+
+        int age;
+        int height;
+
+        Person() {}
+
+        Person(int height, int age) {
+        this.height = height;
+        this.age = age;
+        }
+
+        boolean isKid() {
+        return age < 18; // ребенок если true
+        }
+
+        boolean isOlder(int age) {
+        return this.age > age;
+        }
+
+        boolean isHigher(int height) {
+        return this.height > height;
+        }
+
+
+        }
