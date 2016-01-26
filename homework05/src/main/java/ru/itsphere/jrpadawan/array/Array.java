@@ -58,7 +58,7 @@ public class Array {
 
     public static int[] task6(int[] array1, int[] array2) {
 
-        int lenght = array1.lenght + array2.lenght;
+        int lenght = array1.length + array2.length;
         int result[] = new int[lenght];
         for (int i = 0; i < array1.length; i++) {
             result[i] = array1[i];
