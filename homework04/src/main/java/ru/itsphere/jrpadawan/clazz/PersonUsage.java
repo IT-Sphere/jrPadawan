@@ -7,41 +7,32 @@ package ru.itsphere.jrpadawan.clazz;
  * <p>
  * c. 123 - с. 153
  */
-class PersonUsage {
-    // Минимальный рост
-    static final int MIN_HEIGHT = 140;
-    // Максимальный возраст
-    static final int MAX_AGE = 27;
 
-    /**
-     * Задача 2
-     * Дописать метод, который создает объект класса Person (с любыми параметрами).
-     *
-     * @return объект класса Person
-     */
-    Object createPerson() {
-        return null; // Дописать код сюда
-    }
+    class PersonUsage {
+        // Минимальный рост
+        static final int MIN_HEIGHT = 140;
+        // Максимальный возраст
+        static final int MAX_AGE = 27;
 
-    /**
-     * Задача 3
-     * Дописать метод, который создает объект класса Person.
-     * Его рост и возраст должны соответствовать MIN_HEIGHT и MAX_AGE.
-     *
-     * @return объект класса Person
-     */
-    Object createSuitablePerson() {
-        return null; // Дописать код сюда
-    }
 
-    /**
-     * Задача 4
-     * Дописать метод, который создает объект класса Person.
-     * Его рост и возраст НЕ должны соответствовать MIN_HEIGHT и MAX_AGE.
-     *
-     * @return объект класса Person
-     */
-    Object createUnsuitablePerson() {
-        return null; // Дописать код сюда
+
+        Object createPerson() {
+
+            Person Kornholio = new Person(120, 16);
+            return Person;
+        }
+
+
+        Object createSuitablePerson() {
+
+            Person Kornholio = new Person(150, 18);
+            return Person;
+        }
+
+
+        Object createUnsuitablePerson() {
+
+            Person Kornholio = new Person(130, 28);
+            return Person;
+        }
     }
-}
