@@ -8,7 +8,8 @@ package ru.itsphere.jrpadawan.clazz;
  * c. 123 - с. 153
  */
 public class BusUsage {
-
+int setSpeed;
+    int setPessengers;
     /**
      * Задача 5
      * Дописать метод, который ИЗМЕНЯЕТ объект класса Bus.
@@ -18,6 +19,11 @@ public class BusUsage {
      * @return объект класса Bus
      */
     Bus changeBusSpeedAndPassengers(Bus bus) {
-        return null; // Дописать код сюда
+
+
+        bus.setSpeed = 220;
+        bus.setPessengers = 25;
+
+        return bus;
     }
 }
