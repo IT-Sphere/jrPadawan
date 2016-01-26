@@ -19,20 +19,20 @@ package ru.itsphere.jrpadawan.clazz;
         Object createPerson() {
 
             Person Kornholio = new Person(120, 16);
-            return Person;
+            return Kornholio;
         }
 
 
         Object createSuitablePerson() {
 
             Person Kornholio = new Person(150, 18);
-            return Person;
+            return Kornholio;
         }
 
 
         Object createUnsuitablePerson() {
 
             Person Kornholio = new Person(130, 28);
-            return Person;
+            return Kornholio;
         }
     }
