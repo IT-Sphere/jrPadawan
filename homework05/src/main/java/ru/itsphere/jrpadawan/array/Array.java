@@ -20,12 +20,7 @@ public class Array {
         return new int[]{1, 2, 3, 4, 5};
     }
 
-    /**
-     * Суммировать все числа в массиве и вернуть результат. Например, если массив такой (1, 2, 3, 4, 5), то результат
-     * должен быть такой 15.
-     *
-     * @return сумма
-     */
+
     public static int task2(int[] array) {
         int sum = 0;
         for (int number : array) {
@@ -34,31 +29,25 @@ public class Array {
         return sum;
     }
 
-    /**
-     * Найти и вернуть максимальный элемент в массиве. Например, если массив такой (1, 20, 13, 24, 5), то результат
-     * должен быть такой 24.
-     *
-     * @return максимальный элемент
-     */
+
     public static int task3(int[] array) {
-        return 0; // Дописать код сюда
+
+        int max = 0;
+        for(int number:array){
+            if(max < number) {
+                max = number;
+            }
+
+        }
+        return max;
     }
 
-    /**
-     * Вернуть длинну массива. Например, если массив такой (1, 20, 13, 24, 5), то результат должен быть такой 5.
-     *
-     * @return число (длинна)
-     */
+
     public static long task4(int[] array) {
-        return 0; // Дописать код сюда
+
+        return array.length;
     }
 
-    /**
-     * Увеличить каждый элемент массива вдвое и вернуть это массив.
-     * Например, если массив такой (1, 2, 3), то результат должен быть такой (2, 4, 6).
-     *
-     * @return число (длинна)
-     */
     public static int[] task5(int[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] *= 2;
@@ -66,14 +55,20 @@ public class Array {
         return array;
     }
 
-    /**
-     * Сделать из двух массивов один. Затем вернуть. Например, если первый массив такой (1, 20), а второй такой (13, 24, 5),
-     * то результат должен быть такой (1, 20, 13, 24, 5).
-     *
-     * @return массив
-     */
+
     public static int[] task6(int[] array1, int[] array2) {
-        return null; // Дописать код сюда
+
+        int lenght = array1.lenght + array2.lenght;
+        int result[] = new int[lenght];
+        for (int i = 0; i < array1.length; i++) {
+            result[i] = array1[i];
+        }
+        for (int i = array1.length, c = 0; c < array2.length; i++, c++) {
+            result[i] = array2[c];
+        }
+        return result;
+
+
     }
 
     /**
@@ -94,7 +89,19 @@ public class Array {
      * @return массив
      */
     public static int[][] task8() {
-        return null; // Дописать код сюда
+        int sizeA = 3;
+        int sizeB = 4;
+        int[][] array = new int[sizeA][sizeB];
+        for (int a = 0; a < sizeA; a++) {
+            for (int b = 0; b < sizeB; b++) {
+                if (b % 2 == 0) {
+                    array[a][b] = 1;
+                } else {
+                    array[a][b] = 2;
+                }
+            }
+        }
+        return array;
     }
 
     /**
@@ -104,7 +111,11 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
-        return null; // Дописать код сюда
+        long[] result = new long[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[result.length - i - 1] = array[i];
+        }
+        return result;
     }
 
     /**
@@ -114,6 +125,8 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
-        return null; // Дописать код сюда
+        Arrays.sort(array);
+        return array;
+
     }
 }
