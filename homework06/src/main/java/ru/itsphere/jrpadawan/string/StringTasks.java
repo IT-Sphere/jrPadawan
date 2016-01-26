@@ -57,7 +57,7 @@ public class StringTasks {
      */
     public static int task5(String text) {
 
-        return text.lenght();
+        return text.length();
 
     }
 
@@ -79,8 +79,7 @@ public class StringTasks {
      */
     public static boolean task7(String text) {
 
-        if(text.equals == ("bu-ga-ga")) return true;
-        else return false;
+        return text.contains("bu-ga-ga");
 
     }
 
