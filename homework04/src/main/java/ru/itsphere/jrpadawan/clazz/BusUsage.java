@@ -21,8 +21,8 @@ int setSpeed;
     Bus changeBusSpeedAndPassengers(Bus bus) {
 
 
-        bus.setSpeed = 220;
-        bus.setPessengers = 25;
+        bus.setSpeed(220);
+        bus.passengers = 25;
 
         return bus;
     }
