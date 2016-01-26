@@ -26,7 +26,7 @@ package ru.itsphere.jrpadawan.clazz;
  */
 // Дописать код сюда
 
-public clacc Person{
+public class Person{
 
         int age;
         int height;
