@@ -34,7 +34,26 @@ public class Application {
         return version;
     }
 
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public void setVersion(int version) {
+        this.version = String.valueOf(version);
+    }
+
+
+    public Application(String name, String version) {
+        NAME = name;
+        this.version = version;
+    }
+
     public static void resetCreatedApplicationCount() {
         createdApplicationCount = 0;
     }
+
+    public static int getCreatedApplicationCount(){
+        return createdApplicationCount;
+    }
+
 }
