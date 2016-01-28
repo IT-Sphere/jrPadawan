@@ -33,7 +33,6 @@ public class StringLinkedList {
     }
 
 
-
     /**
      * Задача 9. (Первые задачи внизу этого файла)
      * Написать конструктор копирования. Этот конструктор принимает на вход объект класса StringLinkedList.
@@ -44,9 +43,9 @@ public class StringLinkedList {
      * firstList.add("1");
      * ...
      * firstList.add("n");
-     *
+     * <p>
      * StringLinkedList copyOfFirstList = new StringLinkedList(firstList);
-     *
+     * <p>
      * copyOfFirstList - полная копия firstList.
      * firstList - исходный список без изменений.
      */
@@ -291,7 +290,9 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        //дописать код сюда.
+        for (String value : values) {
+            add(value);
+        }
     }
 
     /**
@@ -303,7 +304,9 @@ public class StringLinkedList {
      * (можно использовать этот checkIndex метод).
      */
     public void add(int index, String[] values) {
-        //дописать код сюда.
+        for (String value : values) {
+            add(index++, value);
+        }
     }
 
     /**
@@ -314,7 +317,13 @@ public class StringLinkedList {
      * должен вернуть 1. Если значение не найдено, то возвращать -1.
      */
     public int indexOf(String value) {
-        return 0; //дописать код сюда.
+        int index = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext(), index++) {
+            if (entry.getValue().equals(value)) {
+                return index;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -326,7 +335,19 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
-        return null; //дописать код сюда.
+        if (from > to) {
+            throw new IllegalArgumentException("from > to");
+        }
+        checkIndex(from);
+        checkIndex(to);
+        StringLinkedList subList = new StringLinkedList();
+        int index = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext(), index++) {
+            if (from <= index && index <= to) {
+                subList.add(entry.getValue());
+            }
+        }
+        return subList;
     }
 
     /**
@@ -334,7 +355,13 @@ public class StringLinkedList {
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
-        return null; //дописать код сюда.
+        String[] array = new String[size];
+        int counter = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            array[counter] = entry.getValue();
+            counter++;
+        }
+        return array;
     }
 
     /**
@@ -344,7 +371,14 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        //дописать код сюда.
+        if (isEmpty()) {
+            last = first = new Entry(null, value, null);
+        } else {
+            Entry newFirst = new Entry(null, value, first);
+            first.setPrevious(newFirst);
+            first = newFirst;
+        }
+        size++;
     }
 
     /**
@@ -353,7 +387,14 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "pasha masha vadim".
      */
     public StringLinkedList distinct() {
-        return null; //дописать код сюда.
+
+        StringLinkedList distinct = new StringLinkedList();
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            if (!distinct.contains(entry.getValue())) {
+                distinct.add(entry.getValue());
+            }
+        }
+        return distinct;
     }
 
     /**
@@ -362,7 +403,11 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
      */
     public StringLinkedList reverse() {
-        return null; //дописать код сюда.
+        StringLinkedList reverse = new StringLinkedList();
+        for (Entry entry = last; entry != null; entry = entry.getPrevious()) {
+            reverse.add(entry.getValue());
+        }
+        return reverse;
     }
 
     /**
