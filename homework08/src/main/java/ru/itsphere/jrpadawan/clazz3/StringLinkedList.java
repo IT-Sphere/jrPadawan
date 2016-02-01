@@ -50,17 +50,10 @@ public class StringLinkedList {
      * firstList - исходный список без изменений.
      */
 
-
-      StringLinkedList firstList = new StringLinkedList();
-
-
-
-      StringLinkedList copyOfFirstList = new StringLinkedList(firstList);
-
-
-
     public StringLinkedList(StringLinkedList list) {
-        this.(list.getSize(),list.isEmpty());
+        for (int i = 0; i < list.getSize(); i++) {
+            this.add(list.get(i));
+        }
     }
 
     /**
