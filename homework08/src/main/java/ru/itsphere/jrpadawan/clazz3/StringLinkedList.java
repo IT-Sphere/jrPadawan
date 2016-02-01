@@ -49,8 +49,18 @@ public class StringLinkedList {
      * copyOfFirstList - полная копия firstList.
      * firstList - исходный список без изменений.
      */
+
+
+      StringLinkedList firstList = new StringLinkedList();
+
+
+
+      StringLinkedList copyOfFirstList = new StringLinkedList(firstList);
+
+
+
     public StringLinkedList(StringLinkedList list) {
-        //дописать код сюда.
+        this.(list.getSize(),list.isEmpty());
     }
 
     /**
