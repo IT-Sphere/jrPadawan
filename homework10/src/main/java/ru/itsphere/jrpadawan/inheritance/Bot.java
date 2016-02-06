@@ -9,7 +9,7 @@ public class Bot {
      * Статический счетчик созданных ботов.
      * Используется для присвоения уникальных идентификатором вновь созданым ботам.
      */
-    private static int userCounter = 0;
+    private static int botCounter = 0;
 
     /**
      * Идентификатор бота.
@@ -20,8 +20,8 @@ public class Bot {
      * Конструктор принимающий имя и генерирующий новый идентификатор пользователю.
      */
     public Bot() {
-        this.id = userCounter;
-        userCounter++;
+        this.id = botCounter;
+        botCounter++;
     }
 
     /**
