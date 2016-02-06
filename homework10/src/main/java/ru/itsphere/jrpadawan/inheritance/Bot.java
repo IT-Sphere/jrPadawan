@@ -1,32 +1,25 @@
 package ru.itsphere.jrpadawan.inheritance;
 
 /**
- * Класс пользователь. Через метод update получает информацию от каналов, на которые подписаны.
+ * Класс бот. Через метод update получает информацию от каналов, на которые подписаны.
  */
-public class User {
+public class Bot {
 
     /**
-     * Статический счетчик созданных пользователей.
-     * Используется для присвоения уникальных идентификатором вновь созданым пользователям.
+     * Статический счетчик созданных ботов.
+     * Используется для присвоения уникальных идентификатором вновь созданым ботам.
      */
     public static int userCounter = 0;
 
     /**
-     * Имя пользователя.
-     */
-    private final String name;
-    /**
-     * Идентификатор пользователя.
+     * Идентификатор бота.
      */
     public int id = 0;
 
     /**
      * Конструктор принимающий имя и генерирующий новый идентификатор пользователю.
-     *
-     * @param name
      */
-    public User(String name) {
-        this.name = name;
+    public Bot() {
         this.id = userCounter;
         userCounter++;
     }
@@ -45,6 +38,6 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User-" + id + " " + name;
+        return "Bot-" + id;
     }
 }

@@ -1,5 +1,8 @@
 package ru.itsphere.jrpadawan.inheritance;
 
+/**
+ * Смотри описание задачи на форуме.
+ */
 public class Main {
     public static void main(String[] args) {
         // создаем несколько пользователей
