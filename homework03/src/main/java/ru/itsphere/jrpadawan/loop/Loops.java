@@ -34,7 +34,9 @@ public class Loops {
      * @return результат
      */
     public static long task2(long a, long b) {
-        return 0;// Дописать формулу сюда
+        for (int i = 12; i > 0; i--){
+            a += b;
+        } return a;
     }
 
     /**
@@ -47,7 +49,22 @@ public class Loops {
      * @return результат
      */
     public static long task3(long a, long b) {
-        return 0;// Дописать формулу сюда
+        if (b > 100) {
+            for (int i = 5; i > 0; i--){
+                a += b;
+            }
+        }
+        if (b < 100){
+            for (int i = 10; i > 0; i--){
+                a -= b;
+            }
+        }
+        if (b == 100){
+            for (int i = 10; i > 0; i--){
+                a *= 2;
+            }
+        }
+        return a;// Дописать формулу сюда
     }
 
     /**

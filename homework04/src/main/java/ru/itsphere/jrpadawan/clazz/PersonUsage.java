@@ -1,5 +1,7 @@
 package ru.itsphere.jrpadawan.clazz;
 
+
+
 /**
  * http://it-channel.ru/
  * <p>
@@ -20,7 +22,10 @@ class PersonUsage {
      * @return объект класса Person
      */
     Object createPerson() {
-        return null; // Дописать код сюда
+        Person p1 = new Person();
+        p1.height = 198;
+        p1.age = 45;
+        return p1;
     }
 
     /**
@@ -31,7 +36,10 @@ class PersonUsage {
      * @return объект класса Person
      */
     Object createSuitablePerson() {
-        return null; // Дописать код сюда
+        Person p2 = new Person();
+        p2.height = 140;
+        p2.age = 27;
+        return p2; // Дописать код сюда
     }
 
     /**
@@ -42,6 +50,9 @@ class PersonUsage {
      * @return объект класса Person
      */
     Object createUnsuitablePerson() {
-        return null; // Дописать код сюда
+        Person p3 = new Person();
+        p3.height = 130;
+        p3.age = 22;
+        return p3; // Дописать код сюда
     }
 }
