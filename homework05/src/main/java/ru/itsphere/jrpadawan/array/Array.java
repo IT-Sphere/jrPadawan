@@ -41,7 +41,13 @@ public class Array {
      * @return максимальный элемент
      */
     public static int task3(int[] array) {
-        return 0; // Дописать код сюда
+        int max = array[0];
+        for (int i = 0; i < array.length; i++)
+            if (array[i] > max) {
+                max = array[i];
+            }
+
+        return max; // Дописать код сюда
     }
 
     /**
@@ -50,7 +56,7 @@ public class Array {
      * @return число (длинна)
      */
     public static long task4(int[] array) {
-        return 0; // Дописать код сюда
+        return array.length; // Дописать код сюда
     }
 
     /**
@@ -73,7 +79,14 @@ public class Array {
      * @return массив
      */
     public static int[] task6(int[] array1, int[] array2) {
-        return null; // Дописать код сюда
+        if (array1 == null)
+            return array2;
+        if (array2 == null)
+            return array1;
+        int[] twomassiw = new int[array1.length + array2.length];
+        System.arraycopy(array1, 0, twomassiw, 0, array1.length);
+        System.arraycopy(array2, 0, twomassiw, array1.length, array2.length);
+        return twomassiw;
     }
 
     /**
@@ -94,6 +107,7 @@ public class Array {
      * @return массив
      */
     public static int[][] task8() {
+// Не понял как это сделать
         return null; // Дописать код сюда
     }
 
@@ -104,7 +118,13 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
-        return null; // Дописать код сюда
+        for (int i = 0; array.length / 2 > i; i++) {
+            int tmp = (int) array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = tmp;
+
+        }
+        return array;
     }
 
     /**
@@ -114,6 +134,15 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
-        return null; // Дописать код сюда
+        for (int i = array.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (array[j] > array[j + 1]) {
+                    int tmp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = tmp;
+                }
+            }
+        }
+        return array;
     }
 }

@@ -59,7 +59,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula5(int a, int b) {
-      //  if (a > 0 | b > 0) {
+
          return b / (b * a);
     }
 
@@ -82,7 +82,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula7(int a, int b) {
-        return Math.sqrt(a * b + b * b);
+        return Math.sqrt(a * a + b * b);
     }
 
     /**

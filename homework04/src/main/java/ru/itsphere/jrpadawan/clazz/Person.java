@@ -26,13 +26,14 @@ package ru.itsphere.jrpadawan.clazz;
  */
 // Дописать код сюда
 public class Person {
+
     int height; // рост
     int age; // возраст
     Person() {
     }
-    Person(int h, int a) {
-        height = h;
-        age = a;
+    Person(int h, int a){
+        this.height = height;
+        this.age = age;
     }
     boolean isKid(int age) {
         if (age < 18) {
