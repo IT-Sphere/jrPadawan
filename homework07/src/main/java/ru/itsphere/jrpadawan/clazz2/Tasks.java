@@ -22,21 +22,25 @@ public class Tasks {
      * Установите ему значение версии "2".
      * Допишите публичный метод setVersion в класс Application.
      *
-     * @return Application
-     */
+     * */
     public static Application task2() {
-        return null; //дописать код сюда.
+       // Aplication sonyV = new Aplication("Sony Vegas");
+           // sonyV.setVersion("2");
+        return new Aplication ("Sony Vegas", "2");
+
     }
 
     /**
      * Создать и вернуть объект класса Application с именем "Git".
      * Перегрузить метод setVersion таким образом, чтобы он принимал значение типа int. Раскомментируйте код.
      * Для того, чтобы преобразовать int в String используйте метод String.valueOf(version).
-     *
-     * @return Application
-     */
+     **/
+
     public static Application task3() {
-        return null; //дописать код сюда.
+        Aplication git = new Aplication("Git");
+        git.setVersion(2);
+
+        return git;
     }
 
     /**
@@ -47,7 +51,7 @@ public class Tasks {
      * @return Application
      */
     public static Application task4() {
-        return null; //дописать код сюда.
+        return new Aplication("Gradle", "4");
     }
 
     /**
@@ -59,15 +63,14 @@ public class Tasks {
      * @return значение счетчика созданых объектов класса Application
      */
     public static int task5() {
-        return 0; //дописать код сюда.
+        return getCreatedApplicationCount;
     }
 
     /**
      * Этот метод не меняйте. Допишите метод calculate класса FactorialUtils.
      * Метод calculate должен вычислять факториал рекурсивным методом.
      * Циклы использовать нельзя!
-     *
-     * @return факториал числа number
+     *@return факториал числа number
      */
     public static int task6(int number) {
         return FactorialUtils.calculate(number);

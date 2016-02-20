@@ -32,25 +32,25 @@ public class Person {
     Person() {
     }
     Person(int h, int a){
-        this.height = height;
-        this.age = age;
+        this.height = h;
+        this.age = a;
     }
-    boolean isKid(int age) {
+    boolean isKid() {
         if (age < 18) {
             return true;
         } else {
             return false;
         }
     }
-    boolean isOlder(int io) {
-        if (io > age) {
+    boolean isOlder(int age) {
+        if (age > this.age) {
             return true;
         } else {
             return false;
         }
     }
-    boolean isHigher(int ih) {
-        if (ih > height) {
+    boolean isHigher(int height) {
+        if (height > this.height) {
             return true;
         } else {
             return false;

@@ -17,6 +17,13 @@ public class Application {
     private String version = "";
     private List<String> authors = new ArrayList<>();
 
+    public Application(String name,String version) {
+        NAME = name;
+        this.version = version;
+        createdApplicationCount++;
+
+    }
+
     public Application(String name) {
         NAME = name;
         createdApplicationCount++;
@@ -36,5 +43,23 @@ public class Application {
 
     public static void resetCreatedApplicationCount() {
         createdApplicationCount = 0;
+    }
+
+    Aplication one = new Aplication();
+    Aplication two = new Aplication();
+    Aplication three = new Aplication();
+
+    public int getCreatedApplicationCount(){
+        return createdApplicationCount;
+    }
+
+
+
+    public void setVersion(String version){
+        this.version = version;
+    }
+
+    public void setVersion(int version){
+        this.version = String.valueOf(version);
     }
 }
