@@ -25,13 +25,10 @@ public class StringLinkedList {
         // do nothing!
     }
 
-    /**
-     * Конструктор принимающий массив.
-     */
+
     public StringLinkedList(String[] values) {
         this.add(values);
     }
-
 
 
     /**
@@ -44,14 +41,14 @@ public class StringLinkedList {
      * firstList.add("1");
      * ...
      * firstList.add("n");
-     *
+     * <p/>
      * StringLinkedList copyOfFirstList = new StringLinkedList(firstList);
-     *
+     * <p/>
      * copyOfFirstList - полная копия firstList.
      * firstList - исходный список без изменений.
      */
     public StringLinkedList(StringLinkedList list) {
-        //дописать код сюда.
+        StringLinkedList copyOfList = new StringLinkedList(list);
     }
 
     /**
@@ -255,6 +252,10 @@ public class StringLinkedList {
             throw new IndexOutOfBoundsException(String.format("Element with number %s doesn't exist", index));
         }
     }
+    /*
+     throw new IndexOutOfBoundsException(String.format("Element with number %s doesn't exist", index));
+     что это значит.
+     */
 
     /**
      * Очистить список.
@@ -291,8 +292,19 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        //дописать код сюда.
+        for (int i = 0; i < values.length - 1; i++) {
+            String a = null;
+            values[i] = a;
+            if (isEmpty()) {
+                last = first = new Entry(null, a, null);
+                size++;
+            } else {
+                addLast(a);
+
+            }
+        }
     }
+
 
     /**
      * Задача 2.
@@ -303,8 +315,24 @@ public class StringLinkedList {
      * (можно использовать этот checkIndex метод).
      */
     public void add(int index, String[] values) {
-        //дописать код сюда.
+        checkIndex(index);
+        for (int i = values.length - 1; i >= 0; i--) {
+            String a = null;
+            values[i] = a;
+            Entry current = getEntry(index);
+            Entry previous = current.getPrevious();
+            Entry newEntry = new Entry(previous, a, current);
+            if (index == 0) {
+                first = newEntry;
+            } else {
+                previous.setNext(newEntry);
+            }
+            current.setPrevious(newEntry);
+            size++;
+
+        }
     }
+
 
     /**
      * Задача 3.
@@ -314,10 +342,19 @@ public class StringLinkedList {
      * должен вернуть 1. Если значение не найдено, то возвращать -1.
      */
     public int indexOf(String value) {
-        return 0; //дописать код сюда.
+        int index = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            index++;
+            if (entry.getValue().equals(value)) {
+                return index = index - 1;
+            } else {
+                return -1;
+            }
+        }
+        return index;
     }
 
-    /**
+  /**
      * Задача 4.
      * Возвращает подсписок (Новый! Исходный остается без изменений) с элементами исходного начиная с индекса from по index to (включительно).
      * Если индекс выходит за пределы размера списка то должно вываливаться исключение IndexOutOfBoundsException
@@ -326,15 +363,31 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
-        return null; //дописать код сюда.
-    }
+            checkIndex(from);
+            checkIndex(to);
+            if (from > to){
+                throw new IllegalArgumentException();
+            }
+        Entry entry = first;
+            for (int counter = from; counter < to; counter++) {
+                entry.add(entry.getNext());
+                // Почему то не работает метод add, хотя сверху он написан.
+            }
+            return entry;
+        }
+
 
     /**
      * Задача 5.
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
-        return null; //дописать код сюда.
+        String[] arrayString = new String[getSize()];
+        Entry entry = first;
+        for(int i = 0; i < getSize(); i++){
+            arrayString[i] = String.valueOf(entry.getNext());
+        }
+        return arrayString;
     }
 
     /**
@@ -344,8 +397,16 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        //дописать код сюда.
+        Entry current = getEntry(first);
+        Entry next = current.getNext();
+        // Создаем новый объект и делаем так, чтобы он ссылался на обект с
+        // интексоми index - 1 и index (находился между ними).
+        Entry newEntry = new Entry(null, value, next);
+        first = newEntry;
+        next.setPrevious(newEntry);
+        size++;
     }
+
 
     /**
      * Задача 7.
@@ -353,7 +414,16 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "pasha masha vadim".
      */
     public StringLinkedList distinct() {
-        return null; //дописать код сюда.
+        Entry entry;
+        Entry distinct = new Entry(entry);
+        for (int i = 0; i < entry.getSize; i++) {
+            for (int j = 0; i < entry.getSize; j++) {
+                if (entry.get(i).equals(entry.get(j))) {
+                    distinct.remove(j);
+                }
+            }
+        }
+        return distinct;
     }
 
     /**
@@ -362,8 +432,19 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
      */
     public StringLinkedList reverse() {
-        return null; //дописать код сюда.
-    }
+            Entry current = first;
+            while (current != null) {
+                Entry temp = current.getNext();
+                current.getNext() = current.getPrevious();
+                current.getPrevious() = temp;
+                current = temp;
+            }
+            current = last;
+            last = first;
+            first = current;
+        return current;
+        }
+
 
     /**
      * Класс для хранения строкового значения в списке.
