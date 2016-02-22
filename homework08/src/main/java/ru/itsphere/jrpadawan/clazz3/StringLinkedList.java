@@ -2,12 +2,12 @@ package ru.itsphere.jrpadawan.clazz3;
 
 /**
  * http://it-channel.ru/
- * <p>
+ * <p/>
  * Класс представляет собой собственную реализацию двусвязного списка.
- * <p>
+ * <p/>
  * Герберт Шилдт - Руководство для начинающих (5-е издание)
  * Дополнительное описание можно найти на форуме http://forum.it-channel.ru/viewtopic.php?f=18&t=1010
- * <p>
+ * <p/>
  * с. 200 - с. 221
  */
 public class StringLinkedList {
@@ -329,7 +329,6 @@ public class StringLinkedList {
             }
             current.setPrevious(newEntry);
             size++;
-
         }
     }
 
@@ -354,7 +353,7 @@ public class StringLinkedList {
         return index;
     }
 
-  /**
+    /**
      * Задача 4.
      * Возвращает подсписок (Новый! Исходный остается без изменений) с элементами исходного начиная с индекса from по index to (включительно).
      * Если индекс выходит за пределы размера списка то должно вываливаться исключение IndexOutOfBoundsException
@@ -363,18 +362,20 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
-            checkIndex(from);
-            checkIndex(to);
-            if (from > to){
-                throw new IllegalArgumentException();
-            }
-        Entry entry = first;
-            for (int counter = from; counter < to; counter++) {
-                entry.add(entry.getNext());
-                // Почему то не работает метод add, хотя сверху он написан.
-            }
-            return entry;
+        checkIndex(from);
+        checkIndex(to);
+        if (from > to) {
+            throw new IllegalArgumentException();
         }
+        StringLinkedList subList = new StringLinkedList();
+        int index = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext(), index++) {
+            if (from <= index && index <= to) {
+                subList.add(entry.getValue());
+            }
+        }
+        return subList;
+    }
 
 
     /**
@@ -384,7 +385,7 @@ public class StringLinkedList {
     public String[] toArray() {
         String[] arrayString = new String[getSize()];
         Entry entry = first;
-        for(int i = 0; i < getSize(); i++){
+        for (int i = 0; i < getSize(); i++) {
             arrayString[i] = String.valueOf(entry.getNext());
         }
         return arrayString;
@@ -397,13 +398,13 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        Entry current = getEntry(first);
-        Entry next = current.getNext();
-        // Создаем новый объект и делаем так, чтобы он ссылался на обект с
-        // интексоми index - 1 и index (находился между ними).
-        Entry newEntry = new Entry(null, value, next);
-        first = newEntry;
-        next.setPrevious(newEntry);
+        if (isEmpty()) {
+            last = first = new Entry(null, value, null);
+        } else {
+            Entry newFirst = new Entry(null, value, first);
+            first.setPrevious(newFirst);
+            first = newFirst;
+        }
         size++;
     }
 
@@ -414,12 +415,11 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "pasha masha vadim".
      */
     public StringLinkedList distinct() {
-        Entry entry;
-        Entry distinct = new Entry(entry);
-        for (int i = 0; i < entry.getSize; i++) {
-            for (int j = 0; i < entry.getSize; j++) {
-                if (entry.get(i).equals(entry.get(j))) {
-                    distinct.remove(j);
+        StringLinkedList distinct = new StringLinkedList();
+        for (int i = 0; i < size; i++) {
+            for (Entry entry = first; entry != null; entry = entry.getNext()) {
+                if (!distinct.contains(entry.getValue())) {
+                    distinct.add(entry.getValue());
                 }
             }
         }
@@ -432,18 +432,12 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
      */
     public StringLinkedList reverse() {
-            Entry current = first;
-            while (current != null) {
-                Entry temp = current.getNext();
-                current.getNext() = current.getPrevious();
-                current.getPrevious() = temp;
-                current = temp;
-            }
-            current = last;
-            last = first;
-            first = current;
-        return current;
+        StringLinkedList reverse = new StringLinkedList();
+        for (Entry entry = last; entry != null; entry = entry.getPrevious()) {
+            reverse.add(entry.getValue());
         }
+        return reverse;
+    }
 
 
     /**
