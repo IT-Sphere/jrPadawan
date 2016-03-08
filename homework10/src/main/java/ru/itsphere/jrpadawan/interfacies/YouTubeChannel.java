@@ -1,4 +1,4 @@
-package ru.itsphere.jrpadawan.inheritance;
+package ru.itsphere.jrpadawan.interfacies;
 
 /**
  * Класс YouTube канал. Публикует видео и уведомляет пользователей.

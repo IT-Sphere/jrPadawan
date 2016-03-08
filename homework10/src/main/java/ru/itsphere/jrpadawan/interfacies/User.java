@@ -1,4 +1,4 @@
-package ru.itsphere.jrpadawan.inheritance;
+package ru.itsphere.jrpadawan.interfacies;
 
 /**
  * Класс пользователь. Через метод update получает информацию от каналов, на которые подписаны.

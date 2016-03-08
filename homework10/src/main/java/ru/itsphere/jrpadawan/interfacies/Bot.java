@@ -1,4 +1,4 @@
-package ru.itsphere.jrpadawan.inheritance;
+package ru.itsphere.jrpadawan.interfacies;
 
 /**
  * Класс бот. Через метод update получает информацию от каналов, на которые подписаны.
