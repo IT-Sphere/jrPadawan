@@ -26,12 +26,17 @@ subprojects {
 
     dependencies {
         testCompile 'junit:junit:4.12'
+        testCompile project(':utils')
     }
 
     test {
         reports {
             junitXml.enabled = false
             html.enabled = false
+        }
+        testLogging {
+            exceptionFormat = 'short'
+            showStandardStreams = true
         }
     }
     test.doLast {delete 'build'}

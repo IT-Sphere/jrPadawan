@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.mathematic;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -9,12 +11,20 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class MathematicsFormula4Test {
+
+    private static CheckingStatus status = new TaskCheckingStatus() {
+        @Override
+        public String getMessage() {
+            return "There is an error in formula 4";
+        }
+    };
+
     @Test
     public void test1() {
         double expectedResult = 1.66;
         double actualResult = Mathematics.formula4(5, 3);
         double delta = 0.01;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 
     @Test
@@ -22,7 +32,7 @@ public class MathematicsFormula4Test {
         double expectedResult = 0.14;
         double actualResult = Mathematics.formula4(1, 7);
         double delta = 0.01;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 
     @Test
@@ -30,6 +40,6 @@ public class MathematicsFormula4Test {
         double expectedResult = -2.5;
         double actualResult = Mathematics.formula4(-5, 2);
         double delta = 0;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 }

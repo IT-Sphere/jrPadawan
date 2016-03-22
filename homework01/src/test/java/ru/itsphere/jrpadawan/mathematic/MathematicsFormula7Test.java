@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.mathematic;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -9,12 +11,20 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class MathematicsFormula7Test {
+
+    private static CheckingStatus status = new TaskCheckingStatus() {
+        @Override
+        public String getMessage() {
+            return "There is an error in formula 7";
+        }
+    };
+
     @Test
     public void test1() {
         double expectedC = 5;
         double actualC = Mathematics.formula7(3, 4);
         double delta = 0;
-        Assert.assertEquals(expectedC, actualC, delta);
+        AssertWrapper.assertEquals(status, expectedC, actualC, delta);
     }
 
     @Test
@@ -22,7 +32,7 @@ public class MathematicsFormula7Test {
         double expectedC = 3.16;
         double actualC = Mathematics.formula7(1, 3);
         double delta = 0.01;
-        Assert.assertEquals(expectedC, actualC, delta);
+        AssertWrapper.assertEquals(status, expectedC, actualC, delta);
     }
 
     @Test
@@ -30,6 +40,6 @@ public class MathematicsFormula7Test {
         double expectedC = 7.21;
         double actualC = Mathematics.formula7(4, 6);
         double delta = 0.01;
-        Assert.assertEquals(expectedC, actualC, delta);
+        AssertWrapper.assertEquals(status, expectedC, actualC, delta);
     }
 }
