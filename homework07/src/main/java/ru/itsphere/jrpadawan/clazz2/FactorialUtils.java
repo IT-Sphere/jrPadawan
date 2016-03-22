@@ -9,6 +9,6 @@ public class FactorialUtils {
      * @return результат
      */
     public static int calculate(int number) {
-        return (number < 2) ? 1 : number * calculate(number - 1);
+        return 0; //дописать код сюда.
     }
 }

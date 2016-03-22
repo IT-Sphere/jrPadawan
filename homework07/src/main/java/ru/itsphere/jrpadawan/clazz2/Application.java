@@ -30,27 +30,8 @@ public class Application {
         this.authors = authors;
     }
 
-    // TODO delete this methods
-
     public String getVersion() {
         return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public void setVersion(int version) {
-        this.version = String.valueOf(version);
-    }
-
-    public Application(String name, String version) {
-        NAME = name;
-        this.version = version;
-    }
-
-    public static int getCreatedApplicationCount() {
-        return createdApplicationCount;
     }
 
     public static void resetCreatedApplicationCount() {

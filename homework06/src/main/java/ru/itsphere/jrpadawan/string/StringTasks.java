@@ -45,7 +45,7 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task4(String text) {
-        return text.equals("Stroki ne sravnivaut cherez '=='!");
+        return false; // Дописать код сюда
     }
 
     /**
@@ -54,7 +54,7 @@ public class StringTasks {
      * @return длинна
      */
     public static int task5(String text) {
-        return text.length();
+        return 0; // Дописать код сюда
     }
 
     /**
@@ -63,7 +63,7 @@ public class StringTasks {
      * @return символ
      */
     public static char task6(String text) {
-        return text.charAt(12);
+        return 0; // Дописать код сюда
     }
 
     /**
@@ -72,7 +72,7 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task7(String text) {
-        return text.contains("bu-ga-ga");
+        return false; // Дописать код сюда
     }
 
     /**
@@ -81,7 +81,7 @@ public class StringTasks {
      * @return номер начала подстроки
      */
     public static int task8(String text) {
-        return text.indexOf("bu-ga-ga");
+        return 0; // Дописать код сюда
     }
 
     /**
@@ -90,12 +90,7 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task9(String[] strings) {
-        for (String str : strings) {
-            if (str.equals("bu-ga-ga")) {
-                return true;
-            }
-        }
-        return false;
+        return false; // Дописать код сюда
     }
 
     /**
@@ -104,7 +99,7 @@ public class StringTasks {
      * @return строка
      */
     public static String task10(String text) {
-        return text.substring(3, 9);
+        return null; // Дописать код сюда
     }
 
     /**
@@ -114,10 +109,6 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task11(String original) {
-        String reverse = "";
-        for ( int i = original.length() - 1; i >= 0; i-- ) {
-            reverse = reverse + original.charAt(i);
-        }
-        return reverse.equals(original);
+        return false; // Дописать код сюда
     }
 }

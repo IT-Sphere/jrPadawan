@@ -45,7 +45,15 @@ public class WhaleTest {
             return null;
         }
 
-        Class<MarineAnimal> parentClass = MarineAnimal.class;
+        Class<?> parentClass = null;
+        String parentClassName = null;
+        try {
+            parentClassName = "ru.itsphere.jrpadawan.inheritance.MarineAnimal";
+            parentClass = Class.forName(parentClassName).getDeclaringClass();
+        } catch (ClassNotFoundException e) {
+            Assert.fail("Class " + parentClassName + " was not created.");
+            return null;
+        }
         Assert.assertTrue(className + " is not extends class " + parentClass + ".", parentClass.isAssignableFrom(whale));
 
         if (Modifier.isAbstract(whale.getModifiers())) {
