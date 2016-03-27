@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.condition;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -9,12 +11,20 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class ConditionsGetMinTest {
+
+    private static CheckingStatus status = new TaskCheckingStatus() {
+        @Override
+        public String getMessage() {
+            return "There is an error in getMin method";
+        }
+    };
+
     @Test
     public void test1() {
         int expectedResult = 0;
         int actualResult = Conditions.getMin(5, 0, 3);
         double delta = 0;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 
     @Test
@@ -22,7 +32,7 @@ public class ConditionsGetMinTest {
         int expectedResult = 0;
         int actualResult = Conditions.getMin(1, 0, 0);
         double delta = 0;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 
     @Test
@@ -30,6 +40,6 @@ public class ConditionsGetMinTest {
         int expectedResult = -5;
         int actualResult = Conditions.getMin(1, -5, -2);
         double delta = 0;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 }

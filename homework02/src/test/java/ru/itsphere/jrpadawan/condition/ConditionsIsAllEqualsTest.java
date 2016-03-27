@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.condition;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -9,18 +11,26 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class ConditionsIsAllEqualsTest {
+
+    private static CheckingStatus status = new TaskCheckingStatus() {
+        @Override
+        public String getMessage() {
+            return "There is an error in isAllEquals method";
+        }
+    };
+
     @Test
     public void testFalse1() {
-        Assert.assertFalse(Conditions.isAllEquals(1, -5, -2));
+        AssertWrapper.assertFalse(status, Conditions.isAllEquals(1, -5, -2));
     }
 
     @Test
     public void testFalse2() {
-        Assert.assertFalse(Conditions.isAllEquals(1, 0, 0));
+        AssertWrapper.assertFalse(status, Conditions.isAllEquals(1, 0, 0));
     }
 
     @Test
     public void testTrue() {
-        Assert.assertTrue(Conditions.isAllEquals(1, 1, 1));
+        AssertWrapper.assertTrue(status, Conditions.isAllEquals(1, 1, 1));
     }
 }
