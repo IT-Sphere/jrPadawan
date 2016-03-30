@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.loop;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -9,12 +11,19 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class LoopsTask3Test {
+    private static CheckingStatus status = new TaskCheckingStatus() {
+        @Override
+        public String getMessage() {
+            return "There is an error in task 3";
+        }
+    };
+
     @Test
     public void test1() {
         long expectedResult = 505;
         long actualResult = Loops.task3(0, 101);
         double delta = 0;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 
     @Test
@@ -22,7 +31,7 @@ public class LoopsTask3Test {
         long expectedResult = -500;
         long actualResult = Loops.task3(0, 50);
         double delta = 0;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 
     @Test
@@ -30,6 +39,6 @@ public class LoopsTask3Test {
         long expectedResult = 1024;
         long actualResult = Loops.task3(1, 100);
         double delta = 0;
-        Assert.assertEquals(expectedResult, actualResult, delta);
+        AssertWrapper.assertEquals(status, expectedResult, actualResult, delta);
     }
 }
