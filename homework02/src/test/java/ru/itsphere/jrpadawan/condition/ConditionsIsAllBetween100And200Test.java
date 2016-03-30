@@ -12,12 +12,7 @@ import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
  */
 public class ConditionsIsAllBetween100And200Test {
 
-    private static CheckingStatus status = new TaskCheckingStatus() {
-        @Override
-        public String getMessage() {
-            return "There is an error in isAllBetween100And200 method";
-        }
-    };
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in isAllBetween100And200 method");
 
     @Test
     public void testFalse1() {

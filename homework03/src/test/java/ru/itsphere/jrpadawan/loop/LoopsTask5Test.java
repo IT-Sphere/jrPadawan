@@ -11,12 +11,7 @@ import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
  * @author Budnikov Aleksandr
  */
 public class LoopsTask5Test {
-    private static CheckingStatus status = new TaskCheckingStatus() {
-        @Override
-        public String getMessage() {
-            return "There is an error in task 5";
-        }
-    };
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in task 5");
 
     @Test
     public void test1() {

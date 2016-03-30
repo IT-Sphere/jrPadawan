@@ -12,12 +12,7 @@ import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
  */
 public class ConditionsGetMinTest {
 
-    private static CheckingStatus status = new TaskCheckingStatus() {
-        @Override
-        public String getMessage() {
-            return "There is an error in getMin method";
-        }
-    };
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in getMin method");
 
     @Test
     public void test1() {

@@ -12,12 +12,7 @@ import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
  */
 public class ConditionsIsAllNot100Test {
 
-    private static CheckingStatus status = new TaskCheckingStatus() {
-        @Override
-        public String getMessage() {
-            return "There is an error in isAllNot100 method";
-        }
-    };
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in isAllNot100 method");
 
     @Test
     public void testFalse1() {

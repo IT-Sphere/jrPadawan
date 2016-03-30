@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.clazz;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -18,6 +20,8 @@ public class PersonTest {
     public static final int HIGHER_THEN_IT = 200;
     public static final int TEST_PERSON_HEIGHT = 178;
     public static final int TEST_PERSON_AGE = 25;
+
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in class Person (task 1)");
 
     @Test
     public void test1() {
@@ -50,10 +54,10 @@ public class PersonTest {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance, OLDER_THEN_IT)) {
-                Assert.fail(getMethodLogicIsIncorrectMessage(method));
+                AssertWrapper.fail(status, getMethodLogicIsIncorrectMessage(method));
             }
         } catch (Exception e) {
-            Assert.fail(getMethodAccessErrorMessage(method));
+            AssertWrapper.fail(status, getMethodAccessErrorMessage(method));
         } finally {
             method.setAccessible(false);
         }
@@ -63,10 +67,10 @@ public class PersonTest {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance, HIGHER_THEN_IT)) {
-                Assert.fail(getMethodLogicIsIncorrectMessage(method));
+                AssertWrapper.fail(status, getMethodLogicIsIncorrectMessage(method));
             }
         } catch (Exception e) {
-            Assert.fail(getMethodAccessErrorMessage(method));
+            AssertWrapper.fail(status, getMethodAccessErrorMessage(method));
         } finally {
             method.setAccessible(false);
         }
@@ -80,10 +84,10 @@ public class PersonTest {
         try {
             method.setAccessible(true);
             if ((Boolean) method.invoke(instance)) {
-                Assert.fail(getMethodLogicIsIncorrectMessage(method));
+                AssertWrapper.fail(status, getMethodLogicIsIncorrectMessage(method));
             }
         } catch (Exception e) {
-            Assert.fail(getMethodAccessErrorMessage(method));
+            AssertWrapper.fail(status, getMethodAccessErrorMessage(method));
         } finally {
             method.setAccessible(false);
         }
@@ -99,7 +103,7 @@ public class PersonTest {
                 return method;
             }
         }
-        Assert.fail("Method " + methodName + " was not found");
+        AssertWrapper.fail(status, "Method " + methodName + " was not found");
         return null;
     }
 
@@ -108,13 +112,13 @@ public class PersonTest {
             if (constructor.getParameterCount() == 2) {
                 for (Class paramClass : constructor.getParameterTypes()) {
                     if (!paramClass.equals(int.class)) {
-                        Assert.fail("Two parameters constructor has incorrect parameters types.");
+                        AssertWrapper.fail(status, "Two parameters constructor has incorrect parameters types.");
                     }
                 }
                 return constructor;
             }
         }
-        Assert.fail("Two parameters constructor was not found.");
+        AssertWrapper.fail(status, "Two parameters constructor was not found.");
         return null;
     }
 
@@ -125,27 +129,27 @@ public class PersonTest {
                     constructor.setAccessible(true);
                     return constructor.newInstance();
                 } catch (InstantiationException e) {
-                    Assert.fail("Object of class " + TestConstants.PERSON_CLASS + " was not created");
+                    AssertWrapper.fail(status, "Object of class " + TestConstants.PERSON_CLASS + " was not created");
                 } catch (IllegalAccessException e) {
-                    Assert.fail("Object of class " + TestConstants.PERSON_CLASS + ". Default constructor access error.");
+                    AssertWrapper.fail(status, "Object of class " + TestConstants.PERSON_CLASS + ". Default constructor access error.");
                 } catch (InvocationTargetException e) {
-                    Assert.fail("Object of class " + TestConstants.PERSON_CLASS + ". Default constructor is incorrect.");
+                    AssertWrapper.fail(status, "Object of class " + TestConstants.PERSON_CLASS + ". Default constructor is incorrect.");
                 } finally {
                     constructor.setAccessible(false);
                 }
             }
         }
-        Assert.fail("Default constructor was not found.");
+        AssertWrapper.fail(status, "Default constructor was not found.");
         return null;
     }
 
     private Class<?> checkClassExistence() {
         try {
             Class<?> personClass = Class.forName(TestConstants.PERSON_CLASS, TestConstants.INITIALIZE, ClassLoader.getSystemClassLoader());
-            Assert.assertNotNull(personClass);
+            AssertWrapper.assertNotNull(status, personClass);
             return personClass;
         } catch (ClassNotFoundException e) {
-            Assert.fail("Class " + TestConstants.PERSON_CLASS + " was not created");
+            AssertWrapper.fail(status, "Class " + TestConstants.PERSON_CLASS + " was not created");
         }
         return null;
     }
@@ -156,7 +160,7 @@ public class PersonTest {
             constructor.setAccessible(true);
             instance = constructor.newInstance(TEST_PERSON_HEIGHT, TEST_PERSON_AGE);
         } catch (Exception e) {
-            Assert.fail("Constructor with two parameters is incorrect");
+            AssertWrapper.fail(status, "Constructor with two parameters is incorrect");
         } finally {
             constructor.setAccessible(false);
         }
@@ -168,10 +172,10 @@ public class PersonTest {
             field.setAccessible(true);
             Object valueActual = field.get(newInstance);
             if (!value.equals(valueActual)) {
-                Assert.fail("Field " + field.getName() + " has incorrect value");
+                AssertWrapper.fail(status, "Field " + field.getName() + " has incorrect value");
             }
         } catch (IllegalAccessException e) {
-            Assert.fail("Field " + field.getName() + " can't be accessed");
+            AssertWrapper.fail(status, "Field " + field.getName() + " can't be accessed");
         } finally {
             field.setAccessible(false);
         }
@@ -181,7 +185,7 @@ public class PersonTest {
         try {
             return clazz.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
-            Assert.fail("Field " + fieldName + " was not created");
+            AssertWrapper.fail(status, "Field " + fieldName + " was not created");
         }
         return null;
     }

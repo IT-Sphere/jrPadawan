@@ -12,12 +12,7 @@ import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
  */
 public class MathematicsFormula7Test {
 
-    private static CheckingStatus status = new TaskCheckingStatus() {
-        @Override
-        public String getMessage() {
-            return "There is an error in formula 7";
-        }
-    };
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in formula 7");
 
     @Test
     public void test1() {
