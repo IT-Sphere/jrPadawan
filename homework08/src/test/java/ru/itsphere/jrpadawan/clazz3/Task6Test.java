@@ -1,8 +1,10 @@
 package ru.itsphere.jrpadawan.clazz3;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -10,6 +12,7 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class Task6Test {
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in task 6");
 
     private StringLinkedList list;
 
@@ -20,29 +23,37 @@ public class Task6Test {
 
     @Test
     public void taskAddFirstTest1() {
-        list.addFirst("0");
-        Assert.assertEquals("0", list.get(0));
-        Assert.assertEquals(1, list.getSize());
-        Assert.assertEquals(false, list.isEmpty());
-        Assert.assertEquals("0 ", list.toString());
+        try {
+            list.addFirst("0");
+            AssertWrapper.assertEquals(status, "0", list.get(0));
+            AssertWrapper.assertEquals(status, 1, list.getSize());
+            AssertWrapper.assertEquals(status, false, list.isEmpty());
+            AssertWrapper.assertEquals(status, "0 ", list.toString());
+        } catch (Exception e) {
+            AssertWrapper.fail(status);
+        }
     }
 
     @Test
     public void taskAddFirstTest2() {
-        list.add("");
-        list.add("");
-        list.add("");
-        list.addFirst("0");
-        list.addFirst("1");
-        list.addFirst("2");
-        Assert.assertEquals("2", list.get(0));
-        Assert.assertEquals("1", list.get(1));
-        Assert.assertEquals("0", list.get(2));
-        Assert.assertEquals("", list.get(3));
-        Assert.assertEquals("", list.get(4));
-        Assert.assertEquals("", list.get(5));
-        Assert.assertEquals(6, list.getSize());
-        Assert.assertEquals(false, list.isEmpty());
-        Assert.assertEquals("2 1 0    ", list.toString());
+        try {
+            list.add("");
+            list.add("");
+            list.add("");
+            list.addFirst("0");
+            list.addFirst("1");
+            list.addFirst("2");
+            AssertWrapper.assertEquals(status, "2", list.get(0));
+            AssertWrapper.assertEquals(status, "1", list.get(1));
+            AssertWrapper.assertEquals(status, "0", list.get(2));
+            AssertWrapper.assertEquals(status, "", list.get(3));
+            AssertWrapper.assertEquals(status, "", list.get(4));
+            AssertWrapper.assertEquals(status, "", list.get(5));
+            AssertWrapper.assertEquals(status, 6, list.getSize());
+            AssertWrapper.assertEquals(status, false, list.isEmpty());
+            AssertWrapper.assertEquals(status, "2 1 0    ", list.toString());
+        } catch (Exception e) {
+            AssertWrapper.fail(status);
+        }
     }
 }

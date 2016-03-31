@@ -1,8 +1,10 @@
 package ru.itsphere.jrpadawan.clazz3;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -10,6 +12,7 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class Task4Test {
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in task 4");
 
     private StringLinkedList list;
 
@@ -18,67 +21,91 @@ public class Task4Test {
         list = new StringLinkedList();
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void taskSubListTest1() {
-        list.subList(0, 0);
+        try {
+            list.subList(0, 0);
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(status);
+        }
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void taskSubListTest2() {
-        list.subList(1, 0);
+        try {
+            list.subList(1, 0);
+        } catch (IllegalArgumentException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(status);
+        }
     }
 
     @Test
     public void taskSubListTest3() {
-        list.add("0");
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        list.add("5");
-        list.add("6");
-        StringLinkedList subList1 = list.subList(1, 1);
-        Assert.assertEquals("1", subList1.get(0));
-        Assert.assertEquals(1, subList1.getSize());
-        Assert.assertEquals(false, subList1.isEmpty());
-        Assert.assertEquals("1 ", subList1.toString());
+        try {
+            list.add("0");
+            list.add("1");
+            list.add("2");
+            list.add("3");
+            list.add("4");
+            list.add("5");
+            list.add("6");
+            StringLinkedList subList1 = list.subList(1, 1);
+            AssertWrapper.assertEquals(status, "1", subList1.get(0));
+            AssertWrapper.assertEquals(status, 1, subList1.getSize());
+            AssertWrapper.assertEquals(status, false, subList1.isEmpty());
+            AssertWrapper.assertEquals(status, "1 ", subList1.toString());
 
-        StringLinkedList subList2 = list.subList(0, 6);
-        Assert.assertEquals("0", subList2.get(0));
-        Assert.assertEquals("6", subList2.get(6));
-        Assert.assertEquals(7, subList2.getSize());
-        Assert.assertEquals(false, subList2.isEmpty());
-        Assert.assertEquals("0 1 2 3 4 5 6 ", subList2.toString());
+            StringLinkedList subList2 = list.subList(0, 6);
+            AssertWrapper.assertEquals(status, "0", subList2.get(0));
+            AssertWrapper.assertEquals(status, "6", subList2.get(6));
+            AssertWrapper.assertEquals(status, 7, subList2.getSize());
+            AssertWrapper.assertEquals(status, false, subList2.isEmpty());
+            AssertWrapper.assertEquals(status, "0 1 2 3 4 5 6 ", subList2.toString());
 
-        StringLinkedList subList3 = list.subList(5, 6);
-        Assert.assertEquals("5", subList3.get(0));
-        Assert.assertEquals("6", subList3.get(1));
-        Assert.assertEquals(2, subList3.getSize());
-        Assert.assertEquals(false, subList3.isEmpty());
-        Assert.assertEquals("5 6 ", subList3.toString());
+            StringLinkedList subList3 = list.subList(5, 6);
+            AssertWrapper.assertEquals(status, "5", subList3.get(0));
+            AssertWrapper.assertEquals(status, "6", subList3.get(1));
+            AssertWrapper.assertEquals(status, 2, subList3.getSize());
+            AssertWrapper.assertEquals(status, false, subList3.isEmpty());
+            AssertWrapper.assertEquals(status, "5 6 ", subList3.toString());
+        } catch (Exception e) {
+            AssertWrapper.fail(status);
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void taskSubListTest4() {
-        list.add("0");
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        list.add("5");
-        list.add("6");
-        list.subList(1, 7);
+        try {
+            list.add("0");
+            list.add("1");
+            list.add("2");
+            list.add("3");
+            list.add("4");
+            list.add("5");
+            list.add("6");
+            list.subList(1, 7);
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(status);
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void taskSubListTest5() {
-        list.add("0");
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        list.add("5");
-        list.add("6");
-        list.subList(-1, 3);
+        try {
+            list.add("0");
+            list.add("1");
+            list.add("2");
+            list.add("3");
+            list.add("4");
+            list.add("5");
+            list.add("6");
+            list.subList(-1, 3);
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(status);
+        }
     }
 }

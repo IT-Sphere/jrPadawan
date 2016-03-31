@@ -1,8 +1,10 @@
 package ru.itsphere.jrpadawan.clazz3;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
  * @author Budnikov Aleksandr
  */
 public class StringLinkedListTest {
+    public static CheckingStatus STATUS = new TaskCheckingStatus("There is an error in logic of StringLinkedList class");
 
     private StringLinkedList list;
 
@@ -25,7 +28,7 @@ public class StringLinkedListTest {
     public void testSizeInEmptyList() {
         int expected = 0;
         int actual = list.getSize();
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -33,7 +36,7 @@ public class StringLinkedListTest {
         list.add("text");
         int expected = 1;
         int actual = list.getSize();
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -42,14 +45,14 @@ public class StringLinkedListTest {
         list.add("text");
         int expected = 2;
         int actual = list.getSize();
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
     public void testIsEmptyInEmptyList() {
         boolean expected = true;
         boolean actual = list.isEmpty();
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -57,7 +60,7 @@ public class StringLinkedListTest {
         list.add("text");
         boolean expected = false;
         boolean actual = list.isEmpty();
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -65,7 +68,7 @@ public class StringLinkedListTest {
         String expected = "text";
         list.add(expected);
         String actual = list.get(0);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -74,22 +77,37 @@ public class StringLinkedListTest {
         String expected = "text";
         list.add(expected);
         String actual = list.get(1);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testAddWithIndex0InEmptyList() {
-        list.add(0, "text");
+        try {
+            list.add(0, "text");
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testAddWithIndex1InEmptyList() {
-        list.add(1, "text");
+        try {
+            list.add(1, "text");
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testAddWithIndexMinus1InEmptyList() {
-        list.add(-1, "text");
+        try {
+            list.add(-1, "text");
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
     @Test
@@ -99,10 +117,10 @@ public class StringLinkedListTest {
         String expected = "text";
         list.add(0, expected);
         String actual = list.get(0);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
 
         String actualMoved = list.get(1);
-        Assert.assertEquals(expectedMoved, actualMoved);
+        AssertWrapper.assertEquals(STATUS, expectedMoved, actualMoved);
     }
 
     @Test
@@ -113,25 +131,40 @@ public class StringLinkedListTest {
         String expected = "text";
         list.add(1, expected);
         String actual = list.get(1);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
 
         String actualMoved = list.get(2);
-        Assert.assertEquals(expectedMoved, actualMoved);
+        AssertWrapper.assertEquals(STATUS, expectedMoved, actualMoved);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testGetByIndex0InListEmpty() {
-        list.get(0);
+        try {
+            list.get(0);
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testGetByIndex1InListEmpty() {
-        list.get(1);
+        try {
+            list.get(1);
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testGetByIndexMinus1InListEmpty() {
-        list.get(-1);
+        try {
+            list.get(-1);
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
     @Test
@@ -139,20 +172,26 @@ public class StringLinkedListTest {
         String expected = "text";
         list.add(expected);
         String actual = list.get(0);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testGetByIndex1InListWithOneText() {
-        list.add("text");
-        list.get(1);
+        try {
+            list.add("text");
+            list.get(1);
+
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
     @Test
     public void testContainsInEmptyList() {
         boolean expected = false;
         boolean actual = list.contains("text");
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -160,7 +199,7 @@ public class StringLinkedListTest {
         list.add("");
         boolean expected = false;
         boolean actual = list.contains("text");
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -168,7 +207,7 @@ public class StringLinkedListTest {
         list.add("text");
         boolean expected = true;
         boolean actual = list.contains("text");
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -177,7 +216,7 @@ public class StringLinkedListTest {
         list.add("text");
         boolean expected = true;
         boolean actual = list.contains("text");
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -191,12 +230,17 @@ public class StringLinkedListTest {
         String expected = "new text";
         list.set(0, expected);
         String actual = list.get(0);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testRemoveByIndexInEmptyList() {
-        list.remove(0);
+        try {
+            list.remove(0);
+        } catch (IndexOutOfBoundsException e) {
+        } catch (Throwable e) {
+            AssertWrapper.fail(STATUS);
+        }
     }
 
     @Test
@@ -206,7 +250,7 @@ public class StringLinkedListTest {
         list.remove(0);
         boolean expected = false;
         boolean actual = list.contains(text);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -217,7 +261,7 @@ public class StringLinkedListTest {
         list.remove(0);
         boolean expected = true;
         boolean actual = list.contains(text);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
     }
 
     @Test
@@ -232,11 +276,11 @@ public class StringLinkedListTest {
         list.remove(text);
         boolean expected = false;
         boolean actual = list.contains(text);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
 
         int expectedSize = 0;
         int actualSize = list.getSize();
-        Assert.assertEquals(expectedSize, actualSize);
+        AssertWrapper.assertEquals(STATUS, expectedSize, actualSize);
     }
 
     @Test
@@ -247,11 +291,11 @@ public class StringLinkedListTest {
         list.remove(text);
         boolean expected = true;
         boolean actual = list.contains(text);
-        Assert.assertEquals(expected, actual);
+        AssertWrapper.assertEquals(STATUS, expected, actual);
 
         int expectedSize = 1;
         int actualSize = list.getSize();
-        Assert.assertEquals(expectedSize, actualSize);
+        AssertWrapper.assertEquals(STATUS, expectedSize, actualSize);
     }
 
     @Test

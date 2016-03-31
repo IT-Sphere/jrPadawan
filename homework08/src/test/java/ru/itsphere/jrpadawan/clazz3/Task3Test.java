@@ -1,8 +1,10 @@
 package ru.itsphere.jrpadawan.clazz3;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -10,6 +12,7 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class Task3Test {
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in task 3");
 
     private StringLinkedList list;
 
@@ -21,10 +24,10 @@ public class Task3Test {
     @Test
     public void taskIndexOfTest1() {
         int i = list.indexOf("");
-        Assert.assertEquals(-1, i);
-        Assert.assertEquals(0, list.getSize());
-        Assert.assertEquals(true, list.isEmpty());
-        Assert.assertEquals("", list.toString());
+        AssertWrapper.assertEquals(status, -1, i);
+        AssertWrapper.assertEquals(status, 0, list.getSize());
+        AssertWrapper.assertEquals(status, true, list.isEmpty());
+        AssertWrapper.assertEquals(status, "", list.toString());
     }
 
     @Test
@@ -34,15 +37,15 @@ public class Task3Test {
         list.add("2");
         list.add("1");
         int i = list.indexOf("0");
-        Assert.assertEquals(0, i);
+        AssertWrapper.assertEquals(status, 0, i);
         i = list.indexOf("1");
-        Assert.assertEquals(1, i);
+        AssertWrapper.assertEquals(status, 1, i);
         i = list.indexOf("2");
-        Assert.assertEquals(2, i);
+        AssertWrapper.assertEquals(status, 2, i);
         i = list.indexOf("3");
-        Assert.assertEquals(-1, i);
-        Assert.assertEquals(4, list.getSize());
-        Assert.assertEquals(false, list.isEmpty());
-        Assert.assertEquals("0 1 2 1 ", list.toString());
+        AssertWrapper.assertEquals(status, -1, i);
+        AssertWrapper.assertEquals(status, 4, list.getSize());
+        AssertWrapper.assertEquals(status, false, list.isEmpty());
+        AssertWrapper.assertEquals(status, "0 1 2 1 ", list.toString());
     }
 }

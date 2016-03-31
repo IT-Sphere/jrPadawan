@@ -1,8 +1,9 @@
 package ru.itsphere.jrpadawan.clazz3;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * @author Budnikov Aleksandr
  */
 public class TestableListTest {
+    private static CheckingStatus status = StringLinkedListTest.STATUS;
 
     private List<String> myList;
     private List<String> list;
@@ -28,18 +30,18 @@ public class TestableListTest {
         doActions(list);
         doActions(myList);
 
-        Assert.assertEquals(list.isEmpty(), myList.isEmpty());
-        Assert.assertEquals(list.size(), myList.size());
+        AssertWrapper.assertEquals(status, list.isEmpty(), myList.isEmpty());
+        AssertWrapper.assertEquals(status, list.size(), myList.size());
 
-        Assert.assertEquals(list.contains("332"), myList.contains("332"));
-        Assert.assertEquals(list.contains("6567"), myList.contains("6567"));
-        Assert.assertEquals(list.contains("dssdfsfsd"), myList.contains("dssdfsfsd"));
-        Assert.assertEquals(list.contains("332"), myList.contains("332"));
+        AssertWrapper.assertEquals(status, list.contains("332"), myList.contains("332"));
+        AssertWrapper.assertEquals(status, list.contains("6567"), myList.contains("6567"));
+        AssertWrapper.assertEquals(status, list.contains("dssdfsfsd"), myList.contains("dssdfsfsd"));
+        AssertWrapper.assertEquals(status, list.contains("332"), myList.contains("332"));
 
-        Assert.assertEquals(list.get(2), myList.get(2));
-        Assert.assertEquals(list.get(1), myList.get(1));
-        Assert.assertEquals(list.get(4), myList.get(4));
-        Assert.assertEquals(list.get(0), myList.get(0));
+        AssertWrapper.assertEquals(status, list.get(2), myList.get(2));
+        AssertWrapper.assertEquals(status, list.get(1), myList.get(1));
+        AssertWrapper.assertEquals(status, list.get(4), myList.get(4));
+        AssertWrapper.assertEquals(status, list.get(0), myList.get(0));
     }
 
     private void doActions(List<String> list) {
