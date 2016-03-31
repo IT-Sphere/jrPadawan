@@ -13,6 +13,7 @@ public class BusUsage {
      * Задача 5
      * Дописать метод, который ИЗМЕНЯЕТ объект класса Bus.
      * Метод должен установить в объект bus скорость 220 и количество пасажиров 25.
+     * Верните измененный объект.
      *
      * @param bus - автобус для изменения
      * @return объект класса Bus
@@ -20,6 +21,4 @@ public class BusUsage {
     Bus changeBusSpeedAndPassengers(Bus bus) {
         return null; // Дописать код сюда
     }
-
-    // TODO add additional methods!!
 }
