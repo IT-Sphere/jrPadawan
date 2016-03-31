@@ -97,14 +97,10 @@ public class AssertWrapper {
             return;
         }
         try {
-            if (message == null) {
-                Assert.fail();
-            } else {
-                status.addMessage(message);
-                Assert.fail(message);
-            }
+            Assert.fail();
         } catch (Throwable e) {
             status.setHasErrors();
+            status.addMessage(message);
             println(status.getMessage());
             throw e;
         }
@@ -144,6 +140,20 @@ public class AssertWrapper {
             Assert.assertArrayEquals(expectedArray, actualArray);
         } catch (Throwable e) {
             status.setHasErrors();
+            println(status.getMessage());
+            throw e;
+        }
+    }
+
+    public static void assertNotNull(CheckingStatus status, String message, Object object) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertNotNull(object);
+        } catch (Throwable e) {
+            status.setHasErrors();
+            status.addMessage(message);
             println(status.getMessage());
             throw e;
         }

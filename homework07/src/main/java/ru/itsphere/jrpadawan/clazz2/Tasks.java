@@ -19,7 +19,7 @@ public class Tasks {
 
     /**
      * Создать и вернуть объект класса Application с именем "Sony Vegas".
-     * Установите ему значение версии "2".
+     * Установите ему значение версии "2" (как строку).
      * Допишите публичный метод setVersion в класс Application.
      *
      * @return Application
@@ -30,7 +30,7 @@ public class Tasks {
 
     /**
      * Создать и вернуть объект класса Application с именем "Git".
-     * Перегрузить метод setVersion таким образом, чтобы он принимал значение типа int. Раскомментируйте код.
+     * Перегрузить метод setVersion таким образом, чтобы он принимал значение 3 типа int. Раскомментируйте код.
      * Для того, чтобы преобразовать int в String используйте метод String.valueOf(version).
      *
      * @return Application
@@ -59,6 +59,7 @@ public class Tasks {
      * @return значение счетчика созданых объектов класса Application
      */
     public static int task5() {
+        Application.resetCreatedApplicationCount();
         return 0; //дописать код сюда.
     }
 
