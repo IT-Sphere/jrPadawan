@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.array;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -9,13 +11,14 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class ArrayTask10Test {
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in task 10");
 
     @Test
     public void task10Test1() {
         int[] incomingArray = {10, 22, -43, 64, 105, 0};
         int[] actualArray = Array.task10(incomingArray);
         int[] expectedArray = {-43, 0, 10, 22, 64, 105};
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 
     @Test
@@ -23,7 +26,7 @@ public class ArrayTask10Test {
         int[] incomingArray = {};
         int[] actualArray = Array.task10(incomingArray);
         int[] expectedArray = {};
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 
     @Test
@@ -31,6 +34,6 @@ public class ArrayTask10Test {
         int[] incomingArray = {-10};
         int[] actualArray = Array.task10(incomingArray);
         int[] expectedArray = {-10};
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 }

@@ -19,6 +19,19 @@ public class AssertWrapper {
         }
     }
 
+    static public void assertEquals(CheckingStatus status, long expected, long actual) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertEquals(expected, actual);
+        } catch (Throwable e) {
+            status.setHasErrors();
+            println(status.getMessage());
+            throw e;
+        }
+    }
+
     static public void assertEquals(CheckingStatus status, Object expected, Object actual) {
         if (status.isHasErrors()) {
             return;
@@ -49,7 +62,7 @@ public class AssertWrapper {
         }
     }
 
-    public static void assertTrue(CheckingStatus status, boolean actual) {
+    static public void assertTrue(CheckingStatus status, boolean actual) {
         if (status.isHasErrors()) {
             return;
         }
@@ -62,7 +75,7 @@ public class AssertWrapper {
         }
     }
 
-    public static void assertNotNull(CheckingStatus status, Object obj) {
+    static public void assertNotNull(CheckingStatus status, Object obj) {
         if (status.isHasErrors()) {
             return;
         }
@@ -79,7 +92,7 @@ public class AssertWrapper {
         fail(status, null);
     }
 
-    public static void fail(CheckingStatus status, String message) {
+    static public void fail(CheckingStatus status, String message) {
         if (status.isHasErrors()) {
             return;
         }
@@ -90,6 +103,45 @@ public class AssertWrapper {
                 status.addMessage(message);
                 Assert.fail(message);
             }
+        } catch (Throwable e) {
+            status.setHasErrors();
+            println(status.getMessage());
+            throw e;
+        }
+    }
+
+    public static void assertArrayEquals(CheckingStatus status, int[] expectedArray, int[] actualArray) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertArrayEquals(expectedArray, actualArray);
+        } catch (Throwable e) {
+            status.setHasErrors();
+            println(status.getMessage());
+            throw e;
+        }
+    }
+
+    public static void assertArrayEquals(CheckingStatus status, long[] expectedArray, long[] actualArray) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertArrayEquals(expectedArray, actualArray);
+        } catch (Throwable e) {
+            status.setHasErrors();
+            println(status.getMessage());
+            throw e;
+        }
+    }
+
+    public static void assertArrayEquals(CheckingStatus status, int[][] expectedArray, int[][] actualArray) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertArrayEquals(expectedArray, actualArray);
         } catch (Throwable e) {
             status.setHasErrors();
             println(status.getMessage());

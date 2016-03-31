@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.array;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 /**
  * http://it-channel.ru/
@@ -9,6 +11,7 @@ import org.junit.Test;
  * @author Budnikov Aleksandr
  */
 public class ArrayTask6Test {
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in task 6");
 
     @Test
     public void task6Test1() {
@@ -16,7 +19,7 @@ public class ArrayTask6Test {
         int[] array2 = {202, 44, -846, 1258, 2210, 3};
         int[] expectedArray = {20, 44, -86, 128, 210, 202, 44, -846, 1258, 2210, 3};
         int[] actualArray = Array.task6(array1, array2);
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 
     @Test
@@ -25,7 +28,7 @@ public class ArrayTask6Test {
         int[] array2 = {202, 44, -846, 1258, 2210, 3};
         int[] expectedArray = {202, 44, -846, 1258, 2210, 3};
         int[] actualArray = Array.task6(array1, array2);
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 
     @Test
@@ -34,7 +37,7 @@ public class ArrayTask6Test {
         int[] array2 = {};
         int[] expectedArray = {};
         int[] actualArray = Array.task6(array1, array2);
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 
     @Test
@@ -43,7 +46,7 @@ public class ArrayTask6Test {
         int[] array2 = {};
         int[] expectedArray = {20, 44, -86, 128, 210};
         int[] actualArray = Array.task6(array1, array2);
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 
     @Test
@@ -52,6 +55,6 @@ public class ArrayTask6Test {
         int[] array2 = {20};
         int[] expectedArray = {20, 20};
         int[] actualArray = Array.task6(array1, array2);
-        Assert.assertArrayEquals(expectedArray, actualArray);
+        AssertWrapper.assertArrayEquals(status, expectedArray, actualArray);
     }
 }
