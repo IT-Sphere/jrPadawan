@@ -7,16 +7,7 @@ import static ru.itsphere.jrpadawan.utils.ErrorOutputUtils.println;
 public class AssertWrapper {
 
     static public void assertEquals(CheckingStatus status, double expected, double actual, double delta) {
-        if (status.isHasErrors()) {
-            return;
-        }
-        try {
-            Assert.assertEquals(expected, actual, delta);
-        } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
-            throw e;
-        }
+        assertEquals(status, null, expected, actual, delta);
     }
 
     static public void assertEquals(CheckingStatus status, long expected, long actual) {
@@ -26,8 +17,7 @@ public class AssertWrapper {
         try {
             Assert.assertEquals(expected, actual);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
         }
     }
@@ -39,8 +29,7 @@ public class AssertWrapper {
         try {
             Assert.assertEquals(expected, actual);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
         }
     }
@@ -56,23 +45,13 @@ public class AssertWrapper {
         try {
             Assert.assertFalse(actual);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
         }
     }
 
     static public void assertTrue(CheckingStatus status, boolean actual) {
-        if (status.isHasErrors()) {
-            return;
-        }
-        try {
-            Assert.assertTrue(actual);
-        } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
-            throw e;
-        }
+        assertTrue(status, null, actual);
     }
 
     static public void assertNotNull(CheckingStatus status, Object obj) {
@@ -82,8 +61,7 @@ public class AssertWrapper {
         try {
             Assert.assertNotNull(obj);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
         }
     }
@@ -99,11 +77,7 @@ public class AssertWrapper {
         try {
             Assert.fail();
         } catch (Throwable e) {
-            status.setHasErrors();
-            if (message != null) {
-                status.addMessage(message);
-            }
-            println(status.getMessage());
+            handleException(status, message);
             throw e;
         }
     }
@@ -115,8 +89,7 @@ public class AssertWrapper {
         try {
             Assert.assertArrayEquals(expectedArray, actualArray);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
         }
     }
@@ -128,8 +101,7 @@ public class AssertWrapper {
         try {
             Assert.assertArrayEquals(expectedArray, actualArray);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
         }
     }
@@ -141,8 +113,7 @@ public class AssertWrapper {
         try {
             Assert.assertArrayEquals(expectedArray, actualArray);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
         }
     }
@@ -154,9 +125,7 @@ public class AssertWrapper {
         try {
             Assert.assertNotNull(object);
         } catch (Throwable e) {
-            status.setHasErrors();
-            status.addMessage(message);
-            println(status.getMessage());
+            handleException(status, message);
             throw e;
         }
     }
@@ -168,9 +137,44 @@ public class AssertWrapper {
         try {
             Assert.assertArrayEquals(expected, actual);
         } catch (Throwable e) {
-            status.setHasErrors();
-            println(status.getMessage());
+            handleException(status, null);
             throw e;
+        }
+    }
+
+    public static void assertTrue(CheckingStatus status, String message, boolean actual) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertTrue(actual);
+        } catch (Throwable e) {
+            handleException(status, message);
+            throw e;
+        }
+    }
+
+    public static void assertEquals(CheckingStatus status, String message, double expected, double actual, double delta) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertEquals(expected, actual, delta);
+        } catch (Throwable e) {
+            handleException(status, message);
+            throw e;
+        }
+    }
+
+    private static void handleException(CheckingStatus status, String message) {
+        status.setHasErrors();
+        addMessage(status, message);
+        println(status.getMessage());
+    }
+
+    private static void addMessage(CheckingStatus status, String message) {
+        if (message != null) {
+            status.addMessage(message);
         }
     }
 }

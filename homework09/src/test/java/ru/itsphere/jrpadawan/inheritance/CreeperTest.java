@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.inheritance;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 import java.lang.reflect.Modifier;
 
@@ -11,6 +13,8 @@ import java.lang.reflect.Modifier;
  * @author Budnikov Aleksandr
  */
 public class CreeperTest {
+
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in class Creeper");
 
     @Test
     public void test() {
@@ -22,7 +26,7 @@ public class CreeperTest {
         try {
             creeper = Class.forName(className);
         } catch (ClassNotFoundException e) {
-            Assert.fail("Class " + className + " was not created.");
+            AssertWrapper.fail(status, "Class " + className + " was not created.");
             return null;
         }
 
@@ -31,7 +35,7 @@ public class CreeperTest {
         }
 
         if (!Modifier.isAbstract(creeper.getModifiers())) {
-            Assert.fail("Class " + className + " is not abstract.");
+            AssertWrapper.fail(status, "Class " + className + " is not abstract.");
             return null;
         }
         return creeper;
@@ -39,7 +43,7 @@ public class CreeperTest {
 
     private boolean checkParentClass(String className, Class<?> creeper) {
         Class<LandAnimal> parentClass = LandAnimal.class;
-        Assert.assertTrue(className + " is not extends class " + parentClass + ".", parentClass.isAssignableFrom(creeper));
+        AssertWrapper.assertTrue(status, className + " is not extends class " + parentClass + ".", parentClass.isAssignableFrom(creeper));
         return false;
     }
 }

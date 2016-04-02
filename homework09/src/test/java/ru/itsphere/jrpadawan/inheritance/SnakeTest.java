@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.inheritance;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -17,6 +19,7 @@ public class SnakeTest {
     public static final double MOVE_TIME_EXPECTED = 32.258;
     public static final double DELTA = 0.001;
     public static final String SOUND = "sh";
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in class Snake");
 
     @Test
     public void test() {
@@ -43,7 +46,7 @@ public class SnakeTest {
         try {
             snake = Class.forName(className);
         } catch (ClassNotFoundException e) {
-            Assert.fail("Class " + className + " was not created.");
+            AssertWrapper.fail(status, "Class " + className + " was not created.");
             return null;
         }
 
@@ -52,7 +55,7 @@ public class SnakeTest {
         }
 
         if (Modifier.isAbstract(snake.getModifiers())) {
-            Assert.fail("Class " + className + " must not be abstract.");
+            AssertWrapper.fail(status, "Class " + className + " must not be abstract.");
             return null;
         }
         return snake;
@@ -65,10 +68,10 @@ public class SnakeTest {
             parentClassName = "ru.itsphere.jrpadawan.inheritance.Creeper";
             parentClass = Class.forName(parentClassName);
         } catch (ClassNotFoundException e) {
-            Assert.fail("Class " + parentClassName + " was not created.");
+            AssertWrapper.fail(status, "Class " + parentClassName + " was not created.");
             return true;
         }
-        Assert.assertTrue(className + " is not extends class " + parentClass + ".", parentClass.isAssignableFrom(creeper));
+        AssertWrapper.assertTrue(status, className + " is not extends class " + parentClass + ".", parentClass.isAssignableFrom(creeper));
         return false;
     }
 
@@ -77,12 +80,12 @@ public class SnakeTest {
         try {
             snakeConstructor = snake.getConstructor(String.class);
         } catch (NoSuchMethodException e) {
-            Assert.fail("Constructor of class " + className + " was not created.");
+            AssertWrapper.fail(status, "Constructor of class " + className + " was not created.");
             return null;
         }
 
         if (!Modifier.isPublic(snakeConstructor.getModifiers())) {
-            Assert.fail("Constructor of class " + className + " have to be public.");
+            AssertWrapper.fail(status, "Constructor of class " + className + " have to be public.");
             return null;
         }
 
@@ -90,7 +93,7 @@ public class SnakeTest {
         try {
             instance = snakeConstructor.newInstance(constructorArg);
         } catch (Exception e) {
-            Assert.fail("Class " + className + ". Constructor execution error.");
+            AssertWrapper.fail(status, "Class " + className + ". Constructor execution error.");
             return null;
         }
         return instance;
@@ -102,7 +105,7 @@ public class SnakeTest {
         try {
             getSound = aClass.getMethod(methodName);
         } catch (NoSuchMethodException e) {
-            Assert.fail("Method " + methodName + " was not inherited in class " + className);
+            AssertWrapper.fail(status, "Method " + methodName + " was not inherited in class " + className);
             return;
         }
 
@@ -110,12 +113,12 @@ public class SnakeTest {
         try {
             getSoundResult = (String) getSound.invoke(instance);
         } catch (Exception e) {
-            Assert.fail("Class " + className + ", Method " + methodName + ". Execution error.");
+            AssertWrapper.fail(status, "Class " + className + ", Method " + methodName + ". Execution error.");
             return;
         }
 
         if (!getSoundResult.equals(SOUND)) {
-            Assert.fail("Sound of the animal (" + className + ") was not setted.");
+            AssertWrapper.fail(status, "Sound of the animal (" + className + ") was not setted.");
             return;
         }
     }
@@ -126,7 +129,7 @@ public class SnakeTest {
         try {
             move = whale.getMethod(methodName, double.class);
         } catch (NoSuchMethodException e) {
-            Assert.fail("Method " + methodName + " was not inherited in class " + className);
+            AssertWrapper.fail(status, "Method " + methodName + " was not inherited in class " + className);
             return;
         }
 
@@ -134,11 +137,11 @@ public class SnakeTest {
         try {
             moveResult = (double) move.invoke(instance, Inheritance.ONE_HUNDRED_METERS);
         } catch (Exception e) {
-            Assert.fail("Class " + className + ", Method " + methodName + ". Execution error.");
+            AssertWrapper.fail(status, "Class " + className + ", Method " + methodName + ". Execution error.");
             return;
         }
 
-        Assert.assertEquals("logic of metod move of the animal (" + className + ") is incorrect.", MOVE_TIME_EXPECTED, moveResult, DELTA);
+        AssertWrapper.assertEquals(status, "logic of metod move of the animal (" + className + ") is incorrect.", MOVE_TIME_EXPECTED, moveResult, DELTA);
     }
 
     private void checkName(Class<?> whale, String className, Object instance, String sasha) {
@@ -147,7 +150,7 @@ public class SnakeTest {
         try {
             getName = whale.getMethod(methodName);
         } catch (NoSuchMethodException e) {
-            Assert.fail("Method " + methodName + " was not inherited in class " + className);
+            AssertWrapper.fail(status, "Method " + methodName + " was not inherited in class " + className);
             return;
         }
 
@@ -155,12 +158,12 @@ public class SnakeTest {
         try {
             getNameResult = (String) getName.invoke(instance);
         } catch (Exception e) {
-            Assert.fail("Class " + className + ", Method " + methodName + ". Execution error.");
+            AssertWrapper.fail(status, "Class " + className + ", Method " + methodName + ". Execution error.");
             return;
         }
 
         if (!getNameResult.equals(sasha)) {
-            Assert.fail("Name of the animal (" + className + ") was not setted.");
+            AssertWrapper.fail(status, "Name of the animal (" + className + ") was not setted.");
             return;
         }
     }

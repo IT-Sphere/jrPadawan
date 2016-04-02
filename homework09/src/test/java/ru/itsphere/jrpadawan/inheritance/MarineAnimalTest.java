@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.inheritance;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -13,6 +15,8 @@ import java.lang.reflect.Modifier;
  * @author Budnikov Aleksandr
  */
 public class MarineAnimalTest {
+
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in class MarineAnimal");
 
     @Test
     public void test() {
@@ -34,15 +38,15 @@ public class MarineAnimalTest {
         try {
             marineAnimal = Class.forName(className);
         } catch (ClassNotFoundException e) {
-            Assert.fail("Class " + className + " was not created.");
+            AssertWrapper.fail(status, "Class " + className + " was not created.");
             return null;
         }
 
         Class<Animal> parentClass = Animal.class;
-        Assert.assertTrue(className + " is not extends class " + parentClass + ".", parentClass.isAssignableFrom(marineAnimal));
+        AssertWrapper.assertTrue(status, className + " is not extends class " + parentClass + ".", parentClass.isAssignableFrom(marineAnimal));
 
         if (!Modifier.isAbstract(marineAnimal.getModifiers())) {
-            Assert.fail("Class " + className + " is not abstract.");
+            AssertWrapper.fail(status, "Class " + className + " is not abstract.");
             return null;
         }
         return marineAnimal;
@@ -54,12 +58,12 @@ public class MarineAnimalTest {
         try {
             field = marineAnimal.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
-            Assert.fail("Field " + fieldName + " was not created in class " + className);
+            AssertWrapper.fail(status, "Field " + fieldName + " was not created in class " + className);
             return true;
         }
 
         if (!Modifier.isPrivate(field.getModifiers())) {
-            Assert.fail("Field " + fieldName + " is not a private method");
+            AssertWrapper.fail(status, "Field " + fieldName + " is not a private method");
             return true;
         }
         return false;
@@ -71,17 +75,17 @@ public class MarineAnimalTest {
         try {
             method = marineAnimal.getDeclaredMethod(methodName, double.class);
         } catch (NoSuchMethodException e) {
-            Assert.fail("Method " + methodName + " was not created in class " + className);
+            AssertWrapper.fail(status, "Method " + methodName + " was not created in class " + className);
             return;
         }
 
         if (!Modifier.isPublic(method.getModifiers())) {
-            Assert.fail("Method " + methodName + " is not a public method");
+            AssertWrapper.fail(status, "Method " + methodName + " is not a public method");
             return;
         }
 
         if (!double.class.equals(method.getReturnType())) {
-            Assert.fail("Method " + methodName + " does not return double");
+            AssertWrapper.fail(status, "Method " + methodName + " does not return double");
             return;
         }
     }
