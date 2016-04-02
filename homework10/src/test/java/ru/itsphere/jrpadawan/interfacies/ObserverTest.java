@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.interfacies;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 import java.lang.reflect.Method;
 
@@ -13,6 +15,7 @@ import java.lang.reflect.Method;
 public class ObserverTest {
     public static final String OBSERVER_INTERFACE = "ru.itsphere.jrpadawan.interfacies.Observer";
     public static final String UPDATE_METHOD = "update";
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in interface Observer");
 
     public static Class<?> getObserverInterface() {
         String observerInterface = OBSERVER_INTERFACE;
@@ -20,7 +23,7 @@ public class ObserverTest {
         try {
             observer = Class.forName(observerInterface);
         } catch (ClassNotFoundException e) {
-            Assert.fail("Interface " + observerInterface + " was not created or has wrong signature.");
+            AssertWrapper.fail(status, "Interface " + observerInterface + " was not created or has wrong signature.");
             return null;
         }
         return observer;
@@ -31,7 +34,7 @@ public class ObserverTest {
         try {
             method = observer.getDeclaredMethod(UPDATE_METHOD, Object.class);
         } catch (NoSuchMethodException e) {
-            Assert.fail("Interface " + observer + " doesn't have method 'update'.");
+            AssertWrapper.fail(status, "Interface " + observer + " doesn't have method 'update'.");
             return null;
         }
         return method;

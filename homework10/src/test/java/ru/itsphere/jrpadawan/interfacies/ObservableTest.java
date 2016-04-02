@@ -1,7 +1,9 @@
 package ru.itsphere.jrpadawan.interfacies;
 
-import org.junit.Assert;
 import org.junit.Test;
+import ru.itsphere.jrpadawan.utils.AssertWrapper;
+import ru.itsphere.jrpadawan.utils.CheckingStatus;
+import ru.itsphere.jrpadawan.utils.TaskCheckingStatus;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -17,6 +19,7 @@ public class ObservableTest {
 
     public static final String SUBSCRIBERS = "subscribers";
     public static final String ADD_SUBSCRIBER_METHOD = "addSubscriber";
+    private static CheckingStatus status = new TaskCheckingStatus("There is an error in class Observable");
 
     @Test
     public void testClass() {
@@ -25,8 +28,8 @@ public class ObservableTest {
         fieldSubscribersFromObservableClass.setAccessible(true);
         Class<?> type = fieldSubscribersFromObservableClass.getType();
         List<Bot> bots = new ArrayList<>();
-        Assert.assertNotEquals("Field subscribers has wrong type 'List<Bot>' in Observable class", type, bots.getClass());
-        Assert.assertNotEquals("Field subscribers has wrong type 'List<User>' in Observable class", type, bots.getClass());
+        AssertWrapper.assertNotEquals(status, "Field subscribers has wrong type 'List<Bot>' in Observable class", type, bots.getClass());
+        AssertWrapper.assertNotEquals(status, "Field subscribers has wrong type 'List<User>' in Observable class", type, bots.getClass());
         getMethodFromObservableClass(observerInterface);
     }
 
@@ -34,7 +37,7 @@ public class ObservableTest {
         try {
             return Observable.class.getDeclaredMethod(ADD_SUBSCRIBER_METHOD, observerInterface);
         } catch (NoSuchMethodException e) {
-            Assert.fail("Observable has to have addSubscriber method with observer argument");
+            AssertWrapper.fail(status, "Observable has to have addSubscriber method with observer argument");
         }
         return null;
     }
@@ -44,7 +47,7 @@ public class ObservableTest {
         try {
             return observableClass.getDeclaredField(SUBSCRIBERS);
         } catch (NoSuchFieldException e) {
-            Assert.fail("There is no field 'subscribers' in abstract class 'Observable'.");
+            AssertWrapper.fail(status, "There is no field 'subscribers' in abstract class 'Observable'.");
         }
         return null;
     }

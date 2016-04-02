@@ -177,4 +177,16 @@ public class AssertWrapper {
             status.addMessage(message);
         }
     }
+
+    public static void assertNotEquals(CheckingStatus status, String message, Object expected, Object actual) {
+        if (status.isHasErrors()) {
+            return;
+        }
+        try {
+            Assert.assertNotEquals(expected, actual);
+        } catch (Throwable e) {
+            handleException(status, message);
+            throw e;
+        }
+    }
 }
