@@ -34,7 +34,10 @@ public class Loops {
      * @return результат
      */
     public static long task2(long a, long b) {
-        return 0;// Дописать формулу сюда
+        for (int i = 12; i>0; i--){
+            a+=b;
+        }
+        return a;// Дописать формулу сюда
     }
 
     /**
@@ -47,8 +50,26 @@ public class Loops {
      * @return результат
      */
     public static long task3(long a, long b) {
-        return 0;// Дописать формулу сюда
-    }
+        if (b > 100) {
+            for (int i = 5; i > 0; i--) {
+                a += b;
+            }
+        }
+        else if (b < 100) {
+            for (int i = 10; i > 0; i--) {
+                a -= b;
+            }
+        } else {
+            for (int i = 10; i > 0; i--) {
+                a *= 2;
+            }
+        }
+            return a;
+        }
+
+
+
+
 
     /**
      * Узнайте что такое последовательность фибоначчи.
@@ -60,7 +81,13 @@ public class Loops {
      * @return результат
      */
     public static long task4(long a) {
-        return 0;// Дописать формулу сюда
+        long first = 0, second = 1, results = 0;
+        for (int i = 1; i < a; i++) {
+            first = second;
+            second = results;
+            results = first + second;
+        }
+        return results;
     }
 
     /**
@@ -72,6 +99,11 @@ public class Loops {
      * @return результат
      */
     public static long task5(int a) {
-        return 0;// Дописать формулу сюда
+        long results = 1;
+        for (int i = a; i > 1; i--) {
+            results *= i;
+        }
+        return results;
+
     }
 }
