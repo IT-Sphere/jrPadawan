@@ -16,6 +16,7 @@ public class Mathematics {
      * @return результат
      */
     public static int formula1(int a) {
+
         return a + a - 2;
     }
 
@@ -26,7 +27,8 @@ public class Mathematics {
      * @return результат
      */
     public static int formula2(int a) {
-        return a * (a + 2);}
+        return a * (a + 2);
+    }
 
     /**
      * Формула a - (b + (3 + b) * 2)
@@ -36,7 +38,8 @@ public class Mathematics {
      * @return результат
      */
     public static int formula3(int a, int b) {
-        return a - (b + (3 + b) * 2);}
+        return a - (b + (3 + b) * 2);
+    }
 
     /**
      * Формула (a * a) / (b * a)
@@ -49,7 +52,8 @@ public class Mathematics {
      * @return результат
      */
     public static double formula4(double a, int b) {
-        return (a * a) / (b * a);}
+        return (a * a) / (b * a);
+    }
 
     /**
      * Формула b / (b * a)
@@ -62,7 +66,8 @@ public class Mathematics {
      * @return результат
      */
     public static double formula5(double a, int b) {
-        return b / (b * a);}
+        return b / (b * a);
+    }
 
     /**
      * Формула ((квадратный корень из (a * b)) / 5)
@@ -83,7 +88,8 @@ public class Mathematics {
      * @return результат
      */
     public static double formula7(int a, int b) {
-        return Math.sqrt(a * a + b * b);}
+        return Math.sqrt(a * a + b * b);
+    }
 
     /**
      * Формула ((Остаток от деления на 5 числа a) * (b в кубе))
@@ -103,5 +109,6 @@ public class Mathematics {
      * @return результат
      */
     public static double formula9(int a) {
-        return Math.pow(a, 10) / (a % 10);}
+        return Math.pow(a, 10) / (a % 10);
+    }
 }
