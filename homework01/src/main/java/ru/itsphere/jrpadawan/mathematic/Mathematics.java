@@ -103,6 +103,5 @@ public class Mathematics {
      * @return результат
      */
     public static double formula9(int a) {
-        return Math.pow(a, 10) / (a % 10);// Дописать формулу сюда
-    }
+        return Math.pow(a, 10) / (a % 10);}
 }
