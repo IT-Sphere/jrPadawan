@@ -25,9 +25,7 @@ public class Mathematics {
      * @param a - любое целое число
      * @return результат
      */
-    public static int formula2(int a) {
-        return 0;// Дописать формулу сюда
-    }
+    public static int formula2(int a) { return a * (a + 2); }
 
     /**
      * Формула a - (b + (3 + b) * 2)
@@ -36,9 +34,7 @@ public class Mathematics {
      * @param b - любое целое число
      * @return результат
      */
-    public static int formula3(int a, int b) {
-        return 0;// Дописать формулу сюда
-    }
+    public static int formula3(int a, int b) { return a - (b + (3 + b) * 2); }
 
     /**
      * Формула (a * a) / (b * a)
@@ -50,9 +46,7 @@ public class Mathematics {
      * @param b - любое целое число (больше 0)
      * @return результат
      */
-    public static double formula4(int a, int b) {
-        return 0;// Дописать формулу сюда
-    }
+    public static double formula4(double a, int b) { return (a * a) / (b * a); }
 
     /**
      * Формула b / (b * a)
@@ -64,9 +58,7 @@ public class Mathematics {
      * @param b - любое целое число (больше 0)
      * @return результат
      */
-    public static double formula5(int a, int b) {
-        return 0;// Дописать формулу сюда
-    }
+    public static double formula5(int a, double b) { return b / (b * a); }
 
     /**
      * Формула ((квадратный корень из (a * b)) / 5)
@@ -87,7 +79,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula7(int a, int b) {
-        return 0;// Дописать формулу сюда
+        return Math.sqrt(a * a + b * b);
     }
 
     /**
@@ -107,7 +99,5 @@ public class Mathematics {
      * @param a - любое целое число (больше 0)
      * @return результат
      */
-    public static double formula9(int a) {
-        return 0;// Дописать формулу сюда
-    }
+    public static double formula9(int a) { return Math.pow(a, 10) / (a % 10); }
 }
