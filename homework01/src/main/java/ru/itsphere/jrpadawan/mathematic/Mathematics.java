@@ -99,7 +99,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula8(int a, double b) {
-        return a % 5 * Math.pow(b, 3);
+        return (a % 5) * Math.pow(b, 3);
     }
 
     /**
