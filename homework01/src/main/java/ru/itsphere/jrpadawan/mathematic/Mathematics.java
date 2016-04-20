@@ -26,7 +26,7 @@ public class Mathematics {
      * @return результат
      */
     public static int formula2(int a) {
-        return 0;// Дописать формулу сюда
+        return  a * (a + 2);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Mathematics {
      * @return результат
      */
     public static int formula3(int a, int b) {
-        return 0;// Дописать формулу сюда
+        return a - (b + (3 + b) * 2);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula4(int a, int b) {
-        return 0;// Дописать формулу сюда
+        return ((double) a * a) / (b * a);
     }
 
     /**
@@ -65,7 +65,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula5(int a, int b) {
-        return 0;// Дописать формулу сюда
+        return (double) b / (b * a);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Mathematics {
      * @return результат
      */
     public static double formula7(int a, int b) {
-        return 0;// Дописать формулу сюда
+        return Math.sqrt(a * a + b * b);
     }
 
     /**
@@ -108,6 +108,6 @@ public class Mathematics {
      * @return результат
      */
     public static double formula9(int a) {
-        return 0;// Дописать формулу сюда
+        return Math.pow(a, 10) / (a % 10);
     }
 }
