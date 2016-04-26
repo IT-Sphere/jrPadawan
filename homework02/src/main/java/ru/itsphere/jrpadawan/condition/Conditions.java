@@ -42,7 +42,19 @@ public class Conditions {
      * @return результат
      */
     public static int getMax(int a, int b, int c) {
-        return 0;// Дописать формулу сюда
+        if (a > b) {
+            if (a > c) {
+                return a;
+            } else {
+                return c;
+            }
+        } else {
+            if (b > c) {
+                return b;
+            } else {
+                return c;
+            }
+        }
     }
 
     /**
@@ -70,7 +82,11 @@ public class Conditions {
      * @return результат
      */
     public static boolean isMoreThen100OrEquals(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a >= 100 & b >= 100 & c >= 100) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -82,19 +98,19 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAllBetween100And200(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a > 99 & a < 201 & b > 99 & b < 201 & c > 99 & c < 201) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    /**
-     * Все не равны 100
-     *
-     * @param a - любое целое число
-     * @param b - любое целое число
-     * @param c - любое целое число
-     * @return результат
-     */
     public static boolean isAllNot100(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a!=100 && b!=100 && c!=100) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -106,6 +122,10 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAtLeastOne100(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a==100 || b==100 || c==100) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
