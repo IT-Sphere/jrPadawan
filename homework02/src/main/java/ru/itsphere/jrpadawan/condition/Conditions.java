@@ -42,7 +42,19 @@ public class Conditions {
      * @return результат
      */
     public static int getMax(int a, int b, int c) {
-        return 0;// Дописать формулу сюда
+        if (a > b) {
+            if (a > c) {
+                return a;
+            } else {
+                return c;
+            }
+        } else {
+            if (b > c) {
+                return b;
+            } else {
+                return c;
+            }
+        }
     }
 
     /**
@@ -70,10 +82,14 @@ public class Conditions {
      * @return результат
      */
     public static boolean isMoreThen100OrEquals(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if ((a >= 100) && (b >= 100) && (c >= 100)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    /**
+        /**
      * Все между 100 и 200 (включительно)
      *
      * @param a - любое целое число
@@ -82,7 +98,14 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAllBetween100And200(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if ((a >= 100) && (b >= 100) && (c >= 100)) {
+            if ((a <= 200) && (b <= 200) && (c <= 200)) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+        return false;
     }
 
     /**
@@ -94,7 +117,11 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAllNot100(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a != 100 && b != 100 && c != 100) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -106,6 +133,10 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAtLeastOne100(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a == 100 || b == 100 || c == 100) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
