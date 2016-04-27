@@ -114,7 +114,7 @@ public class Conditions {
     if (a != 100 && b != 100 && c != 100) {
             return true;
         }
-        return false;// Дописать формулу сюда
+        return false;
     }
 
     /**
@@ -129,6 +129,6 @@ public class Conditions {
         if (a == 100 || b == 100 || c == 100){
             return true;
     }
-    return false;// Дописать формулу сюда
+    return false;
 }
 }
