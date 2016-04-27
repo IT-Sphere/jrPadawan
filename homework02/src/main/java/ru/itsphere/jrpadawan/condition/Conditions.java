@@ -41,8 +41,21 @@ public class Conditions {
      * @param c - любое целое число
      * @return результат
      */
+
     public static int getMax(int a, int b, int c) {
-        return 0;// Дописать формулу сюда
+        if (a > b) {
+            if (b > c) {
+                return a;
+            }
+        } else {
+            if (b > a) {
+                if (c > b) {
+                    return c;
+                } else {
+                    return b;
+                }
+            }
+        }
     }
 
     /**
@@ -53,6 +66,7 @@ public class Conditions {
      * @param c - любое целое число
      * @return результат
      */
+
     public static boolean isAllEquals(int a, int b, int c) {
         if (a == b && b == c) {
             return true;
@@ -69,8 +83,13 @@ public class Conditions {
      * @param c - любое целое число
      * @return результат
      */
+
     public static boolean isMoreThen100OrEquals(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a >= 100 && b >= 100 && c >= 100) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -81,8 +100,13 @@ public class Conditions {
      * @param c - любое целое число
      * @return результат
      */
+
     public static boolean isAllBetween100And200(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a >= 100 && a <= 200 && b >= 100 && b <= 200 && c >= 100 && c <= 200) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -93,8 +117,13 @@ public class Conditions {
      * @param c - любое целое число
      * @return результат
      */
+
     public static boolean isAllNot100(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a != 100 && b != 100 && c != 100) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -105,7 +134,13 @@ public class Conditions {
      * @param c - любое целое число
      * @return результат
      */
+
     public static boolean isAtLeastOne100(int a, int b, int c) {
-        return false; // Дописать формулу сюда
+        if (a == 100 || b == 100 || c == 100) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
 }
