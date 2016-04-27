@@ -66,11 +66,7 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAllEquals(int a, int b, int c) {
-        if (a == b && b == c) {
-            return true;
-        } else {
-            return false;
-        }
+        return (a == b && b == c);
     }
 
     /**
@@ -82,14 +78,10 @@ public class Conditions {
      * @return результат
      */
     public static boolean isMoreThen100OrEquals(int a, int b, int c) {
-        if ((a >= 100) && (b >= 100) && (c >= 100)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (a >= 100 && b >= 100 && c >= 100);
     }
 
-        /**
+    /**
      * Все между 100 и 200 (включительно)
      *
      * @param a - любое целое число
@@ -102,8 +94,6 @@ public class Conditions {
             if ((a <= 200) && (b <= 200) && (c <= 200)) {
                 return true;
             }
-        } else {
-            return false;
         }
         return false;
     }
@@ -117,11 +107,7 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAllNot100(int a, int b, int c) {
-        if (a != 100 && b != 100 && c != 100) {
-            return true;
-        } else {
-            return false;
-        }
+        return (a != 100 && b != 100 && c != 100);
     }
 
     /**
@@ -133,10 +119,7 @@ public class Conditions {
      * @return результат
      */
     public static boolean isAtLeastOne100(int a, int b, int c) {
-        if (a == 100 || b == 100 || c == 100) {
-            return true;
-        } else {
-            return false;
-        }
+        return (a == 100 || b == 100 || c == 100);
     }
 }
+
