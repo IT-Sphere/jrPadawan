@@ -34,7 +34,10 @@ public class Loops {
      * @return результат
      */
     public static long task2(long a, long b) {
-        return 0;// Дописать формулу сюда
+        for (int i = 0; i < 12; i++) {
+            a+=b;
+        }
+        return (a + b);
     }
 
     /**
@@ -47,7 +50,20 @@ public class Loops {
      * @return результат
      */
     public static long task3(long a, long b) {
-        return 0;// Дописать формулу сюда
+        if (b > 100) {
+            for (int i = 0; i < 5; i++) {
+                a+=b;
+            }
+        } else if (b < 100) {
+            for (int i = 0; i < 10; i++) {
+                a-=b;
+            }
+        } else if (b == 100) {
+            for (int i = 0; i < 10; i++) {
+                a=a/2;
+            }
+        }
+        return a + b;
     }
 
     /**
@@ -60,7 +76,22 @@ public class Loops {
      * @return результат
      */
     public static long task4(long a) {
-        return 0;// Дописать формулу сюда
+        long i = 1L; //счетчик
+        long Fib = 0L;
+        long PreFib = 1L;
+        for (; ; ) {
+            if (a == i) {
+                a = Fib;
+                break;
+            }
+            PreFib = Fib;
+            if (i == 2) {
+                PreFib = 0L;
+            }
+            Fib = Fib + PreFib;
+            i++;
+        }
+        return a;
     }
 
     /**
@@ -72,6 +103,10 @@ public class Loops {
      * @return результат
      */
     public static long task5(int a) {
-        return 0;// Дописать формулу сюда
+        long fact = 1L;
+        for (int i = 1; i <= a; i++) {
+            fact = fact * i;
+        }
+        return fact;
     }
 }
