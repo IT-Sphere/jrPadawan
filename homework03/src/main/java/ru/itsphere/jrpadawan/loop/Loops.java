@@ -35,7 +35,7 @@ public class Loops {
      */
     public static long task2(long a, long b) {
         for (int i = 0; i < 12; i++) {
-            a+=b;
+            a += b;
         }
         return a;
     }
@@ -52,15 +52,15 @@ public class Loops {
     public static long task3(long a, long b) {
         if (b > 100) {
             for (int i = 0; i < 5; i++) {
-                a+=b;
+                a += b;
             }
         } else if (b < 100) {
             for (int i = 0; i < 10; i++) {
-                a-=b;
+                a -= b;
             }
         } else if (b == 100) {
             for (int i = 0; i < 10; i++) {
-                a=a/2;
+                a = a / 2;
             }
         }
         return a;
