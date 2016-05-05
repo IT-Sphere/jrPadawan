@@ -37,7 +37,7 @@ public class Loops {
         for (int i = 12; i > 0; i--) {
             a += b;
         }
-        return a + b;
+        return a;
     }
 
     /**
@@ -54,19 +54,19 @@ public class Loops {
             for (int i = 5; i > 0; i--) {
                 a += b;
             }
-            return a + b;
+            return a;
         }
 
         if (b < 100) {
             for (int i = 10; i > 0; i--) {
                 a -= b;
             }
-            return a - b;
+            return a;
         }
         for (int i = 10; i > 0; i--) {
             a *= 2;
         }
-
+        return a;
     }
 
     /**
