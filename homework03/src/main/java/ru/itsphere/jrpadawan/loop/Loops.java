@@ -34,7 +34,10 @@ public class Loops {
      * @return результат
      */
     public static long task2(long a, long b) {
-        return 0;// Дописать формулу сюда
+        for (int i = 12; i > 0; i--) {
+            a += b;
+        }
+        return a + b;
     }
 
     /**
@@ -47,7 +50,23 @@ public class Loops {
      * @return результат
      */
     public static long task3(long a, long b) {
-        return 0;// Дописать формулу сюда
+        if (b > 100) {
+            for (int i = 5; i > 0; i--) {
+                a += b;
+            }
+            return a + b;
+        }
+
+        if (b < 100) {
+            for (int i = 10; i > 0; i--) {
+                a -= b;
+            }
+            return a - b;
+        }
+        for (int i = 10; i > 0; i--) {
+            a *= 2;
+        }
+
     }
 
     /**
@@ -60,6 +79,16 @@ public class Loops {
      * @return результат
      */
     public static long task4(long a) {
+        int b = 0, c = 1;
+        int a = 2;
+        int i = 0;
+        while (i>=0) {
+            a =  b + c;
+            b = c;
+            c = a;
+            i++;
+        }
+
         return 0;// Дописать формулу сюда
     }
 
@@ -72,6 +101,11 @@ public class Loops {
      * @return результат
      */
     public static long task5(int a) {
-        return 0;// Дописать формулу сюда
+        int fact = 1;
+        int i = 1;
+        while (i <= a) {
+            fact *= i;
+            i++;
+        }
+        System.out.println ("Factorial is" + fact);
     }
-}
