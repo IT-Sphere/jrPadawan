@@ -60,7 +60,7 @@ public class Loops {
             }
         } else if (b == 100) {
             for (int i = 0; i < 10; i++) {
-                a = a / 2;
+                a = a * 2;
             }
         }
         return a;
@@ -75,24 +75,37 @@ public class Loops {
      * @param a - индекс в последовательности
      * @return результат
      */
+
     public static long task4(long a) {
-        long i = 1L; //счетчик
-        long Fib = 0L;
-        long PreFib = 1L;
+        int i = 1; //счетчик
+        long fib = 0L;
+        long preFib = 1L;
+        long psPreFib = 0L;
         for (; ; ) {
+            if (i == 1) {
+                fib = 0;
+            } else if (i == 2 || i == 3) {
+                fib = 1;
+            } else {
+                psPreFib = fib;
+                fib = fib + preFib;
+                preFib = psPreFib;
+            }
             if (a == i) {
-                a = Fib;
+                a = fib;
                 break;
             }
-            PreFib = Fib;
-            if (i == 2) {
-                PreFib = 0L;
-            }
-            Fib = Fib + PreFib;
             i++;
         }
         return a;
     }
+
+/*
+    public static void main(String [] args){
+        Loops.task4(5);
+    }
+*/
+
 
     /**
      * Посчитать факториал числа a.
