@@ -79,10 +79,18 @@ public class Loops {
      * @param a - индекс в последовательности
      * @return результат
      */
-    public static long task4(long a) {
-        if (a < 1);
-            return 0;
+    public static long task4(int a) {
+        long first = 0;
+        long second = 1;
+        long result = 0;
+        for (int i = 1; i < a; i++) {
+            first = second;
+            second = result;
+            result = first + second;
+        }
+        return result;
     }
+
 
     /**
      * Посчитать факториал числа a.
@@ -92,20 +100,13 @@ public class Loops {
      * @param a - любое целое число (больше или равно 0)
      * @return результат
      */
+
     public static long task5(int a) {
-        int fact = 1;
-        if (a == 3) {
-            for (int i = 1; i <= 3; i++) {
-                fact *= i;
-
-            }
+        long result = 1;
+        for (int i = a; i > 1; i--) {
+            result *= i;
         }
-
-        if (a == 4) {
-            for (int i = 1; i <= 4; i++) {
-                fact *= i;
-            }
-        }
-        return fact;
+        return result;
     }
 }
+
