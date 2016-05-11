@@ -79,17 +79,13 @@ public class Loops {
      * @return результат
      */
     public static long task4(long a) {
-        int b = 0, c = 1;
-        int a = 2;
-        int i = 0;
-        while (i>=0) {
-            a =  b + c;
-            b = c;
-            c = a;
-            i++;
+        int first = 0, second = 1, result = 1;
+        for (a = 0; a >= 0; a++) {
+            result = first + second;
+            first = second;
+            second = result;
         }
-
-        return 0;// Дописать формулу сюда
+        return result;
     }
 
     /**
@@ -107,5 +103,6 @@ public class Loops {
             fact *= i;
             i++;
         }
-        System.out.println ("Factorial is" + fact);
+        return fact;
     }
+}
