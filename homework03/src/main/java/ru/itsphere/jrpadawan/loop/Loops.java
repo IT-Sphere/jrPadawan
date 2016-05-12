@@ -79,11 +79,11 @@ public class Loops {
      * @return результат
      */
     public static long task4(long a) {
-        int first = 0, second = 1, result = 1;
-        for (a = 0; a >= 0; a++) {
-            result = first + second;
+        int first = 0, second = 1, result = 0;
+        for (int i = 1; i < a; i++) {
             first = second;
             second = result;
+            result = first + second;
         }
         return result;
     }
