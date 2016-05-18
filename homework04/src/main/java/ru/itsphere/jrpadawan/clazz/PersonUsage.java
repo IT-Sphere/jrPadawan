@@ -19,8 +19,8 @@ class PersonUsage {
      *
      * @return объект класса Person
      */
-    Object createPerson() {
-        return null; // Дописать код сюда
+    public Person createPerson() {
+        return new Person();
     }
 
     /**
@@ -30,8 +30,8 @@ class PersonUsage {
      *
      * @return объект класса Person
      */
-    Object createSuitablePerson() {
-        return null; // Дописать код сюда
+    public Person createSuitablePerson() {
+        return new Person(141, 26);
     }
 
     /**
@@ -41,7 +41,7 @@ class PersonUsage {
      *
      * @return объект класса Person
      */
-    Object createUnsuitablePerson() {
-        return null; // Дописать код сюда
+    public Person createUnsuitablePerson() {
+        return new Person (120, 67);
     }
 }
