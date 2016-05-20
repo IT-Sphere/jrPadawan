@@ -9,7 +9,7 @@ package ru.itsphere.jrpadawan.clazz;
  */
 public class Bus {
     int passengers;
-    private int speed;
+    public int speed;
 
     public int getSpeed() {
         return speed;
