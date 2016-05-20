@@ -24,4 +24,28 @@ package ru.itsphere.jrpadawan.clazz;
  * объект данного класса выше того значения, которое пришло в качестве парамметра.
  * Он должен возвращать значение типа boolean.
  */
-// Дописать код сюда
+public class Person {
+    int height;
+    int age;
+
+    public Person () {
+
+    }
+
+    public Person (int height, int age) {
+        this.height = height;
+        this.age = age;
+    }
+
+    public boolean isKid() {
+        return age < 18;
+    }
+
+    public boolean isOlder (int age) {
+        return this.age > age;
+    }
+
+    public boolean isHigher (int height) {
+        return this.height > height;
+    }
+}

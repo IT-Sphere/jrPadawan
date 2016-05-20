@@ -18,7 +18,7 @@ public class BusUsage {
      * @param bus - автобус для изменения
      * @return объект класса Bus
      */
-    Bus changeBusSpeedAndPassengers(Bus bus) {
-        return null; // Дописать код сюда
+    Bus changeBusSpeedAndPassengers(Bus bus) { return null;
+
     }
 }
