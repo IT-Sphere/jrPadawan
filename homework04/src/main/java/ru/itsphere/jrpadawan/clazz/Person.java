@@ -26,36 +26,26 @@ package ru.itsphere.jrpadawan.clazz;
  */
 
 public class Person {
-    int height, age;
+    private int height;
+    private int age;
 
-    Person () {
-    }
-
-    public Person (int setHeight, int setAge) {
-        setHeight = height;
-        setAge = age;
-    }
-    public static boolean isKid (Person person) {
-        if (person.age < 18) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public static boolean isOlder (Person person) {
-        if (person.age > setAge) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public static boolean isHigher (Person person) {
-        if (person.height > setHeight) {
-            return true;
-        } else {
-            return false;
-        }
+    Person() {
     }
 
+    public Person(int height, int age) {
+        this.height = height;
+        this.age = age;
+    }
 
+    public boolean isKid() {
+        return age < 18;
+    }
+
+    public boolean isOlder(int age) {
+        return this.age > age;
+    }
+
+    public boolean isHigher(int height) {
+        return this.height > height;
+    }
 }
