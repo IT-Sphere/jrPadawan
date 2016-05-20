@@ -19,9 +19,12 @@ class PersonUsage {
      *
      * @return объект класса Person
      */
-    Object createPerson() {
-        return null; // Дописать код сюда
-    }
+    //Object createPerson() {
+
+        public Person createPerson() {
+            return new Person();
+        }
+    //}
 
     /**
      * Задача 3
@@ -30,9 +33,12 @@ class PersonUsage {
      *
      * @return объект класса Person
      */
-    Object createSuitablePerson() {
-        return null; // Дописать код сюда
-    }
+    //Object createSuitablePerson() {
+
+        public Person createSuitablePerson() {
+            return new Person(140, 27);
+        }
+    //}
 
     /**
      * Задача 4
@@ -41,7 +47,10 @@ class PersonUsage {
      *
      * @return объект класса Person
      */
-    Object createUnsuitablePerson() {
-        return null; // Дописать код сюда
+    //Object createUnsuitablePerson() {
+
+    public Person createUnsuitablePerson() {
+        return new Person (185,37);
     }
+    //}
 }
