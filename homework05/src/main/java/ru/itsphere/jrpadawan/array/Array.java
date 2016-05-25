@@ -15,6 +15,7 @@ public class Array {
      * @return массив
      */
     public static int[] task1() {
+        int intArray[] = {1, 2, 3, 4, 5};
         return new int[]{1, 2, 3, 4, 5};
     }
 
@@ -39,7 +40,12 @@ public class Array {
      * @return максимальный элемент
      */
     public static int task3(int[] array) {
-        return 0; // Дописать код сюда
+        int max = 0;
+        for (int number : array) {
+            if (number > max) ;
+            if (number < max) ;
+        }
+        return max;
     }
 
     /**
@@ -48,7 +54,8 @@ public class Array {
      * @return число (длинна)
      */
     public static long task4(int[] array) {
-        return 0; // Дописать код сюда
+        int arraylenght = 5;
+        return arraylenght;
     }
 
     /**
@@ -71,7 +78,9 @@ public class Array {
      * @return массив
      */
     public static int[] task6(int[] array1, int[] array2) {
-        return null; // Дописать код сюда
+        int intArray[] = int intArray1 [] + int intArray2 [];
+        return intArray[];
+
     }
 
     /**
@@ -92,7 +101,9 @@ public class Array {
      * @return массив
      */
     public static int[][] task8() {
-        return null; // Дописать код сюда
+        int [] [] array = {{1, 2, 1, 2}, {1, 2, 1, 2}, {1, 2, 1, 2}};
+        for ( int array)
+        return array;
     }
 
     /**
@@ -105,6 +116,7 @@ public class Array {
         return null; // Дописать код сюда
     }
 
+
     /**
      * Отсортировать массив. Если был такой (2, 1, 4, 3), то должен стать такой (1, 2, 3, 4).
      * Затем вернуть массив.
@@ -112,6 +124,8 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
-        return null; // Дописать код сюда
+        int intArray [] =
+        return null;
+
     }
 }
