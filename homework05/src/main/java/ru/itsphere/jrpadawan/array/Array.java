@@ -85,10 +85,10 @@ public class Array {
         }
         int a = 0;
         for (int j = resultArray.length; j <= size; j++) {
-            do while (a <= array2.length) {
+            //do while (a <= array2.length) {
                 resultArray[j] = array1[a];
-                a++;
-            }
+            //    a++;
+            //}
             resultArray[j] = array1[a];
         }
         return resultArray;
