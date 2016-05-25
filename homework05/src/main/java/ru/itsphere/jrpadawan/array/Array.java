@@ -39,7 +39,11 @@ public class Array {
      * @return максимальный элемент
      */
     public static int task3(int[] array) {
-        return 0; // Дописать код сюда
+        int max = 0;
+        for (int number: array) {
+            if (number > max) max = number;
+        }
+        return max;
     }
 
     /**
@@ -48,7 +52,7 @@ public class Array {
      * @return число (длинна)
      */
     public static long task4(int[] array) {
-        return 0; // Дописать код сюда
+        return array.length;
     }
 
     /**
@@ -71,7 +75,17 @@ public class Array {
      * @return массив
      */
     public static int[] task6(int[] array1, int[] array2) {
-        return null; // Дописать код сюда
+        int lengthOfResultArray = array1.length + array2.length;
+        int[] resultArray = new int[lengthOfResultArray];
+        for (int i = 0; i < resultArray.length; i++) {
+            if (i < array1.length) {
+                resultArray[i] = array1[i];
+            } else {
+                resultArray[i] = array2[i - array1.length];
+            }
+
+        }
+        return resultArray;
     }
 
     /**
@@ -82,6 +96,7 @@ public class Array {
      */
     public static int[][] task7() {
         int[][] array = {{1, 2, 1, 2}, {1, 2, 1, 2}, {1, 2, 1, 2}};
+        for
         return array;
     }
 
@@ -92,7 +107,8 @@ public class Array {
      * @return массив
      */
     public static int[][] task8() {
-        return null; // Дописать код сюда
+
+
     }
 
     /**
@@ -102,7 +118,9 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
-        return null; // Дописать код сюда
+
+
+        return null;
     }
 
     /**
