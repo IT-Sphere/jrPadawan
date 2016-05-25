@@ -16,7 +16,8 @@ public class StringTasks {
      * @return строка
      */
     public static String task1() {
-        return "Hello world";
+        String str = "Hello world";
+        return str;
     }
 
     /**
@@ -35,7 +36,8 @@ public class StringTasks {
      * @return строка
      */
     public static String task3(String text) {
-        return new String(text);
+        String str = new String (text);
+        return str;
     }
 
     /**
@@ -45,7 +47,7 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task4(String text) {
-        return false; // Дописать код сюда
+        return text.equals("Stroki ne sravnivaut cherez '=='!");
     }
 
     /**
@@ -54,7 +56,7 @@ public class StringTasks {
      * @return длинна
      */
     public static int task5(String text) {
-        return 0; // Дописать код сюда
+        return text.length();
     }
 
     /**
@@ -63,7 +65,7 @@ public class StringTasks {
      * @return символ
      */
     public static char task6(String text) {
-        return 0; // Дописать код сюда
+        return text.charAt(12);
     }
 
     /**
@@ -72,7 +74,7 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task7(String text) {
-        return false; // Дописать код сюда
+        return text.contains("bu-ga-ga");
     }
 
     /**
@@ -81,7 +83,7 @@ public class StringTasks {
      * @return номер начала подстроки
      */
     public static int task8(String text) {
-        return 0; // Дописать код сюда
+        return text.indexOf("bu-ga-ga");
     }
 
     /**
@@ -90,7 +92,13 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task9(String[] strings) {
-        return false; // Дописать код сюда
+        //for (String i=0, i < strings.length, i++) {
+        for (String i : strings) {
+            if (i.equals("bu-ga-ga")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -99,7 +107,7 @@ public class StringTasks {
      * @return строка
      */
     public static String task10(String text) {
-        return null; // Дописать код сюда
+        return text.substring(4, 10);
     }
 
     /**
@@ -109,6 +117,10 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task11(String original) {
-        return false; // Дописать код сюда
+        String reverse = "";
+        for (int i = original.length() - 1; i > 0; i--) {
+            reverse = reverse + original.charAt(i);
+        }
+        return original.equals(reverse);
     }
 }
