@@ -40,9 +40,9 @@ public class Array {
      */
     public static int task3(int[] array) {
         int maxArr = array[0];
-        for (number = 2  : array) {
-            if (array[number + 1] > array[number]) {
-                maxArr = array[number + 1];
+        for (int num : array) {
+            if (array[num + 1] > array[num]) {
+                maxArr = array[num + 1];
             }
         }
         return maxArr;
@@ -55,7 +55,7 @@ public class Array {
      * @return число (длинна)
      */
     public static long task4(int[] array) {
-        return 0; // Дописать код сюда
+        return array.length;
     }
 
     /**
@@ -78,7 +78,20 @@ public class Array {
      * @return массив
      */
     public static int[] task6(int[] array1, int[] array2) {
-        return null; // Дописать код сюда
+        int size = array1.length + array2.length;
+        int resultArray[] = new int[size];
+        for (int i : array1) {
+            resultArray[i] = array1[i];
+        }
+        int a = 0;
+        for (int j = resultArray.length; j <= size; j++) {
+            do while (a <= array2.length) {
+                resultArray[j] = array1[a];
+                a++;
+            }
+            resultArray[j] = array1[a];
+        }
+        return resultArray;
     }
 
     /**
