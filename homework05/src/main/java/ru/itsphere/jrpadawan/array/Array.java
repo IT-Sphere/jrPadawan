@@ -39,8 +39,15 @@ public class Array {
      * @return максимальный элемент
      */
     public static int task3(int[] array) {
-        return 0; // Дописать код сюда
+        int maxArr = array[0];
+        for (number = 2  : array) {
+            if (array[number + 1] > array[number]) {
+                maxArr = array[number + 1];
+            }
+        }
+        return maxArr;
     }
+
 
     /**
      * Вернуть длинну массива. Например, если массив такой (1, 20, 13, 24, 5), то результат должен быть такой 5.
