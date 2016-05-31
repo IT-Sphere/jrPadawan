@@ -1,5 +1,9 @@
 package ru.itsphere.jrpadawan.array;
 
+import com.sun.deploy.util.ArrayUtil;
+
+import java.util.Arrays;
+
 /**
  * http://it-channel.ru/
  * <p>
@@ -39,7 +43,11 @@ public class Array {
      * @return максимальный элемент
      */
     public static int task3(int[] array) {
-        int max = 0;
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("array is null or empty");
+
+        }
+        int max = array[0];
         for (int number: array) {
             if (number > max) max = number;
         }
@@ -96,7 +104,6 @@ public class Array {
      */
     public static int[][] task7() {
         int[][] array = {{1, 2, 1, 2}, {1, 2, 1, 2}, {1, 2, 1, 2}};
-        for
         return array;
     }
 
@@ -106,9 +113,22 @@ public class Array {
      *
      * @return массив
      */
-    public static int[][] task8() {
+   public static int[][] task8() {
+       int oneOrTwo = 1;
+       int[][] array = new int[3][4];
+       for (int i = 0; i < 3; i++) {
+           for (int j = 0; j < 4; j++) {
+               array[i][j] = oneOrTwo;
+               if (oneOrTwo == 1) {
+                   oneOrTwo = 2;
+               } else {
+                   oneOrTwo = 1;
+               }
 
+           }
 
+       }
+       return array;
     }
 
     /**
@@ -118,9 +138,15 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
-
-
-        return null;
+        if (array == null) {
+            throw new IllegalArgumentException("array is null");
+        }
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length ; i++) {
+           result[length - 1 - i] = array[i];
+        }
+        return result;
     }
 
     /**
@@ -130,6 +156,8 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
-        return null; // Дописать код сюда
+        Arrays.sort(array);
+        return array;
     }
+
 }
