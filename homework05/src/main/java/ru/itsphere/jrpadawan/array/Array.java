@@ -40,10 +40,10 @@ public class Array {
      * @return максимальный элемент
      */
     public static int task3(int[] array) {
-        int max = 0;
+        int max = Integer.MAX_VALUE;
         for (int number : array) {
             if (number > max) ;
-            if (number < max) ;
+            max = number;
         }
         return max;
     }
@@ -54,8 +54,7 @@ public class Array {
      * @return число (длинна)
      */
     public static long task4(int[] array) {
-        int arraylenght = 5;
-        return arraylenght;
+        return array.length;
     }
 
     /**
@@ -78,9 +77,17 @@ public class Array {
      * @return массив
      */
     public static int[] task6(int[] array1, int[] array2) {
-        int intArray[] = int intArray1 [] + int intArray2 [];
-        return intArray[];
-
+        int intArray[] = new int[array1.length + array2.length];
+        int index = 0;
+        for (int i = 0; i < array1.length; i++) {
+            intArray[index] = array1[i];
+            index++;
+        }
+        for (int i = 0; i < array2.length; i++) {
+            intArray[index] = array2[i];
+            index++;
+        }
+        return intArray;
     }
 
     /**
@@ -101,9 +108,13 @@ public class Array {
      * @return массив
      */
     public static int[][] task8() {
-        int [] [] array = {{1, 2, 1, 2}, {1, 2, 1, 2}, {1, 2, 1, 2}};
-        for ( int array)
-        return array;
+        int[][] intArray = new int[3][4];
+        for (int i = 0; i < intArray.length; i++) {
+            for (int j = 0; j < intArray[i].length; j++) {
+                intArray[i][j] = j % 2 + 1;
+            }
+        }
+        return intArray;
     }
 
     /**
@@ -113,7 +124,13 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
-        return null; // Дописать код сюда
+        int i1 = array.length / 2;
+        for (int i = 0; i1 > i; i++) {
+            long tmp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = tmp;
+        }
+        return array;
     }
 
 
@@ -124,8 +141,19 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
-        int intArray [] =
-        return null;
+        int counter = 1;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = counter; j < array.length; j++) {
+                if (array[j] < array[i]) {
+                    int tempValue = array[i];
+                    array[i] = array[j];
+                    array[j] = tempValue;
+                }
+            }
+            counter++;
+        }
+        return array;
+
 
     }
 }
