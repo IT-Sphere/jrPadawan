@@ -99,11 +99,12 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task9(String[] strings) {
-        if (strings.contains("bu-ga-ga")) {
-            return true;
-        } else {
-            return false;
+        for (String i : strings) {
+            if (i.equals("bu-ga-ga")) {
+                return true;
+            }
         }
+        return false;
     }
 
     /**
@@ -112,7 +113,7 @@ public class StringTasks {
      * @return строка
      */
     public static String task10(String text) {
-        return text.substring(3,10);
+        return text.substring(3, 9);
     }
 
     /**
@@ -122,6 +123,12 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task11(String original) {
-        return false; // Дописать код сюда
+        for (int i = 0; i < original.length(); i++) {
+            if (original.charAt(i) != original.charAt (original.length()-i-1)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
+
