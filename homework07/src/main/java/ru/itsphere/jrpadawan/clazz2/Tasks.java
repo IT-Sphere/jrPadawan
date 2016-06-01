@@ -25,7 +25,9 @@ public class Tasks {
      * @return Application
      */
     public static Application task2() {
-        return null; //дописать код сюда.
+        Application app = new Application("Sony Vegas");
+        app.setVersion("2");
+        return app;
     }
 
     /**
@@ -36,7 +38,9 @@ public class Tasks {
      * @return Application
      */
     public static Application task3() {
-        return null; //дописать код сюда.
+        Application app = new Application("Git");
+        app.setVersion(3);
+        return app;
     }
 
     /**
@@ -47,7 +51,7 @@ public class Tasks {
      * @return Application
      */
     public static Application task4() {
-        return null; //дописать код сюда.
+        return new Application("Gradle", "4");
     }
 
     /**
@@ -60,7 +64,10 @@ public class Tasks {
      */
     public static int task5() {
         Application.resetCreatedApplicationCount();
-        return 0; //дописать код сюда.
+        Application app1 = new Application("app1");
+        Application app2 = new Application("app2");
+        Application app3 = new Application("app3");
+        return Application.getCreatedApplicationCount();
     }
 
     /**
