@@ -128,6 +128,7 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
+        // Сделай без resultArray[]
         long resultArray[] = new long[array.length];
         int a = array.length;
         for (int i = 0; i < array.length; i++) {
@@ -144,6 +145,7 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
+        // Сделай без sort()- самым простым способом
         Arrays.sort(array);
         return array;
     }
