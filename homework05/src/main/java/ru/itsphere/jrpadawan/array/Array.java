@@ -1,5 +1,7 @@
 package ru.itsphere.jrpadawan.array;
 
+import java.util.Arrays;
+
 /**
  * http://it-channel.ru/
  * <p>
@@ -38,16 +40,16 @@ public class Array {
      *
      * @return максимальный элемент
      */
+
     public static int task3(int[] array) {
         int maxArr = array[0];
         for (int num : array) {
-            if (array[num + 1] > array[num]) {
-                maxArr = array[num + 1];
+            if (maxArr < num) {
+                maxArr = num;
             }
         }
         return maxArr;
     }
-
 
     /**
      * Вернуть длинну массива. Например, если массив такой (1, 20, 13, 24, 5), то результат должен быть такой 5.
@@ -80,16 +82,14 @@ public class Array {
     public static int[] task6(int[] array1, int[] array2) {
         int size = array1.length + array2.length;
         int resultArray[] = new int[size];
-        for (int i : array1) {
-            resultArray[i] = array1[i];
-        }
         int a = 0;
-        for (int j = resultArray.length; j <= size; j++) {
-            //do while (a <= array2.length) {
-                resultArray[j] = array1[a];
-            //    a++;
-            //}
-            resultArray[j] = array1[a];
+        for (int j = 0; j < array1.length; j++) {
+            resultArray[a] = array1[j];
+            a++;
+        }
+        for (int i = 0; i < array2.length; i++) {
+            resultArray[a] = array2[i];
+            a++;
         }
         return resultArray;
     }
@@ -112,7 +112,13 @@ public class Array {
      * @return массив
      */
     public static int[][] task8() {
-        return null; // Дописать код сюда
+        int[][] array = new int[3][4];
+        for (int j = 0; j < 3; j++) {
+            for (int i = 0; i < 4; i++) {
+                array[j][i] = i % 2 + 1;
+            }
+        }
+        return array;
     }
 
     /**
@@ -122,7 +128,13 @@ public class Array {
      * @return массив
      */
     public static long[] task9(long[] array) {
-        return null; // Дописать код сюда
+        long resultArray[] = new long[array.length];
+        int a = array.length;
+        for (int i = 0; i < array.length; i++) {
+            resultArray[i] = array[a - 1];
+            a--;
+        }
+        return resultArray;
     }
 
     /**
@@ -132,6 +144,8 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
-        return null; // Дописать код сюда
+        Arrays.sort(array);
+        return array;
     }
+
 }
