@@ -123,6 +123,7 @@ public class StringTasks {
      * @return boolean
      */
     public static boolean task11(String original) {
+        // посмотри как через StringBuilder
         for (int i = 0; i < original.length(); i++) {
             if (original.charAt(i) != original.charAt (original.length()-i-1)) {
                 return false;

@@ -18,7 +18,7 @@ public class BusUsageTest {
         BusUsage busUsage = new BusUsage();
         Bus bus = busUsage.changeBusSpeedAndPassengers(new Bus());
         AssertWrapper.assertNotNull(status, bus);
-        AssertWrapper.assertEquals(status, bus.getSpeed(220), 220);
+        AssertWrapper.assertEquals(status, bus.getSpeed(), 220);
         AssertWrapper.assertEquals(status, bus.passengers, 25);
     }
 }

@@ -11,6 +11,7 @@ public class Bus {
     int passengers;
     private int speed;
 
+    // TODO удалить переменную i
     public int getSpeed(int i) {
         return speed;
     }

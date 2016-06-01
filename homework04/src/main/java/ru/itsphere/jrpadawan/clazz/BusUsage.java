@@ -19,6 +19,7 @@ public class BusUsage {
      * @return объект класса Bus
      */
     Bus changeBusSpeedAndPassengers(Bus bus) {
+        // изменить скорость через сеттер
         bus.getSpeed(220);
         bus.passengers = 25;
         return bus;
