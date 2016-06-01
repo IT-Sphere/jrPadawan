@@ -36,7 +36,7 @@ public class StringTasks {
      * @return строка
      */
     public static String task3(String text) {
-        String str = new String (text);
+        String str = new String(text);
         return str;
     }
 
@@ -107,7 +107,7 @@ public class StringTasks {
      * @return строка
      */
     public static String task10(String text) {
-        return text.substring(4, 10);
+        return text.substring(3, 9);
     }
 
     /**
@@ -118,7 +118,7 @@ public class StringTasks {
      */
     public static boolean task11(String original) {
         String reverse = "";
-        for (int i = original.length() - 1; i > 0; i--) {
+        for (int i = original.length() - 1; i >= 0; i--) {
             reverse = reverse + original.charAt(i);
         }
         return original.equals(reverse);
