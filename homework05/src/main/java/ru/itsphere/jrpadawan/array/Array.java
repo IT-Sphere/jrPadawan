@@ -141,10 +141,10 @@ public class Array {
         if (array == null) {
             throw new IllegalArgumentException("array is null");
         }
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length ; i++) {
-           result[length - 1 - i] = array[i];
+        // Доделать без нового массива
+        long[] result = new long[array.length];
+        for (int i = 0; i < array.length; i++) {
+           result[array.length - 1 - i] = array[i];
         }
         return result;
     }
@@ -156,6 +156,7 @@ public class Array {
      * @return массив
      */
     public static int[] task10(int[] array) {
+        // Доделать без
         Arrays.sort(array);
         return array;
     }
