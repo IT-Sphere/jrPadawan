@@ -1,7 +1,5 @@
 package ru.itsphere.jrpadawan.clazz3;
 
-import com.sun.org.apache.xerces.internal.xs.StringList;
-
 /**
  * http://it-channel.ru/
  * <p>
@@ -32,7 +30,6 @@ public class StringLinkedList {
      */
     public StringLinkedList(String[] values) {
         this.add(values);
-        size = values.length;
     }
 
     /**
@@ -53,6 +50,7 @@ public class StringLinkedList {
      */
     public StringLinkedList(StringLinkedList list) {
         for (int i = 0; i < list.size; i++) {
+            // TODO Сделай без getEntry(i)
             this.add(list.getEntry(i).value);
         }
     }
@@ -310,6 +308,7 @@ public class StringLinkedList {
     public void add(int index, String[] values) {
         checkIndex(index);
         //создадим временный связный список
+        // TODO без StringLinkedList
         StringLinkedList tempList = new StringLinkedList(values);
         //получаем ссылку на элемент который должен находиться после временного списка
         Entry entryAfterTempList = getEntry(index);
@@ -363,6 +362,7 @@ public class StringLinkedList {
         checkIndex(to);
         StringLinkedList resultList = new StringLinkedList();
         for (int i = from; i <= to; i++) {
+            // TODO Сделай без getEntry(i)
             resultList.add(getEntry(i).value);
         }
         return resultList;
@@ -375,6 +375,7 @@ public class StringLinkedList {
     public String[] toArray() {
         String[] resultArray = new String[size];
         for (int i = 0; i < size; i++) {
+            // TODO Сделай без getEntry(i)
             resultArray[i] = getEntry(i).value;
         }
         return resultArray;
@@ -405,6 +406,7 @@ public class StringLinkedList {
     public StringLinkedList distinct() {
         StringLinkedList resultList = new StringLinkedList();
         for (int i = 0; i < size; i++) {
+            // TODO Сделай без getEntry(i)
             if (!resultList.contains(getEntry(i).value)) {
                 resultList.add(getEntry(i).value);
             }
@@ -420,6 +422,7 @@ public class StringLinkedList {
     public StringLinkedList reverse() {
         StringLinkedList resultList = new StringLinkedList();
         for (int i = 0; i < size; i++) {
+            // TODO Сделай без getEntry(i)
             resultList.add(getEntry(size - i - 1).value);
         }
         return resultList;
