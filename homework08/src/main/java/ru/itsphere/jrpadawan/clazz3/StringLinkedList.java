@@ -1,5 +1,7 @@
 package ru.itsphere.jrpadawan.clazz3;
 
+import com.sun.org.apache.xerces.internal.xs.StringList;
+
 /**
  * http://it-channel.ru/
  * <p>
@@ -30,6 +32,7 @@ public class StringLinkedList {
      */
     public StringLinkedList(String[] values) {
         this.add(values);
+        size = values.length;
     }
 
     /**
@@ -49,7 +52,9 @@ public class StringLinkedList {
      * firstList - исходный список без изменений.
      */
     public StringLinkedList(StringLinkedList list) {
-        // дописать код сюда.
+        for (int i = 0; i < list.size; i++) {
+            this.add(list.getEntry(i).value);
+        }
     }
 
     /**
@@ -63,7 +68,7 @@ public class StringLinkedList {
      * Проверяет пустой ли список.
      */
     public boolean isEmpty() {
-        if (size == 0) {
+        if (getSize() == 0) {
             return true;
         }
         return false;
@@ -289,7 +294,9 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        //дописать код сюда.
+        for (int i = 0; i < values.length; i++) {
+            this.add(values[i]);
+        }
     }
 
     /**
@@ -301,7 +308,25 @@ public class StringLinkedList {
      * (можно использовать этот checkIndex метод).
      */
     public void add(int index, String[] values) {
-        //дописать код сюда.
+        checkIndex(index);
+        //создадим временный связный список
+        StringLinkedList tempList = new StringLinkedList(values);
+        //получаем ссылку на элемент который должен находиться после временного списка
+        Entry entryAfterTempList = getEntry(index);
+        //получаем ссылку на элемент который должен находиться перед временным списком
+        Entry entryBeforeTempList = entryAfterTempList.getPrevious();
+        //если entryBeforeTempList = null, значит ссылку первого элемента текущего списка установим на первый элемент временного списка
+        if (entryBeforeTempList == null) {
+            first = tempList.first;
+            //иначе свяжим элемент текущего списка с ииндексом index - 1 с первым элементом временного списка
+        } else {
+            entryBeforeTempList.setNext(tempList.first);
+            tempList.first.setPrevious(entryBeforeTempList);
+        }
+        //свяжим последний элемент временного списка с элементом текущего списка под ииндексом index
+        entryAfterTempList.setPrevious(tempList.last);
+        tempList.last.setNext(entryAfterTempList);
+        size += tempList.size;
     }
 
     /**
@@ -312,7 +337,14 @@ public class StringLinkedList {
      * должен вернуть 1. Если значение не найдено, то возвращать -1.
      */
     public int indexOf(String value) {
-        return 0; //дописать код сюда.
+        Entry entry = first;
+        for (int counter = 0; counter < size; counter++) {
+            if (entry.value == value) {
+                return counter;
+            }
+            entry = entry.getNext();
+        }
+        return -1;
     }
 
     /**
@@ -324,7 +356,16 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
-        return null; //дописать код сюда.
+        if (from > to) {
+            throw new IllegalArgumentException("from > to");
+        }
+        checkIndex(from);
+        checkIndex(to);
+        StringLinkedList resultList = new StringLinkedList();
+        for (int i = from; i <= to; i++) {
+            resultList.add(getEntry(i).value);
+        }
+        return resultList;
     }
 
     /**
@@ -332,7 +373,11 @@ public class StringLinkedList {
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
-        return null; //дописать код сюда.
+        String[] resultArray = new String[size];
+        for (int i = 0; i < size; i++) {
+            resultArray[i] = getEntry(i).value;
+        }
+        return resultArray;
     }
 
     /**
@@ -342,7 +387,14 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        //дописать код сюда.
+        if (isEmpty()) {
+            last = first = new Entry(null, value, null);
+        } else {
+            Entry newFirst = new Entry(null, value, first);
+            first.setPrevious(newFirst);
+            first = newFirst;
+        }
+        size++;
     }
 
     /**
@@ -351,7 +403,13 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "pasha masha vadim".
      */
     public StringLinkedList distinct() {
-        return null; //дописать код сюда.
+        StringLinkedList resultList = new StringLinkedList();
+        for (int i = 0; i < size; i++) {
+            if (!resultList.contains(getEntry(i).value)) {
+                resultList.add(getEntry(i).value);
+            }
+        }
+        return resultList;
     }
 
     /**
@@ -360,7 +418,11 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
      */
     public StringLinkedList reverse() {
-        return null; //дописать код сюда.
+        StringLinkedList resultList = new StringLinkedList();
+        for (int i = 0; i < size; i++) {
+            resultList.add(getEntry(size - i - 1).value);
+        }
+        return resultList;
     }
 
     /**
