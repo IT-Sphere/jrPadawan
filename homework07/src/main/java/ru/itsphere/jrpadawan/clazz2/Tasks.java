@@ -71,7 +71,7 @@ public class Tasks {
         return Application.getCreatedApplicationCount();
     }
 
-    /**
+    /***
      * Этот метод не меняйте. Допишите метод calculate класса FactorialUtils.
      * Метод calculate должен вычислять факториал рекурсивным методом.
      * Циклы использовать нельзя!
