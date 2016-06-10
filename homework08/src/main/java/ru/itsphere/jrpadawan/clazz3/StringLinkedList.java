@@ -49,9 +49,8 @@ public class StringLinkedList {
      * firstList - исходный список без изменений.
      */
     public StringLinkedList(StringLinkedList list) {
-        for (int i = 0; i < list.size; i++) {
-            // TODO Сделай без getEntry(i)
-            this.add(list.getEntry(i).value);
+        for (Entry entry = list.first; entry != null; entry = entry.getNext()) {
+            this.add(entry.value);
         }
     }
 
@@ -307,25 +306,9 @@ public class StringLinkedList {
      */
     public void add(int index, String[] values) {
         checkIndex(index);
-        //создадим временный связный список
-        // TODO без StringLinkedList
-        StringLinkedList tempList = new StringLinkedList(values);
-        //получаем ссылку на элемент который должен находиться после временного списка
-        Entry entryAfterTempList = getEntry(index);
-        //получаем ссылку на элемент который должен находиться перед временным списком
-        Entry entryBeforeTempList = entryAfterTempList.getPrevious();
-        //если entryBeforeTempList = null, значит ссылку первого элемента текущего списка установим на первый элемент временного списка
-        if (entryBeforeTempList == null) {
-            first = tempList.first;
-            //иначе свяжим элемент текущего списка с ииндексом index - 1 с первым элементом временного списка
-        } else {
-            entryBeforeTempList.setNext(tempList.first);
-            tempList.first.setPrevious(entryBeforeTempList);
+        for (int i = values.length - 1; i >= 0; i--) {
+            add(index, values[i]);
         }
-        //свяжим последний элемент временного списка с элементом текущего списка под ииндексом index
-        entryAfterTempList.setPrevious(tempList.last);
-        tempList.last.setNext(entryAfterTempList);
-        size += tempList.size;
     }
 
     /**
@@ -361,9 +344,15 @@ public class StringLinkedList {
         checkIndex(from);
         checkIndex(to);
         StringLinkedList resultList = new StringLinkedList();
-        for (int i = from; i <= to; i++) {
-            // TODO Сделай без getEntry(i)
-            resultList.add(getEntry(i).value);
+        int step = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            if (step >= from && step <= to) {
+                resultList.add(entry.value);
+            }
+            if (step > to) {
+                return resultList;
+            }
+            step++;
         }
         return resultList;
     }
@@ -374,9 +363,10 @@ public class StringLinkedList {
      */
     public String[] toArray() {
         String[] resultArray = new String[size];
-        for (int i = 0; i < size; i++) {
-            // TODO Сделай без getEntry(i)
-            resultArray[i] = getEntry(i).value;
+        int index = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            resultArray[index] = entry.value;
+            index++;
         }
         return resultArray;
     }
@@ -405,10 +395,9 @@ public class StringLinkedList {
      */
     public StringLinkedList distinct() {
         StringLinkedList resultList = new StringLinkedList();
-        for (int i = 0; i < size; i++) {
-            // TODO Сделай без getEntry(i)
-            if (!resultList.contains(getEntry(i).value)) {
-                resultList.add(getEntry(i).value);
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            if (!resultList.contains(entry.value)) {
+                resultList.add(entry.value);
             }
         }
         return resultList;
@@ -421,9 +410,8 @@ public class StringLinkedList {
      */
     public StringLinkedList reverse() {
         StringLinkedList resultList = new StringLinkedList();
-        for (int i = 0; i < size; i++) {
-            // TODO Сделай без getEntry(i)
-            resultList.add(getEntry(size - i - 1).value);
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            resultList.addFirst(entry.value);
         }
         return resultList;
     }
