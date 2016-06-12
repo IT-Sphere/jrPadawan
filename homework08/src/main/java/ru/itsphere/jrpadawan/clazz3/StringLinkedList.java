@@ -49,6 +49,7 @@ public class StringLinkedList {
      * firstList - исходный список без изменений.
      */
     public StringLinkedList(StringLinkedList list) {
+        // TODO без toArray()
         this.add(list.toArray());
     }
 
@@ -289,7 +290,7 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        for (String str: values) {
+        for (String str : values) {
             add(str);
         }
     }
@@ -319,6 +320,7 @@ public class StringLinkedList {
      */
     public int indexOf(String value) {
         for (int i = 0; i < getSize(); i++) {
+            // TODO без getEntry()
             String string = getEntry(i).getValue();
             if (string.equals(value)) {
                 return i;
@@ -340,8 +342,10 @@ public class StringLinkedList {
             throw new IllegalArgumentException("FROM not be more then TO");
         }
         checkIndex(to);
+        // TODO для фром checkIndex(to);
         StringLinkedList result = new StringLinkedList();
         for (int i = from; i <= to; i++) {
+            // TODO без getEntry()
             result.add(getEntry(i).getValue());
         }
         return result;
@@ -352,9 +356,9 @@ public class StringLinkedList {
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
-        int size = getSize();
-        String[] strings = new String[size];
-        for (int i = 0; i < size; i++) {
+        String[] strings = new String[getSize()];
+        for (int i = 0; i < getSize(); i++) {
+            // TODO без getEntry() (get(i))
             strings[i] = get(i);
         }
         return strings;
@@ -386,6 +390,7 @@ public class StringLinkedList {
     public StringLinkedList distinct() {
         StringLinkedList result = new StringLinkedList();
         for (int i = 0; i < getSize(); i++) {
+            // TODO без getEntry() (get(i))
             String value = get(i);
             if (!result.contains(value)) {
                 result.add(value);
@@ -402,6 +407,7 @@ public class StringLinkedList {
     public StringLinkedList reverse() {
         StringLinkedList result = new StringLinkedList();
         for (int i = getSize() - 1; i >= 0; i--) {
+            // TODO без getEntry() (get(i))
             result.add(get(i));
         }
         return result;
