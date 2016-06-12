@@ -115,6 +115,7 @@ public class StringTasks {
      */
     public static boolean task11(String original) {
         String reverse = "";
+        // сделай через StringBuilder
         for (int i = original.length() -1; i >= 0; i--) {
             reverse = reverse + original.charAt(i);
         }
