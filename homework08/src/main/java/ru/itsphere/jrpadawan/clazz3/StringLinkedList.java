@@ -218,8 +218,8 @@ public class StringLinkedList {
         // Начиная с первого элемента Entry entry = first.
         // Затем у него мы берем ссылку на следующий элемент и переходим на него entry = entry.getNext().
         // И так до тех пор пока не перейдем по ссылке на нулевой объект entry != null.
-        for (Entry entry = first; entry != null; entry = entry.getNext()) {
-            // В цикле последовательно будем проверять каждый объект на то, содержит ли он нужное нам значение.
+
+        for (Entry entry = first; entry != null; entry = entry.getNext()) { // В цикле последовательно будем проверять каждый объект на то, содержит ли он нужное нам значение.
             if (entry.getValue().equals(value)) {
                 // Если да, то возвращаем этот объект и завершаем цикл, если нет, то продолжаем цикл.
                 return entry;
@@ -289,7 +289,9 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        //дописать код сюда.
+        for (int i = 0; i < values.length; i++) {
+            add(values[i]);
+        }
     }
 
     /**
@@ -301,8 +303,18 @@ public class StringLinkedList {
      * (можно использовать этот checkIndex метод).
      */
     public void add(int index, String[] values) {
-        //дописать код сюда.
+        checkIndex(index);
+        for (int i = 0; i < values.length; i++) {
+            add(index, values[i]);
+        }
     }
+/*
+    public static void main(String[] a) {
+        int aa = 1;
+        String[] bb = {"pasha", "vadim"};
+        add(aa, bb);
+    }
+*/
 
     /**
      * Задача 3.
@@ -312,7 +324,16 @@ public class StringLinkedList {
      * должен вернуть 1. Если значение не найдено, то возвращать -1.
      */
     public int indexOf(String value) {
-        return 0; //дописать код сюда.
+        int index = 0;
+        if (contains(value)) {
+            for (Entry entry = first; entry != null; entry = entry.getNext()) {
+                if (entry.getValue().equals(value)) {
+                    return index;
+                }
+                index++;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -324,6 +345,7 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
+
         return null; //дописать код сюда.
     }
 
