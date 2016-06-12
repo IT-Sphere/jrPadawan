@@ -49,7 +49,7 @@ public class StringLinkedList {
      * firstList - исходный список без изменений.
      */
     public StringLinkedList(StringLinkedList list) {
-        // дописать код сюда.
+        this.add(list.toArray());
     }
 
     /**
@@ -289,7 +289,9 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        //дописать код сюда.
+        for (String str: values) {
+            add(str);
+        }
     }
 
     /**
@@ -301,7 +303,11 @@ public class StringLinkedList {
      * (можно использовать этот checkIndex метод).
      */
     public void add(int index, String[] values) {
-        //дописать код сюда.
+        checkIndex(index);
+        for (String str: values) {
+            add(index, str);
+            index++;
+        }
     }
 
     /**
@@ -312,7 +318,13 @@ public class StringLinkedList {
      * должен вернуть 1. Если значение не найдено, то возвращать -1.
      */
     public int indexOf(String value) {
-        return 0; //дописать код сюда.
+        for (int i = 0; i < getSize(); i++) {
+            String string = getEntry(i).getValue();
+            if (string.equals(value)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -324,7 +336,15 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
-        return null; //дописать код сюда.
+        if (from > to) {
+            throw new IllegalArgumentException("FROM not be more then TO");
+        }
+        checkIndex(to);
+        StringLinkedList result = new StringLinkedList();
+        for (int i = from; i <= to; i++) {
+            result.add(getEntry(i).getValue());
+        }
+        return result;
     }
 
     /**
@@ -332,7 +352,12 @@ public class StringLinkedList {
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
-        return null; //дописать код сюда.
+        int size = getSize();
+        String[] strings = new String[size];
+        for (int i = 0; i < size; i++) {
+            strings[i] = get(i);
+        }
+        return strings;
     }
 
     /**
@@ -342,7 +367,15 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        //дописать код сюда.
+        Entry entry = new Entry(null, value, null);
+        if (isEmpty()) {
+            first = last = entry;
+        } else {
+            first.setPrevious(entry);
+            entry.setNext(first);
+            first = entry;
+        }
+        size++;
     }
 
     /**
@@ -351,7 +384,14 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "pasha masha vadim".
      */
     public StringLinkedList distinct() {
-        return null; //дописать код сюда.
+        StringLinkedList result = new StringLinkedList();
+        for (int i = 0; i < getSize(); i++) {
+            String value = get(i);
+            if (!result.contains(value)) {
+                result.add(value);
+            }
+        }
+        return result;
     }
 
     /**
@@ -360,7 +400,11 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
      */
     public StringLinkedList reverse() {
-        return null; //дописать код сюда.
+        StringLinkedList result = new StringLinkedList();
+        for (int i = getSize() - 1; i >= 0; i--) {
+            result.add(get(i));
+        }
+        return result;
     }
 
     /**
