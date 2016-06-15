@@ -304,17 +304,10 @@ public class StringLinkedList {
      */
     public void add(int index, String[] values) {
         checkIndex(index);
-        for (int i = 0; i < values.length; i++) {
+        for (int i = values.length - 1; i >= 0; i--) {
             add(index, values[i]);
         }
     }
-/*
-    public static void main(String[] a) {
-        int aa = 1;
-        String[] bb = {"pasha", "vadim"};
-        add(aa, bb);
-    }
-*/
 
     /**
      * Задача 3.
@@ -325,13 +318,11 @@ public class StringLinkedList {
      */
     public int indexOf(String value) {
         int index = 0;
-        if (contains(value)) {
-            for (Entry entry = first; entry != null; entry = entry.getNext()) {
-                if (entry.getValue().equals(value)) {
-                    return index;
-                }
-                index++;
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            if (entry.getValue().equals(value)) {
+                return index;
             }
+            index++;
         }
         return -1;
     }
@@ -345,8 +336,22 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
-
-        return null; //дописать код сюда.
+        if (from > to) {
+            throw new IllegalArgumentException("from more then to");
+        }
+        checkIndex(from);
+        checkIndex(to);
+        int index = 0;
+        StringLinkedList resultLinkedList = new StringLinkedList();
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            if (index >= from && index <= to) {
+                resultLinkedList.add(entry.value);
+            } else if (to > index) {
+                return resultLinkedList;
+            }
+            index++;
+        }
+        return resultLinkedList;
     }
 
     /**
@@ -354,7 +359,13 @@ public class StringLinkedList {
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
-        return null; //дописать код сюда.
+        String[] resultStrArray = new String[size];
+        int index = 0;
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            resultStrArray[index] = entry.value;
+            index++;
+        }
+        return resultStrArray;
     }
 
     /**
