@@ -49,7 +49,9 @@ public class StringLinkedList {
      * firstList - исходный список без изменений.
      */
     public StringLinkedList(StringLinkedList list) {
-        // дописать код сюда.
+        for (Entry entry = list.first; entry != null; entry = entry.getNext()) {
+            add(entry.value);
+        }
     }
 
     /**
@@ -346,7 +348,7 @@ public class StringLinkedList {
         for (Entry entry = first; entry != null; entry = entry.getNext()) {
             if (index >= from && index <= to) {
                 resultLinkedList.add(entry.value);
-            } else if (to > index) {
+            } else if (to < index) {
                 return resultLinkedList;
             }
             index++;
@@ -375,7 +377,12 @@ public class StringLinkedList {
      * метода должно быть так "sasha pasha vadim masha".
      */
     public void addFirst(String value) {
-        //дописать код сюда.
+        if (!isEmpty()) {
+            add(0,value);
+        } else {
+            last = first = new Entry(null, value, null);
+            size++;
+        }
     }
 
     /**
@@ -384,7 +391,13 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "pasha masha vadim".
      */
     public StringLinkedList distinct() {
-        return null; //дописать код сюда.
+        StringLinkedList resultLinkedList = new StringLinkedList();
+        for (Entry entry = first; entry != null; entry = entry.getNext()) {
+            if (!resultLinkedList.contains(entry.value)) {
+                resultLinkedList.add(entry.value);
+            }
+        }
+        return resultLinkedList;
     }
 
     /**
@@ -393,7 +406,11 @@ public class StringLinkedList {
      * "pasha masha vadim masha", то станет так "masha vadim masha pasha".
      */
     public StringLinkedList reverse() {
-        return null; //дописать код сюда.
+        StringLinkedList resultLinkedList = new StringLinkedList();
+        for (Entry entry = last; entry != null; entry = entry.getPrevious()) {
+            resultLinkedList.add(entry.value);
+        }
+        return resultLinkedList;
     }
 
     /**
