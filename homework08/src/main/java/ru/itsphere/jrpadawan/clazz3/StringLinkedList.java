@@ -289,7 +289,9 @@ public class StringLinkedList {
      * то должно получиться "sasha masha pasha vadim".
      */
     public void add(String[] values) {
-        //дописать код сюда.
+        for (int i = 0; i < values.length; i++) {
+            add(values[i]);
+        }
     }
 
     /**
@@ -298,10 +300,13 @@ public class StringLinkedList {
      * Если в списке было "sasha masha", а добавляем [pasha][vadim] на место индекса 1,
      * то должно получиться "sasha pasha vadim masha".
      * Если индекс выходит за пределы размера списка то должно вываливаться исключение IndexOutOfBoundsException
-     * (можно использовать этот checkIndex метод).
+     * (можно использо.вать этот checkIndex метод).
      */
     public void add(int index, String[] values) {
-        //дописать код сюда.
+        checkIndex(index);
+        for (int i = 1 ; i < values.length ; i++ ) {
+            add(index, values[i]);
+        }
     }
 
     /**
@@ -312,7 +317,11 @@ public class StringLinkedList {
      * должен вернуть 1. Если значение не найдено, то возвращать -1.
      */
     public int indexOf(String value) {
-        return 0; //дописать код сюда.
+        for (Entry.)
+
+
+        return 0;
+        //дописать код сюда.
     }
 
     /**
@@ -324,6 +333,7 @@ public class StringLinkedList {
      * должен вернуть список со значениями "pasha vadim".
      */
     public StringLinkedList subList(int from, int to) {
+
         return null; //дописать код сюда.
     }
 
@@ -332,6 +342,8 @@ public class StringLinkedList {
      * Трансформирует список в массив строк.
      */
     public String[] toArray() {
+
+
         return null; //дописать код сюда.
     }
 
