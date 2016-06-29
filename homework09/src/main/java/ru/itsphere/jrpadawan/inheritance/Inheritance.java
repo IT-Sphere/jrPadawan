@@ -31,6 +31,10 @@ public class Inheritance {
         animals.add(new Dove("Dove Sergey"));
         // Создаем медведя и добавляем в список.
         animals.add(new Bear("Vini-Puh"));
+        animals.add(new Crocodile("Gosha"));
+        animals.add(new Snake("Dima"));
+        animals.add(new Whale("Stepan"));
+
 
         System.out.println("---- Movement Competition ---- ");
         System.out.println();
