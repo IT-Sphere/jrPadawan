@@ -8,5 +8,12 @@ public abstract class MarineAnimal extends Animal {
 
     @Override
     public abstract double move(double distance);
-    public abstract void setSwimSpeed(double swimSpeed);
+
+    public void setSwimSpeed(double swimSpeed) {
+        this.swimSpeed = swimSpeed;
+    }
+
+    public double getSwimSpeed() {
+        return swimSpeed;
+    }
 }

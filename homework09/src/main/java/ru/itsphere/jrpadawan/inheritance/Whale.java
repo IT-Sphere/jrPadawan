@@ -5,17 +5,12 @@ package ru.itsphere.jrpadawan.inheritance;
  */
 public class Whale extends MarineAnimal {
     public Whale(String name) {
-        this.setName(name);
-        this.setSpeed(10.3);
+        setName(name);
+        setSwimSpeed(10.3);
     }
 
     @Override
-    public double move(double distance) {
-        return distance;
-    }
-
-    @Override
-    public void setSwimSpeed(double swimSpeed) {
-        this.setSpeed(swimSpeed);
+    public  double move(double distance) {
+        return  distance / getSwimSpeed();
     }
 }
