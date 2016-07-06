@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class Observable {
 
     /**
-     * Флаг, который сигнализирует о изменении состояния.
+     * Флаг, который сигнализирует об изменении состояния.
      */
     private boolean changed = false;
 
@@ -17,6 +17,7 @@ public abstract class Observable {
      * Список тех, кто заинтересован в получении уведомлении об изменении.
      */
     private List<User> subscribers = new ArrayList<>();
+    //private List<Bot> subscribersBot = new ArrayList<>();
 
     /**
      * Метод "Подписывает" нового получателя уведомлений.
@@ -26,7 +27,11 @@ public abstract class Observable {
     public void addSubscriber(User subscriber) {
         subscribers.add(subscriber);
     }
-
+/*
+    public void addSubscriber(Bot subscriber) {
+        subscribersBot.add(subscriber);
+    }
+*/
     /**
      * Метод уведомляет всех, кто "Подписался" на получение уведомлений.
      *
@@ -44,4 +49,5 @@ public abstract class Observable {
     public void setChanged() {
         this.changed = true;
     }
+
 }

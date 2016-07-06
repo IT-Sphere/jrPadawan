@@ -3,7 +3,7 @@ package ru.itsphere.jrpadawan.interfacies;
 /**
  * Класс бот. Через метод update получает информацию от каналов, на которые подписаны.
  */
-public class Bot {
+public class Bot extends User implements Observer {
 
     /**
      * Статический счетчик созданных ботов.
@@ -20,6 +20,7 @@ public class Bot {
      * Конструктор принимающий имя и генерирующий новый идентификатор пользователю.
      */
     public Bot() {
+        super("Bots");
         this.id = botCounter;
         botCounter++;
     }
@@ -31,4 +32,10 @@ public class Bot {
     public String toString() {
         return "Bot-" + id;
     }
+
+    @Override
+    public void update(Object data) {
+        System.out.println(this + " Bot has watched this video " + data);
+    }
+
 }
