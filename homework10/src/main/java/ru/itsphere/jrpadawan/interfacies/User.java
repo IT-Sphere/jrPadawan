@@ -3,7 +3,7 @@ package ru.itsphere.jrpadawan.interfacies;
 /**
  * Класс пользователь. Через метод update получает информацию от каналов, на которые подписаны.
  */
-public class User {
+public class User implements Observer {
 
     /**
      * Статический счетчик созданных пользователей.
@@ -36,6 +36,7 @@ public class User {
      *
      * @param data - любая информация
      */
+    @Override
     public void update(Object data) {
         System.out.println(this + " has watched this video " + data);
     }

@@ -16,14 +16,14 @@ public abstract class Observable {
     /**
      * Список тех, кто заинтересован в получении уведомлении об изменении.
      */
-    private List<User> subscribers = new ArrayList<>();
+    private List<Observer> subscribers = new ArrayList<>();
 
     /**
      * Метод "Подписывает" нового получателя уведомлений.
      *
      * @param subscriber
      */
-    public void addSubscriber(User subscriber) {
+    public void addSubscriber(Observer subscriber) {
         subscribers.add(subscriber);
     }
 
@@ -34,7 +34,7 @@ public abstract class Observable {
      */
     public void notifySubscribers(Object data) {
         if (changed) {
-            for (User subscriber : subscribers) {
+            for (Observer subscriber : subscribers) {
                 subscriber.update(data);
             }
             changed = false;
